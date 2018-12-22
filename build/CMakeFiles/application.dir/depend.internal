@@ -1187,9 +1187,10 @@ CMakeFiles/application.dir/src/FrmMain.cpp.o
  /usr/lib/x86_64-linux-gnu/gtkmm-3.0/include/gtkmmconfig.h
  /usr/lib/x86_64-linux-gnu/pangomm-1.4/include/pangommconfig.h
  /usr/lib/x86_64-linux-gnu/sigc++-2.0/include/sigc++config.h
-CMakeFiles/application.dir/src/main.cpp.o
+CMakeFiles/application.dir/src/image_processing.cpp.o
  /home/werther/Desktop/ProgettoRTOS/lib/FrmMain.h
- /home/werther/Desktop/ProgettoRTOS/src/main.cpp
+ /home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
+ /home/werther/Desktop/ProgettoRTOS/src/image_processing.cpp
  /usr/include/atk-1.0/atk/atk-enum-types.h
  /usr/include/atk-1.0/atk/atk.h
  /usr/include/atk-1.0/atk/atkaction.h
@@ -2373,3 +2374,6 @@ CMakeFiles/application.dir/src/main.cpp.o
  /usr/lib/x86_64-linux-gnu/gtkmm-3.0/include/gtkmmconfig.h
  /usr/lib/x86_64-linux-gnu/pangomm-1.4/include/pangommconfig.h
  /usr/lib/x86_64-linux-gnu/sigc++-2.0/include/sigc++config.h
+CMakeFiles/application.dir/src/main.cpp.o
+ /home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
+ /home/werther/Desktop/ProgettoRTOS/src/main.cpp

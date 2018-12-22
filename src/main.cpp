@@ -1,29 +1,18 @@
-#include <gtkmm.h>
+#include "../lib/image_processing.h"
 #include <iostream>
-#include "../lib/FrmMain.h"
 
 using namespace std;
-using namespace Gtk;
 
 /*--------------------------------------------------------------*/
-/*			MAIN process				*/
+/*		            	MAIN process				                        */
 /*--------------------------------------------------------------*/
 
 int main(int argc, char** argv) {
     //gtk code
-    cout << "Started" << endl;
+	show_frame("../glade/frmMain.glade", "frmMain", 
+		"Image Processing", "../media/image_processing.png", argc, argv);
 
-	Main kit(argc,argv);
-	Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("../glade/frmMain.glade");
-
-	FrmMain *frm = 0;
-	builder->get_widget_derived("frmMain", frm);
-	frm->set_title("Image Processing");
-	frm->set_icon_from_file("../media/image_processing.png");
-	frm->property_resizable() = false;
-	kit.run(*frm);
-
-	cout << "End" << endl;
+  
 
     return 0;
 }

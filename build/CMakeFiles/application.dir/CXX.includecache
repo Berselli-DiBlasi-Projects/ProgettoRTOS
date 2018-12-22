@@ -10,17 +10,33 @@
 gtkmm.h
 -
 
+/home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
+string
+-
+iostream
+-
+
 /home/werther/Desktop/ProgettoRTOS/src/FrmMain.cpp
 ../lib/FrmMain.h
 /home/werther/Desktop/ProgettoRTOS/lib/FrmMain.h
 
-/home/werther/Desktop/ProgettoRTOS/src/main.cpp
+/home/werther/Desktop/ProgettoRTOS/src/image_processing.cpp
+../lib/image_processing.h
+/home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
 gtkmm.h
--
-iostream
 -
 ../lib/FrmMain.h
 /home/werther/Desktop/ProgettoRTOS/lib/FrmMain.h
+string
+-
+iostream
+-
+
+/home/werther/Desktop/ProgettoRTOS/src/main.cpp
+../lib/image_processing.h
+/home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
+iostream
+-
 
 /usr/include/atk-1.0/atk/atk-enum-types.h
 atk/atkversion.h

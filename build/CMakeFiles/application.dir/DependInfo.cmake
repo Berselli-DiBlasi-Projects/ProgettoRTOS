@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/werther/Desktop/ProgettoRTOS/src/FrmMain.cpp" "/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/application.dir/src/FrmMain.cpp.o"
+  "/home/werther/Desktop/ProgettoRTOS/src/image_processing.cpp" "/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/application.dir/src/image_processing.cpp.o"
   "/home/werther/Desktop/ProgettoRTOS/src/main.cpp" "/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/application.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

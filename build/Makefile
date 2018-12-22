@@ -150,6 +150,33 @@ src/FrmMain.cpp.s:
 	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/FrmMain.cpp.s
 .PHONY : src/FrmMain.cpp.s
 
+src/image_processing.o: src/image_processing.cpp.o
+
+.PHONY : src/image_processing.o
+
+# target to build an object file
+src/image_processing.cpp.o:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/image_processing.cpp.o
+.PHONY : src/image_processing.cpp.o
+
+src/image_processing.i: src/image_processing.cpp.i
+
+.PHONY : src/image_processing.i
+
+# target to preprocess a source file
+src/image_processing.cpp.i:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/image_processing.cpp.i
+.PHONY : src/image_processing.cpp.i
+
+src/image_processing.s: src/image_processing.cpp.s
+
+.PHONY : src/image_processing.s
+
+# target to generate assembly for a file
+src/image_processing.cpp.s:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/image_processing.cpp.s
+.PHONY : src/image_processing.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -189,6 +216,9 @@ help:
 	@echo "... src/FrmMain.o"
 	@echo "... src/FrmMain.i"
 	@echo "... src/FrmMain.s"
+	@echo "... src/image_processing.o"
+	@echo "... src/image_processing.i"
+	@echo "... src/image_processing.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
