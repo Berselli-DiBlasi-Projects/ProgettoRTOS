@@ -1,17 +1,82 @@
 #include "../lib/image_processing.h"
 #include <gtkmm.h>
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include "opencv2/imgproc.hpp"
+#include "opencv2/highgui.hpp"
 #include "../lib/FrmMain.h"
 #include <string>
 #include <iostream>
 
 using namespace std;
-using namespace Gtk;
+using namespace cv;
+
+struct ScreenShot
+{
+    ScreenShot(int x, int y, int width, int height):
+        x(x),
+        y(y),
+        width(width),
+        height(height)
+    {
+        display = XOpenDisplay(nullptr);
+        root = DefaultRootWindow(display);
+
+        init = true;
+    }
+
+    void operator() (Mat& cvImg)
+    {
+        if(init == true)
+            init = false;
+        else
+            XDestroyImage(img);
+
+        img = XGetImage(display, root, x, y, width, height, AllPlanes, ZPixmap);
+
+        cvImg = Mat(height, width, CV_8UC4, img->data);
+    }
+
+    ~ScreenShot()
+    {
+        if(init == false)
+            XDestroyImage(img);
+
+        XCloseDisplay(display);
+    }
+
+    Display* display;
+    Window root;
+    int x,y,width,height;
+    XImage* img;
+
+    bool init;
+};
 
 /* Funzione per selezionare la regione in cui definire la camera. */
 /* Ritorna le coordinate della regione tracciata dall'utente     */
 void select_region()
 {
-    cout << "ciao";
+    /*Display* disp = XOpenDisplay(NULL);
+    Screen*  scrn = DefaultScreenOfDisplay(disp);
+    int width  = scrn->width;
+    int height = scrn->height;*/
+    ScreenShot screen(0, 0, 1366, 768);
+
+    Mat img;
+	bool area_selected = false;
+	string title = "Seleziona area";
+
+    screen(img);
+    imshow("Seleziona area", img);
+
+	while(!area_selected and cvGetWindowHandle(title.c_str()))
+	{
+		screen(img);
+    	imshow("Seleziona area", img);
+		waitKey(0);
+	}
+    
 }
 
 /* Funzione che visualizza un dato frame */
@@ -20,7 +85,7 @@ void show_frame(string glade_file, string frame_id, string title,
 {
     cout << "Started" << endl;
 
-	Main kit(argc, argv);
+	Gtk::Main kit(argc, argv);
 	Glib::RefPtr<Gtk::Builder> builder = 
         Gtk::Builder::create_from_file(glade_file);
 

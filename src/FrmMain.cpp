@@ -1,11 +1,12 @@
 #include "../lib/FrmMain.h"
+#include "../lib/image_processing.h"
 
 using namespace std;
 using namespace Gtk;
 
 
 FrmMain::FrmMain(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refGlade) :
-	Gtk::Window(cobject), builder(refGlade){
+	Window(cobject), builder(refGlade){
 
 	builder->get_widget("cmbFps", cmbFps);
 	builder->get_widget("cmbScalaColori", cmbScalaColori);
@@ -20,11 +21,13 @@ FrmMain::FrmMain(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refG
 	btnConferma->signal_clicked().connect(sigc::mem_fun(*this, &FrmMain::on_btnConferma_clicked));
 	btnAnnulla->signal_clicked().connect(sigc::mem_fun(*this, &FrmMain::on_btnAnnulla_clicked));
 	btnAvvia->signal_clicked().connect(sigc::mem_fun(*this, &FrmMain::on_btnAvvia_clicked));
+	
 }
 
 
 void FrmMain::on_btnSelezionaArea_clicked(){
-	btnSelezionaArea->set_label("Seleziona area");
+	btnSelezionaArea->set_sensitive(false);
+	select_region();
 }
 
 void FrmMain::on_btnConferma_clicked(){

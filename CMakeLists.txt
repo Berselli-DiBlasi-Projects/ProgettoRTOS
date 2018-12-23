@@ -10,6 +10,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}")
 # Use the package PkgConfig to detect GTK+ headers/library files
 find_package(PkgConfig REQUIRED)
 PKG_CHECK_MODULES(GTKMM gtkmm-3.0)
+PKG_CHECK_MODULES(X11 x11)
 find_package(OpenCV REQUIRED)
 find_package(Allegro REQUIRED)
 find_package(Threads REQUIRED)
@@ -32,8 +33,10 @@ include_directories(${ALLEGRO_INCLUDE_DIR})
 LINK_DIRECTORIES(${GTKMM_LIBRARY_DIRS})
 include_directories(${GTKMM_INCLUDE_DIRS})
 
+# LINK_DIRECTORIES(${X11_LIBRARY_DIRS})
+include_directories(${X11_INCLUDE_DIR})
 # Add other flags to the compiler
 # ADD_DEFINITIONS(${GTKMM_CFLAGS_OTHER})
 
 # (REFERENCE CODE) target_link_libraries(video_capture ${OpenCV_LIBS} ptask Threads::Threads ${ALLEGRO_LIBRARY} rt m)
-target_link_libraries(application ${OpenCV_LIBS} ${GTKMM_LIBRARIES} ptask Threads::Threads ${ALLEGRO_LIBRARY} rt m)
+target_link_libraries(application ${X11_LIBRARIES} ${OpenCV_LIBS} ${GTKMM_LIBRARIES} ptask Threads::Threads ${ALLEGRO_LIBRARY} rt m)

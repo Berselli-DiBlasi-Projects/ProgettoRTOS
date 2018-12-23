@@ -1,5 +1,9 @@
 #include <string>
 #include <iostream>
+#include <gtkmm.h>
+
+#define MAX_WIDTH 800
+#define MAX_HEIGHT 600
 
 using namespace std;
 

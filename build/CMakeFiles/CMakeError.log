@@ -1,20 +1,20 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_cf73d/fast"
-/usr/bin/make -f CMakeFiles/cmTC_cf73d.dir/build.make CMakeFiles/cmTC_cf73d.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_1774c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1774c.dir/build.make CMakeFiles/cmTC_1774c.dir/build
 make[1]: Entering directory '/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_cf73d.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_cf73d.dir/CheckSymbolExists.c.o   -c /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_cf73d
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cf73d.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_cf73d.dir/CheckSymbolExists.c.o  -o cmTC_cf73d 
-/usr/bin/ld: CMakeFiles/cmTC_cf73d.dir/CheckSymbolExists.c.o: in function `main':
+Building C object CMakeFiles/cmTC_1774c.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_1774c.dir/CheckSymbolExists.c.o   -c /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_1774c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1774c.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_1774c.dir/CheckSymbolExists.c.o  -o cmTC_1774c 
+/usr/bin/ld: CMakeFiles/cmTC_1774c.dir/CheckSymbolExists.c.o: in function `main':
 CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_cf73d.dir/build.make:87: cmTC_cf73d] Error 1
+make[1]: *** [CMakeFiles/cmTC_1774c.dir/build.make:87: cmTC_1774c] Error 1
 make[1]: Leaving directory '/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_cf73d/fast] Error 2
+make: *** [Makefile:121: cmTC_1774c/fast] Error 2
 
 File /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
