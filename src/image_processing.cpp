@@ -4,12 +4,14 @@
 #include <X11/Xutil.h>
 #include "opencv2/imgproc.hpp"
 #include "opencv2/highgui.hpp"
-#include "../lib/FrmMain.h"
 #include <string>
 #include <iostream>
+#include "../lib/FrmMain.h"
 
 using namespace std;
 using namespace cv;
+
+FrmMain *frm = 0;
 
 struct ScreenShot
 {
@@ -57,30 +59,35 @@ struct ScreenShot
 /* Ritorna le coordinate della regione tracciata dall'utente     */
 void select_region()
 {
-    /*Display* disp = XOpenDisplay(NULL);
+    Display* disp = XOpenDisplay(NULL);
     Screen*  scrn = DefaultScreenOfDisplay(disp);
     int width  = scrn->width;
-    int height = scrn->height;*/
-    ScreenShot screen(0, 0, 1366, 768);
+    int height = scrn->height;
+    ScreenShot screen(0, 0, scrn->width, scrn->height);
 
     Mat img;
 	bool area_selected = false;
 	string title = "Seleziona area";
 
-    screen(img);
-    imshow("Seleziona area", img);
+    // Select ROI
+    // Rect2d r = selectROI(img);
 
-	while(!area_selected and cvGetWindowHandle(title.c_str()))
+    screen(img);
+    imshow(title, img);
+
+	while(!area_selected && cvGetWindowHandle(title.c_str()))
 	{
 		screen(img);
-    	imshow("Seleziona area", img);
-		waitKey(0);
+    	imshow(title, img);
+		waitKey(1);
+        if(!frm->is_visible())
+            break;
 	}
     
 }
 
 /* Funzione che visualizza un dato frame */
-void show_frame(string glade_file, string frame_id, string title,
+void show_main_frame(string glade_file, string frame_id, string title,
      string icon_file, int argc, char** argv)
 {
     cout << "Started" << endl;
@@ -88,8 +95,7 @@ void show_frame(string glade_file, string frame_id, string title,
 	Gtk::Main kit(argc, argv);
 	Glib::RefPtr<Gtk::Builder> builder = 
         Gtk::Builder::create_from_file(glade_file);
-
-	FrmMain *frm = 0;
+    
 	builder->get_widget_derived(frame_id, frm);
 	frm->set_title(title);
 	frm->set_icon_from_file(icon_file);
