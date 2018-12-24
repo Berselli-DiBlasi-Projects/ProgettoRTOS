@@ -1,10 +1,9 @@
 #include "../lib/image_processing.h"
-#include <iostream>
 
 using namespace std;
 
 /*--------------------------------------------------------------*/
-/*		            	MAIN process				                        */
+/*		            	MAIN process				            */
 /*--------------------------------------------------------------*/
 
 int main(int argc, char** argv) {

@@ -1,13 +1,7 @@
 #include "../lib/image_processing.h"
-#include <gtkmm.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
-#include "opencv2/imgproc.hpp"
-#include "opencv2/highgui.hpp"
-#include <string>
-#include <iostream>
 #include "../lib/FrmMain.h"
-#include "opencv2/imgcodecs.hpp"
 
 using namespace std;
 using namespace cv;
@@ -58,33 +52,37 @@ struct ScreenShot
 
 /* Funzione per selezionare la regione in cui definire la camera. */
 /* Ritorna le coordinate della regione tracciata dall'utente     */
-void select_region()
+Rect2d select_region()
 {
     Display* disp = XOpenDisplay(NULL);
     Screen*  scrn = DefaultScreenOfDisplay(disp);
     int width  = scrn->width;
     int height = scrn->height;
     ScreenShot screen(0, 0, scrn->width, scrn->height);
-
     Mat img;
-	bool area_selected = false;
 	string title = "Seleziona area";
-
-    // Select ROI
-    // Rect2d r = selectROI(img);
-
     screen(img);
-    imshow(title, img);
 
-	while(!area_selected && cvGetWindowHandle(title.c_str()))
+    // Select ROI: rectangle.x, rectangle.y, rectangle.x + rectangle.width,
+    // rectangle.y + regtangle.height
+    Rect2d rectangle = selectROI(title, img);
+    destroyWindow(title);
+    return rectangle;
+
+    /* Codice valido per il thread camera */
+    /* bool area_selected = false;
+    char exit_key_press = 0;
+	do
 	{
 		screen(img);
     	imshow(title, img);
-		waitKey(1);
         if(!frm->is_visible())
             break;
-	}
-    
+        exit_key_press = cvWaitKey(27);
+        waitKey(1);
+	}while(cvGetWindowHandle(title.c_str()) && exit_key_press != 27);
+    if(exit_key_press == 27)
+        destroyWindow(title);*/
 }
 
 /* Funzione che visualizza un dato frame */
@@ -97,6 +95,7 @@ void show_main_frame(string glade_file, string frame_id, string title,
 	Glib::RefPtr<Gtk::Builder> builder = 
         Gtk::Builder::create_from_file(glade_file);
     
+
 	builder->get_widget_derived(frame_id, frm);
 	frm->set_title(title);
 	frm->set_icon_from_file(icon_file);
