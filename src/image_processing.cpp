@@ -198,3 +198,31 @@ void histogram( Mat src){
 
     return;
 }
+
+
+//deve prendere in ingresso il gestore della memoria condivisa
+void camera(Rect2d rect){
+    ScreenShot screen(rect.x, rect.y, rect.width, rect.height);
+    Mat imgCamera;
+	string titleCamera = "Camera";
+    screen(imgCamera);
+	/*
+    la camera cattura frame alla massima velocità
+    inserisce lo screenshot nell'oggetto del gestore della
+    memoria condivisa.
+    
+    */
+    while(true)
+	{
+
+		screen(imgCamera);
+    	//--- questo pezzo andrà cancellato ----
+        imshow(titleCamera, imgCamera);
+        //--- fine codice da cancellare     ----
+
+        if(!frm->is_visible())
+            break;
+
+        waitKey(1);
+    }
+}

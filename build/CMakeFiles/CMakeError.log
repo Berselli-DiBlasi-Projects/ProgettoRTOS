@@ -1,22 +1,24 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp
+Change Dir: /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_dbdf8/fast"
-/usr/bin/make -f CMakeFiles/cmTC_dbdf8.dir/build.make CMakeFiles/cmTC_dbdf8.dir/build
-make[1]: Entering directory '/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_dbdf8.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_dbdf8.dir/CheckSymbolExists.c.o   -c /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_dbdf8
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dbdf8.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_dbdf8.dir/CheckSymbolExists.c.o  -o cmTC_dbdf8 
-/usr/bin/ld: CMakeFiles/cmTC_dbdf8.dir/CheckSymbolExists.c.o: in function `main':
-CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
+Run Build Command:"/usr/bin/make" "cmTC_7327f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_7327f.dir/build.make CMakeFiles/cmTC_7327f.dir/build
+make[1]: ingresso nella directory "/home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp"
+Building C object CMakeFiles/cmTC_7327f.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_7327f.dir/CheckSymbolExists.c.o   -c /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_7327f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7327f.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_7327f.dir/CheckSymbolExists.c.o  -o cmTC_7327f 
+CMakeFiles/cmTC_7327f.dir/CheckSymbolExists.c.o: nella funzione "main":
+CheckSymbolExists.c:(.text+0x1b): riferimento non definito a "pthread_create"
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_dbdf8.dir/build.make:87: cmTC_dbdf8] Error 1
-make[1]: Leaving directory '/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_dbdf8/fast] Error 2
+CMakeFiles/cmTC_7327f.dir/build.make:97: recipe for target 'cmTC_7327f' failed
+make[1]: *** [cmTC_7327f] Error 1
+make[1]: uscita dalla directory "/home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp"
+Makefile:126: recipe for target 'cmTC_7327f/fast' failed
+make: *** [cmTC_7327f/fast] Error 2
 
-File /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 
