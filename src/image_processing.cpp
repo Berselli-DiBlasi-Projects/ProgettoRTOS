@@ -67,11 +67,11 @@ Rect2d select_region(Gtk::Label *lblState)
     // Select ROI: rect.x, rect.y, rect.x + rect.width,
     // rect.y + regt.height
     do {
-    rect = selectROI(title, img);
+        rect = selectROI(title, img);
 
-    if(rect.width > MAX_WIDTH || rect.height > MAX_HEIGHT)
-        cout << "Error: maximum ROI dimensions exceeded. (MAX_WIDTH: "<< 
-            MAX_WIDTH << ", MAX_HEIGHT: " << MAX_HEIGHT << ")" << endl;
+        if(rect.width > MAX_WIDTH || rect.height > MAX_HEIGHT)
+            cout << "Error: maximum ROI dimensions exceeded. (MAX_WIDTH: "<< 
+                MAX_WIDTH << ", MAX_HEIGHT: " << MAX_HEIGHT << ")" << endl;
 
     } while(rect.width > MAX_WIDTH || rect.height > MAX_HEIGHT);
     destroyWindow(title);
@@ -121,13 +121,28 @@ void preview(Rect2d rect)
 	string titleCamera = "Camera";
     screen(imgCamera);
 	
+    time_t start = time(0);
+    time_t time_taken = 0;
+    int count = 0;
+
     while(true)
 	{
+        time_t end = time(0);
+
+        if(time_taken != end - start) {
+            cout << "FPS: " << count << endl;
+            count = 0;
+        }
+        else
+            count++;
+
+        time_taken = end - start;
+
 		screen(imgCamera);
     	imshow(titleCamera, imgCamera);
         if(!frm->is_visible())
             break;
-        waitKey(1);
+        waitKey(15); //17 ms -> limit to 60 FPS.
     }
 }
 
