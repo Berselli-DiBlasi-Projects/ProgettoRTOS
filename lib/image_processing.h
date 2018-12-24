@@ -12,6 +12,9 @@ using namespace std;
 using namespace cv;
 
 /*Dichiarazione delle funzioni per l'image processing*/
-Rect2d select_region();
+Rect2d select_region(Gtk::Label *lblState);
+
 void show_main_frame(string glade_file, string frame_id, string title,
      string icon_file, int argc, char** argv);
+
+void preview(Rect2d rect);

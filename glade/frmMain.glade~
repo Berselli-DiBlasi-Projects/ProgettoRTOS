@@ -11,8 +11,8 @@
       <object class="GtkFrame" id="frmMainFrame">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="margin_left">20</property>
-        <property name="margin_right">20</property>
+        <property name="margin_left">10</property>
+        <property name="margin_right">15</property>
         <property name="margin_top">20</property>
         <property name="margin_bottom">15</property>
         <property name="label_xalign">0</property>
@@ -42,7 +42,7 @@
                   <object class="GtkLabel" id="lblScalaColori">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Scala colori</property>
+                    <property name="label" translatable="yes">Colour scale</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -62,7 +62,7 @@
                 </child>
                 <child>
                   <object class="GtkButton" id="btnSelezionaArea">
-                    <property name="label" translatable="yes">Seleziona area</property>
+                    <property name="label" translatable="yes">Select area</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
@@ -77,8 +77,9 @@
                 </child>
                 <child>
                   <object class="GtkButton" id="btnAnnulla">
-                    <property name="label" translatable="yes">Annulla</property>
+                    <property name="label" translatable="yes">Cancel</property>
                     <property name="visible">True</property>
+                    <property name="sensitive">False</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="halign">baseline</property>
@@ -92,8 +93,9 @@
                 </child>
                 <child>
                   <object class="GtkButton" id="btnConferma">
-                    <property name="label" translatable="yes">Conferma</property>
+                    <property name="label" translatable="yes">Confirm</property>
                     <property name="visible">True</property>
+                    <property name="sensitive">False</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="halign">baseline</property>
@@ -107,8 +109,9 @@
                 </child>
                 <child>
                   <object class="GtkButton" id="btnAvvia">
-                    <property name="label" translatable="yes">Avvia</property>
+                    <property name="label" translatable="yes">Start</property>
                     <property name="visible">True</property>
+                    <property name="sensitive">False</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="halign">baseline</property>
@@ -165,7 +168,18 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <object class="GtkLabel" id="lblState">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_top">25</property>
+                    <property name="label" translatable="yes">Configure the application
+and then Select the area.</property>
+                    <property name="justify">center</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">6</property>
+                  </packing>
                 </child>
                 <child>
                   <placeholder/>

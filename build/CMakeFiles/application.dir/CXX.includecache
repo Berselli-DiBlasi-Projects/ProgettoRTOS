@@ -24,12 +24,6 @@ iostream
 gtkmm.h
 -
 
-/home/werther/Desktop/ProgettoRTOS/src/FrmMain.cpp
-../lib/FrmMain.h
-/home/werther/Desktop/ProgettoRTOS/lib/FrmMain.h
-../lib/image_processing.h
-/home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
-
 /home/werther/Desktop/ProgettoRTOS/src/image_processing.cpp
 ../lib/image_processing.h
 /home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
@@ -39,10 +33,6 @@ X11/Xutil.h
 -
 ../lib/FrmMain.h
 /home/werther/Desktop/ProgettoRTOS/lib/FrmMain.h
-
-/home/werther/Desktop/ProgettoRTOS/src/main.cpp
-../lib/image_processing.h
-/home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
 
 /usr/include/atk-1.0/atk/atk-enum-types.h
 atk/atkversion.h

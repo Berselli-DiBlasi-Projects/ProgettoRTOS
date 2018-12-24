@@ -4,6 +4,7 @@
 using namespace std;
 using namespace Gtk;
 
+Rect2d rect;
 
 FrmMain::FrmMain(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refGlade) :
 	Window(cobject), builder(refGlade){
@@ -12,6 +13,8 @@ FrmMain::FrmMain(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refG
 	builder->get_widget("cmbScalaColori", cmbScalaColori);
 	builder->get_widget("cmbScaling", cmbScaling);
 	
+	builder->get_widget("lblState", lblState);
+
 	builder->get_widget("btnSelezionaArea", btnSelezionaArea);
 	builder->get_widget("btnConferma", btnConferma);
 	builder->get_widget("btnAnnulla", btnAnnulla);
@@ -27,16 +30,26 @@ FrmMain::FrmMain(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refG
 
 void FrmMain::on_btnSelezionaArea_clicked(){
 	btnSelezionaArea->set_sensitive(false);
-	select_region();
+	rect = select_region(lblState);
 	btnSelezionaArea->set_sensitive(true);
+	btnConferma->set_sensitive(true);
 }
 
 void FrmMain::on_btnConferma_clicked(){
-	btnSelezionaArea->set_label("Conferma");
+	lblState->set_text("Press Cancel to select a\nnew area otherwise Start");
+	btnConferma->set_sensitive(false);
+	btnSelezionaArea->set_sensitive(false);
+	btnAnnulla->set_sensitive(true);
+	btnAvvia->set_sensitive(true);
+	preview(rect);
+
 }
 
 void FrmMain::on_btnAnnulla_clicked(){
-	btnSelezionaArea->set_label("Annulla");
+	lblState->set_text("Configure the application\nand then Select the area.");
+	btnAnnulla->set_sensitive(false);
+	btnAvvia->set_sensitive(false);
+	btnSelezionaArea->set_sensitive(true);
 }
 
 void FrmMain::on_btnAvvia_clicked(){

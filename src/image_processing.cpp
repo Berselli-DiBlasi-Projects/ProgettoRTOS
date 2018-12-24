@@ -52,7 +52,7 @@ struct ScreenShot
 
 /* Funzione per selezionare la regione in cui definire la camera. */
 /* Ritorna le coordinate della regione tracciata dall'utente     */
-Rect2d select_region()
+Rect2d select_region(Gtk::Label *lblState)
 {
     Display* disp = XOpenDisplay(NULL);
     Screen*  scrn = DefaultScreenOfDisplay(disp);
@@ -60,14 +60,24 @@ Rect2d select_region()
     int height = scrn->height;
     ScreenShot screen(0, 0, scrn->width, scrn->height);
     Mat img;
-	string title = "Seleziona area";
+    Rect2d rect;
+	string title = "Select area (SPACE or ENTER to confirm)";
     screen(img);
 
-    // Select ROI: rectangle.x, rectangle.y, rectangle.x + rectangle.width,
-    // rectangle.y + regtangle.height
-    Rect2d rectangle = selectROI(title, img);
+    // Select ROI: rect.x, rect.y, rect.x + rect.width,
+    // rect.y + regt.height
+    do {
+    rect = selectROI(title, img);
+
+    if(rect.width > MAX_WIDTH || rect.height > MAX_HEIGHT)
+        cout << "Error: maximum ROI dimensions exceeded. (MAX_WIDTH: "<< 
+            MAX_WIDTH << ", MAX_HEIGHT: " << MAX_HEIGHT << ")" << endl;
+
+    } while(rect.width > MAX_WIDTH || rect.height > MAX_HEIGHT);
     destroyWindow(title);
-    return rectangle;
+    lblState->set_text("Confirm to display a\npreview of the execution.");
+
+    return rect;
 
     /* Codice valido per il thread camera */
     /* bool area_selected = false;
@@ -94,7 +104,6 @@ void show_main_frame(string glade_file, string frame_id, string title,
 	Gtk::Main kit(argc, argv);
 	Glib::RefPtr<Gtk::Builder> builder = 
         Gtk::Builder::create_from_file(glade_file);
-    
 
 	builder->get_widget_derived(frame_id, frm);
 	frm->set_title(title);
@@ -103,6 +112,23 @@ void show_main_frame(string glade_file, string frame_id, string title,
 	kit.run(*frm);
 
 	cout << "End" << endl;
+}
+
+void preview(Rect2d rect)
+{
+    ScreenShot screen(rect.x, rect.y, rect.width, rect.height);
+    Mat imgCamera;
+	string titleCamera = "Camera";
+    screen(imgCamera);
+	
+    while(true)
+	{
+		screen(imgCamera);
+    	imshow(titleCamera, imgCamera);
+        if(!frm->is_visible())
+            break;
+        waitKey(1);
+    }
 }
 
 /**

@@ -6,6 +6,7 @@ protected:
 	Gtk::ComboBoxText *cmbFps;
 	Gtk::ComboBoxText *cmbScalaColori;
 	Gtk::ComboBoxText *cmbScaling;
+	Gtk::Label *lblState;
 	Gtk::Button *btnSelezionaArea;
 	Gtk::Button *btnConferma;
 	Gtk::Button *btnAnnulla;
