@@ -1,7 +1,9 @@
 #include "../lib/image_processing.h"
+extern "C" {
 #include "pmutex.h"
 #include "ptask.h"
 #include "tstat.h"
+}
 using namespace std;
 
 /*--------------------------------------------------------------*/
@@ -23,7 +25,7 @@ struct gestore_t{
 
 } gestore;
 
-void initGestore(struct gestore_t g) {
+void initGestore(struct gestore_t *g) {
     
     pmux_create_pi(&g->mutex);
     pmux_create_pi(&g->sem_camera);

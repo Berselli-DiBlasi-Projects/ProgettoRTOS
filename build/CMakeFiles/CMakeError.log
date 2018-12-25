@@ -1,41 +1,22 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp
+Change Dir: /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp
 
-<<<<<<< Updated upstream
-Run Build Command:"/usr/bin/make" "cmTC_7327f/fast"
-/usr/bin/make -f CMakeFiles/cmTC_7327f.dir/build.make CMakeFiles/cmTC_7327f.dir/build
-make[1]: ingresso nella directory "/home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp"
-Building C object CMakeFiles/cmTC_7327f.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_7327f.dir/CheckSymbolExists.c.o   -c /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_7327f
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7327f.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_7327f.dir/CheckSymbolExists.c.o  -o cmTC_7327f 
-CMakeFiles/cmTC_7327f.dir/CheckSymbolExists.c.o: nella funzione "main":
-CheckSymbolExists.c:(.text+0x1b): riferimento non definito a "pthread_create"
-collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_7327f.dir/build.make:97: recipe for target 'cmTC_7327f' failed
-make[1]: *** [cmTC_7327f] Error 1
-make[1]: uscita dalla directory "/home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp"
-Makefile:126: recipe for target 'cmTC_7327f/fast' failed
-make: *** [cmTC_7327f/fast] Error 2
-=======
-Run Build Command:"/usr/bin/make" "cmTC_52d10/fast"
-/usr/bin/make -f CMakeFiles/cmTC_52d10.dir/build.make CMakeFiles/cmTC_52d10.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_789f4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_789f4.dir/build.make CMakeFiles/cmTC_789f4.dir/build
 make[1]: Entering directory '/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_52d10.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_52d10.dir/CheckSymbolExists.c.o   -c /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_52d10
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_52d10.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_52d10.dir/CheckSymbolExists.c.o  -o cmTC_52d10 
-/usr/bin/ld: CMakeFiles/cmTC_52d10.dir/CheckSymbolExists.c.o: in function `main':
+Building C object CMakeFiles/cmTC_789f4.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_789f4.dir/CheckSymbolExists.c.o   -c /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_789f4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_789f4.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_789f4.dir/CheckSymbolExists.c.o  -o cmTC_789f4 
+/usr/bin/ld: CMakeFiles/cmTC_789f4.dir/CheckSymbolExists.c.o: in function `main':
 CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_52d10.dir/build.make:87: cmTC_52d10] Error 1
+make[1]: *** [CMakeFiles/cmTC_789f4.dir/build.make:87: cmTC_789f4] Error 1
 make[1]: Leaving directory '/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_52d10/fast] Error 2
->>>>>>> Stashed changes
+make: *** [Makefile:121: cmTC_789f4/fast] Error 2
 
-File /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 

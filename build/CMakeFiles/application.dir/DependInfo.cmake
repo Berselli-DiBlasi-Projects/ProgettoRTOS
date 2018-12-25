@@ -4,17 +4,16 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/fabrizio/Documenti/ProgettoRTOS/src/FrmMain.cpp" "/home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/application.dir/src/FrmMain.cpp.o"
-  "/home/fabrizio/Documenti/ProgettoRTOS/src/image_processing.cpp" "/home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/application.dir/src/image_processing.cpp.o"
-  "/home/fabrizio/Documenti/ProgettoRTOS/src/main.cpp" "/home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/application.dir/src/main.cpp.o"
+  "/home/werther/Desktop/ProgettoRTOS/src/FrmMain.cpp" "/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/application.dir/src/FrmMain.cpp.o"
+  "/home/werther/Desktop/ProgettoRTOS/src/image_processing.cpp" "/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/application.dir/src/image_processing.cpp.o"
+  "/home/werther/Desktop/ProgettoRTOS/src/main.cpp" "/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/application.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../."
-  "/home/fabrizio/ptask/build/src/include"
-  "/usr/local/include/opencv4"
+  "/home/werther/Desktop/ptask-master/build/src/include"
   "/usr/include/gtkmm-3.0"
   "/usr/lib/x86_64-linux-gnu/gtkmm-3.0/include"
   "/usr/include/atkmm-1.6"
@@ -34,12 +33,15 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/lib/x86_64-linux-gnu/dbus-1.0/include"
   "/usr/include/gio-unix-2.0"
   "/usr/include/cairo"
+  "/usr/include/libdrm"
   "/usr/include/pango-1.0"
   "/usr/include/harfbuzz"
+  "/usr/include/fribidi"
   "/usr/include/atk-1.0"
   "/usr/include/cairomm-1.0"
   "/usr/lib/x86_64-linux-gnu/cairomm-1.0/include"
   "/usr/include/pixman-1"
+  "/usr/include/uuid"
   "/usr/include/freetype2"
   "/usr/include/libpng16"
   "/usr/include/sigc++-2.0"
@@ -47,6 +49,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/gdk-pixbuf-2.0"
   "/usr/include/glib-2.0"
   "/usr/lib/x86_64-linux-gnu/glib-2.0/include"
+  "/usr/local/include"
+  "/usr/local/include/opencv"
   )
 
 # Targets to which this target links.
