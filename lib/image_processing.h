@@ -11,10 +11,10 @@
 using namespace std;
 using namespace cv;
 
-/*Dichiarazione delle funzioni per l'image processing*/
+void camera(Rect2d rect);
+void histogram(Mat src);
+void preview(Rect2d rect);
 Rect2d select_region(Gtk::Label *lblState);
-
+void setCancelSignal(bool signal);
 void show_main_frame(string glade_file, string frame_id, string title,
      string icon_file, int argc, char** argv);
-
-void preview(Rect2d rect);

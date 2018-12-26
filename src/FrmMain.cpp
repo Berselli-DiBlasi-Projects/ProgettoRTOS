@@ -42,7 +42,6 @@ void FrmMain::on_btnConferma_clicked(){
 	btnAnnulla->set_sensitive(true);
 	btnAvvia->set_sensitive(true);
 	preview(rect);
-
 }
 
 void FrmMain::on_btnAnnulla_clicked(){
@@ -50,8 +49,14 @@ void FrmMain::on_btnAnnulla_clicked(){
 	btnAnnulla->set_sensitive(false);
 	btnAvvia->set_sensitive(false);
 	btnSelezionaArea->set_sensitive(true);
+	setCancelSignal(true);
 }
 
 void FrmMain::on_btnAvvia_clicked(){
-	btnSelezionaArea->set_label("Avvia");
+	lblState->set_text("Running...");
+	btnAvvia->set_sensitive(false);
+	btnAnnulla->set_sensitive(false);
+	setCancelSignal(true);
+	//Fai partire l'elaborazione...
+
 }
