@@ -1,5 +1,5 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp
+Change Dir: /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp
 
 Run Build Command:"/usr/bin/make" "cmTC_97d6b/fast"
 /usr/bin/make -f CMakeFiles/cmTC_97d6b.dir/build.make CMakeFiles/cmTC_97d6b.dir/build
@@ -18,7 +18,7 @@ make[1]: uscita dalla directory "/home/fabrizio/Documenti/ProgettoRTOS/build/CMa
 Makefile:126: recipe for target 'cmTC_97d6b/fast' failed
 make: *** [cmTC_97d6b/fast] Error 2
 
-File /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 

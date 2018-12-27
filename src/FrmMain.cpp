@@ -1,4 +1,3 @@
-#include "../lib/FrmMain.h"
 #include "../lib/image_processing.h"
 
 using namespace std;
@@ -41,7 +40,7 @@ void FrmMain::on_btnConferma_clicked(){
 	btnSelezionaArea->set_sensitive(false);
 	btnAnnulla->set_sensitive(true);
 	btnAvvia->set_sensitive(true);
-	preview(rect);
+	preview(rect, this);
 }
 
 void FrmMain::on_btnAnnulla_clicked(){
@@ -58,5 +57,5 @@ void FrmMain::on_btnAvvia_clicked(){
 	btnAnnulla->set_sensitive(false);
 	setCancelSignal(true);
 	//Fai partire l'elaborazione...
-
+	
 }

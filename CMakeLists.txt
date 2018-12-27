@@ -21,7 +21,8 @@ set(ptask_INCLUDE_DIRS "${ptask_DIR}/include")
 message("Include dir ${ptask_INCLUDE_DIRS}")
 
 # (REFERENCE CODE) add_executable(video_capture task.c video_capture.c)
-add_executable(application src/main.cpp src/FrmMain.cpp src/image_processing.cpp)
+add_executable(application src/main.cpp src/image_processing.cpp src/FrmMain.cpp
+		src/FrmSettings.cpp)
 
 include_directories ("${ptask_INCLUDE_DIRS}")
 include_directories(${OpenCV_INCLUDE_DIRS} )

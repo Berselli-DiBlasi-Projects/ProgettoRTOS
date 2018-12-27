@@ -1,12 +1,10 @@
 #include "../lib/image_processing.h"
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
-#include "../lib/FrmMain.h"
 
 using namespace std;
 using namespace cv;
 
-FrmMain *frm = 0;
 bool cancel_signal = false;
 
 struct ScreenShot
@@ -57,7 +55,7 @@ struct ScreenShot
  * @param   : Rect2d rect; Definisce l'area di registrazione della camera.
  * @return  : void
 */
-void preview(Rect2d rect)
+void preview(Rect2d rect, FrmMain *frmMain)
 {
     ScreenShot screen(rect.x, rect.y, rect.width, rect.height);
     Mat imgCamera;
@@ -99,7 +97,7 @@ void preview(Rect2d rect)
             sizeof(placeholder_titles) / sizeof(placeholder_titles[0]); i++)
             imshow(placeholder_titles[i], placeholder_image);
         
-        if(!frm->is_visible() || cancel_signal)
+        if(!frmMain->is_visible() || cancel_signal)
         {
             destroyAllWindows();
             break;
@@ -164,32 +162,4 @@ Rect2d select_region(Gtk::Label *lblState)
 void setCancelSignal(bool signal)
 {
     cancel_signal = signal;
-}
-
-/**
- * Visualizza il frame FrmMain.
- * @param   : string glade_file; Il percorso del file glade.
- *            string frame_id; Id della finestra.
- *            string title; Titolo della finestra.
- *            string icon_file; Icona della finestra.
- *            int argc; argc del main
- *            char** argv; argv del main
- * @return  : void
-*/
-void show_main_frame(string glade_file, string frame_id, string title,
-     string icon_file, int argc, char** argv)
-{
-    cout << "Started" << endl;
-
-	Gtk::Main kit(argc, argv);
-	Glib::RefPtr<Gtk::Builder> builder = 
-        Gtk::Builder::create_from_file(glade_file);
-
-	builder->get_widget_derived(frame_id, frm);
-	frm->set_title(title);
-	frm->set_icon_from_file(icon_file);
-	frm->property_resizable() = false;
-	kit.run(*frm);
-
-	cout << "End" << endl;
 }
