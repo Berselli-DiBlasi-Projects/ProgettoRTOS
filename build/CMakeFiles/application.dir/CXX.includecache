@@ -32,22 +32,6 @@ gtkmm.h
 ../lib/FrmSettings.h
 /home/werther/Desktop/ProgettoRTOS/lib/FrmSettings.h
 
-/home/werther/Desktop/ProgettoRTOS/src/FrmMain.cpp
-../lib/image_processing.h
-/home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
-
-/home/werther/Desktop/ProgettoRTOS/src/FrmSettings.cpp
-../lib/image_processing.h
-/home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
-
-/home/werther/Desktop/ProgettoRTOS/src/image_processing.cpp
-../lib/image_processing.h
-/home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
-X11/Xlib.h
--
-X11/Xutil.h
--
-
 /home/werther/Desktop/ProgettoRTOS/src/main.cpp
 ../lib/image_processing.h
 /home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
