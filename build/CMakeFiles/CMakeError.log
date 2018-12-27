@@ -1,22 +1,22 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_c2776/fast"
-/usr/bin/make -f CMakeFiles/cmTC_c2776.dir/build.make CMakeFiles/cmTC_c2776.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_69d86/fast"
+/usr/bin/make -f CMakeFiles/cmTC_69d86.dir/build.make CMakeFiles/cmTC_69d86.dir/build
 make[1]: ingresso nella directory "/home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp"
-Building C object CMakeFiles/cmTC_c2776.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_c2776.dir/CheckSymbolExists.c.o   -c /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_c2776
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c2776.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_c2776.dir/CheckSymbolExists.c.o  -o cmTC_c2776 
-CMakeFiles/cmTC_c2776.dir/CheckSymbolExists.c.o: nella funzione "main":
+Building C object CMakeFiles/cmTC_69d86.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_69d86.dir/CheckSymbolExists.c.o   -c /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_69d86
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_69d86.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_69d86.dir/CheckSymbolExists.c.o  -o cmTC_69d86 
+CMakeFiles/cmTC_69d86.dir/CheckSymbolExists.c.o: nella funzione "main":
 CheckSymbolExists.c:(.text+0x1b): riferimento non definito a "pthread_create"
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_c2776.dir/build.make:97: recipe for target 'cmTC_c2776' failed
-make[1]: *** [cmTC_c2776] Error 1
+CMakeFiles/cmTC_69d86.dir/build.make:97: recipe for target 'cmTC_69d86' failed
+make[1]: *** [cmTC_69d86] Error 1
 make[1]: uscita dalla directory "/home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp"
-Makefile:126: recipe for target 'cmTC_c2776/fast' failed
-make: *** [cmTC_c2776/fast] Error 2
+Makefile:126: recipe for target 'cmTC_69d86/fast' failed
+make: *** [cmTC_69d86/fast] Error 2
 
 File /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */

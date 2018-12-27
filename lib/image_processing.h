@@ -21,4 +21,4 @@ void setExefcutionStarted(bool started);
 void filterFrame(Mat img);
 void histogram(Mat img);
 void displayVideoStream(Rect2d rect);
-Mat takeAPicture(Rect2d rect)
+Mat takeAPicture(Rect2d rect);
