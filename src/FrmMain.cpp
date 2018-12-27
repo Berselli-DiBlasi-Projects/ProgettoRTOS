@@ -56,6 +56,7 @@ void FrmMain::on_btnAvvia_clicked(){
 	btnAvvia->set_sensitive(false);
 	btnAnnulla->set_sensitive(false);
 	setCancelSignal(true);
-	//Fai partire l'elaborazione...
-	
+	//Fai partire l'elaborazione
+	setExecutionStarted(true);
+	hide();
 }

@@ -11,7 +11,6 @@ using namespace std;
 #define STATE_ANALISYS  1
 #define STATE_CAMERA    2
 
-
 /*--------------------------------------------------------------*/
 /*		            	MAIN process				            */
 /*--------------------------------------------------------------*/
@@ -224,9 +223,8 @@ void endFilter(gestore_t *g){
 void show_main_frame(string glade_file, string frame_id, string title,
      string icon_file, int argc, char** argv)
 {
-    cout << "Started" << endl;
+    cout << "Frame main Started" << endl;
     FrmMain *frm = 0;
-	//Gtk::Main kit(argc, argv);
 	auto app = Gtk::Application::create(argc, argv, "org.gtkmm.example");
     Glib::RefPtr<Gtk::Builder> builder = 
         Gtk::Builder::create_from_file(glade_file);
@@ -237,7 +235,7 @@ void show_main_frame(string glade_file, string frame_id, string title,
 	frm->property_resizable() = false;
 	app->run(*frm);
 
-	cout << "End" << endl;
+	cout << "Frame main End" << endl;
 }
 
 /**
@@ -253,9 +251,8 @@ void show_main_frame(string glade_file, string frame_id, string title,
 void show_settings_frame(string glade_file, string frame_id, string title,
      string icon_file, int argc, char** argv)
 {
-    cout << "Started Settings" << endl;
+    cout << "Frame settings Started" << endl;
     FrmSettings *frm = 0;
-	//Gtk::Main kit(argc, argv);
     auto app = Gtk::Application::create(argc, argv, "org.gtkmm.example");
 	Glib::RefPtr<Gtk::Builder> builder = 
         Gtk::Builder::create_from_file(glade_file);
@@ -266,7 +263,7 @@ void show_settings_frame(string glade_file, string frame_id, string title,
 	frm->property_resizable() = false;
 	app->run(*frm);
 
-	cout << "End Settings" << endl;
+	cout << "Frame settings End" << endl;
 }
 
 int main(int argc, char** argv) {
@@ -275,9 +272,9 @@ int main(int argc, char** argv) {
 	show_main_frame("../glade/frmMain.glade", "frmMain",
                     "Image Processing", "../media/image_processing.png", argc, argv);
 
-    
-    show_settings_frame("../glade/frmSettings.glade", "frmSettings",
-                    "Settings", "../media/image_processing.png", argc, argv);
+    if(getExecutionStarted())
+        show_settings_frame("../glade/frmSettings.glade", "frmSettings",
+                            "Settings", "../media/image_processing.png", argc, argv);
 
     return 0;
 }

@@ -6,6 +6,7 @@ using namespace std;
 using namespace cv;
 
 bool cancel_signal = false;
+bool execution_started = false;
 
 struct ScreenShot
 {
@@ -49,6 +50,15 @@ struct ScreenShot
     bool init;
 };
 
+/**
+ * Ritorna il bool execution_started, di supporto all'esecuzione.
+ * @param   : none
+ * @return  : bool
+*/
+bool getExecutionStarted()
+{
+    return execution_started;
+}
 
 /**
  * Crea le finestre di preview dell'esecuzione.
@@ -162,4 +172,14 @@ Rect2d select_region(Gtk::Label *lblState)
 void setCancelSignal(bool signal)
 {
     cancel_signal = signal;
+}
+
+/**
+ * Setta il bool execution_started, di supporto all'esecuzione.
+ * @param   : bool started; Il booleano da utilizzare.
+ * @return  : void
+*/
+void setExecutionStarted(bool started)
+{
+    execution_started = started;
 }

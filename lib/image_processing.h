@@ -13,8 +13,8 @@
 using namespace std;
 using namespace cv;
 
-void takeAPicture(Rect2d rect);
-void histogram(Mat src);
+bool getExecutionStarted();
 void preview(Rect2d rect, FrmMain *frmMain);
 Rect2d select_region(Gtk::Label *lblState);
 void setCancelSignal(bool signal);
+void setExecutionStarted(bool started);
