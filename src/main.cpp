@@ -104,7 +104,7 @@ void startHistogram(gestore_t *g){
     continuare l'analisi
     successivamente blocca il mutex ed aggiorna il contatore
     */
-    pthread_mutex_lock(&g->sem_hist);
+    pthread_mutex_lock(&g->sem_histo);
     pthread_mutex_lock(&g->mutex);
     g->nhist++;
     pthread_mutex_unlock(&g->mutex);
@@ -167,7 +167,7 @@ void startThreshold(gestore_t *g){
     g->nthres++;
     pthread_mutex_unlock(&g->mutex);
     
-    //RICHIAMO FUNZIONE DIFFERENCE
+    //RICHIAMO FUNZIONE THRESHOLD
 }
 
 
@@ -197,12 +197,12 @@ void startFilter(gestore_t *g){
     g->nfilter++;
     pthread_mutex_unlock(&g->mutex);
     
-    //RICHIAMO FUNZIONE DIFFERENCE
+    //RICHIAMO FUNZIONE FILTER
 }
 
 
 
-void endDifference(gestore_t *g){
+void endFilter(gestore_t *g){
     
     pthread_mutex_lock(&g->mutex);
     g->nfilter--;

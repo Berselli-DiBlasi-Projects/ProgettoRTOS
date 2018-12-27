@@ -1,22 +1,22 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_0a9e1/fast"
-/usr/bin/make -f CMakeFiles/cmTC_0a9e1.dir/build.make CMakeFiles/cmTC_0a9e1.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_97d6b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_97d6b.dir/build.make CMakeFiles/cmTC_97d6b.dir/build
 make[1]: ingresso nella directory "/home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp"
-Building C object CMakeFiles/cmTC_0a9e1.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_0a9e1.dir/CheckSymbolExists.c.o   -c /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_0a9e1
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0a9e1.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_0a9e1.dir/CheckSymbolExists.c.o  -o cmTC_0a9e1 
-CMakeFiles/cmTC_0a9e1.dir/CheckSymbolExists.c.o: nella funzione "main":
+Building C object CMakeFiles/cmTC_97d6b.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_97d6b.dir/CheckSymbolExists.c.o   -c /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_97d6b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_97d6b.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_97d6b.dir/CheckSymbolExists.c.o  -o cmTC_97d6b 
+CMakeFiles/cmTC_97d6b.dir/CheckSymbolExists.c.o: nella funzione "main":
 CheckSymbolExists.c:(.text+0x1b): riferimento non definito a "pthread_create"
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_0a9e1.dir/build.make:97: recipe for target 'cmTC_0a9e1' failed
-make[1]: *** [cmTC_0a9e1] Error 1
+CMakeFiles/cmTC_97d6b.dir/build.make:97: recipe for target 'cmTC_97d6b' failed
+make[1]: *** [cmTC_97d6b] Error 1
 make[1]: uscita dalla directory "/home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp"
-Makefile:126: recipe for target 'cmTC_0a9e1/fast' failed
-make: *** [cmTC_0a9e1/fast] Error 2
+Makefile:126: recipe for target 'cmTC_97d6b/fast' failed
+make: *** [cmTC_97d6b/fast] Error 2
 
 File /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
