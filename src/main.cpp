@@ -24,8 +24,8 @@ struct gestore_t{
                     sem_filter, 
                     sem_threshold,
                     sem_difference;
-    int nth;    //numero thread di analisi attivi
-    int bth;    //numero thread di analisi bloccati
+    int nhist, ndiff, nthres, nfilter;  //numero thread di analisi attivi
+    int bhist, bdiff, bthres, bfilter;  //numero thread di analisi bloccati
     int ncam;   //numero camere attive
     int bcam;   //numero camere bloccate
     int state;  //stato del sistema
@@ -45,7 +45,10 @@ void initGestore(struct gestore_t *g) {
     pmux_create_pi(&g->sem_threshold);
     pmux_create_pi(&g->sem_difference);
 
-    g->nth = g->bth = g->ncam = g->bcam = 0;
+    g->ncam = g->bcam = 0;
+
+    g->nhist = g->ndiff = g->nthres = g->nfilter = 0;
+    g->bhist = g->bdiff = g->bthres = g->bfilter = 0;
 
     g->state=STATE_IDLE;
 
@@ -66,15 +69,150 @@ void startCamera(gestore_t *g){
         g->bcam++;
         pthread_mutex_unlock(&g->mutex);
     }
+    pthread_mutex_unlock(&g->mutex);
+
     pthread_mutex_lock(&g->sem_camera);
     //può effettuare l'analisi
     //g->captured_frame = takeAPicture(g->dim_frame);
 }
 
 void endCamera(gestore_t *g){
+    /*
+    
+    */
     pthread_mutex_lock(&g->mutex);
-    g->ncam++;
+    g->ncam--;
+    g->state = STATE_ANALISYS;
+    pthread_mutex_unlock(&g->mutex);
+    
+    pthread_mutex_unlock(&g->sem_histo);
+    pthread_mutex_unlock(&g->sem_difference);
+    pthread_mutex_unlock(&g->sem_filter);
+    pthread_mutex_unlock(&g->sem_threshold);
+    /*quando la telecamera finisce sveglia i thread di analisi
+    */
+    pthread_mutex_unlock(&g->mutex);
+
+ 
 }
+
+void startHistogram(gestore_t *g){
+    /*
+    per prima cosa si blocca sul suo semaforo
+    in questo modo si ha la certezza che, se la camera,
+    non ha finito di prelevare il fotogramma esso non potrà
+    continuare l'analisi
+    successivamente blocca il mutex ed aggiorna il contatore
+    */
+    pthread_mutex_lock(&g->sem_hist);
+    pthread_mutex_lock(&g->mutex);
+    g->nhist++;
+    pthread_mutex_unlock(&g->mutex);
+    
+    //RICHIAMO FUNZIONE HISTOGRAMMA
+}
+
+
+
+void endHistogram(gestore_t *g){
+    
+    pthread_mutex_lock(&g->mutex);
+    g->nhist--;
+    if(!g->ndiff && !g->nthres && !g->nfilter){
+        //non c'è nessun thread di analisi attivo   
+        g->state=STATE_IDLE;
+    }
+    pthread_mutex_unlock(&g->mutex);
+}
+
+void startDifference(gestore_t *g){
+    /*
+    per prima cosa si blocca sul suo semaforo
+    in questo modo si ha la certezza che, se la camera,
+    non ha finito di prelevare il fotogramma esso non potrà
+    continuare l'analisi
+    successivamente blocca il mutex ed aggiorna il contatore
+    */
+    pthread_mutex_lock(&g->sem_difference);
+    pthread_mutex_lock(&g->mutex);
+    g->ndiff++;
+    pthread_mutex_unlock(&g->mutex);
+    
+    //RICHIAMO FUNZIONE DIFFERENCE
+}
+
+
+
+void endDifference(gestore_t *g){
+    
+    pthread_mutex_lock(&g->mutex);
+    g->ndiff--;
+    if(!g->nhist && !g->nthres && !g->nfilter){
+        //non c'è nessun thread di analisi attivo   
+        g->state=STATE_IDLE;
+    }
+    pthread_mutex_unlock(&g->mutex);
+}
+
+void startThreshold(gestore_t *g){
+    /*
+    per prima cosa si blocca sul suo semaforo
+    in questo modo si ha la certezza che, se la camera,
+    non ha finito di prelevare il fotogramma esso non potrà
+    continuare l'analisi
+    successivamente blocca il mutex ed aggiorna il contatore
+    */
+    pthread_mutex_lock(&g->sem_threshold);
+    pthread_mutex_lock(&g->mutex);
+    g->nthres++;
+    pthread_mutex_unlock(&g->mutex);
+    
+    //RICHIAMO FUNZIONE DIFFERENCE
+}
+
+
+
+void endThreshold(gestore_t *g){
+    
+    pthread_mutex_lock(&g->mutex);
+    g->nthres--;
+    if(!g->nhist && !g->ndiff && !g->nfilter){
+        //non c'è nessun thread di analisi attivo   
+        g->state=STATE_IDLE;
+    }
+    pthread_mutex_unlock(&g->mutex);
+}
+
+
+void startFilter(gestore_t *g){
+    /*
+    per prima cosa si blocca sul suo semaforo
+    in questo modo si ha la certezza che, se la camera,
+    non ha finito di prelevare il fotogramma esso non potrà
+    continuare l'analisi
+    successivamente blocca il mutex ed aggiorna il contatore
+    */
+    pthread_mutex_lock(&g->sem_filter);
+    pthread_mutex_lock(&g->mutex);
+    g->nfilter++;
+    pthread_mutex_unlock(&g->mutex);
+    
+    //RICHIAMO FUNZIONE DIFFERENCE
+}
+
+
+
+void endDifference(gestore_t *g){
+    
+    pthread_mutex_lock(&g->mutex);
+    g->nfilter--;
+    if(!g->nhist && !g->nthres && !g->ndiff){
+        //non c'è nessun thread di analisi attivo   
+        g->state=STATE_IDLE;
+    }
+    pthread_mutex_unlock(&g->mutex);
+}
+
 
 int main(int argc, char** argv) {
 
