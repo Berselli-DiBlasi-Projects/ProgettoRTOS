@@ -32,7 +32,6 @@ gtkmm.h
 ../lib/FrmSettings.h
 /home/fabrizio/Documenti/ProgettoRTOS/lib/FrmSettings.h
 
-<<<<<<< HEAD
 /home/fabrizio/Documenti/ProgettoRTOS/src/FrmMain.cpp
 ../lib/image_processing.h
 /home/fabrizio/Documenti/ProgettoRTOS/lib/image_processing.h
@@ -50,9 +49,6 @@ X11/Xutil.h
 -
 
 /home/fabrizio/Documenti/ProgettoRTOS/src/main.cpp
-=======
-/home/werther/Desktop/ProgettoRTOS/src/main.cpp
->>>>>>> bcb7295880a82517d951a17448e5c9271d74ba32
 ../lib/image_processing.h
 /home/fabrizio/Documenti/ProgettoRTOS/lib/image_processing.h
 pmutex.h

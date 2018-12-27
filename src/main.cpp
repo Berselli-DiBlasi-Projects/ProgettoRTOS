@@ -266,6 +266,38 @@ void show_settings_frame(string glade_file, string frame_id, string title,
 	cout << "Frame settings End" << endl;
 }
 
+/*
+void* bodyCamera(){
+    startCamera(&gestore);
+    gestore.captured_frame = takeAPicture(gestore.dim_frame);
+    endCamera();
+
+}
+
+void* bodyHistogram(){
+    startHistogram(&gestore);
+    histogram(gestore.captured_frame);
+    endHistogram();
+}
+
+void* bodyDifference(){
+    startDifference(&gestore);
+    difference(gestore.captured_frame);
+    endDifference();
+}(
+
+void* bodyFilter(){
+    startFilter(&gestore);
+    filterFrame(gestore.captured_frame);
+    endFilter();
+}
+
+void* bodyThreshold(){
+    startThreshold(&gestore);
+    frameThreshold(gestore.captured_frame);
+    endThreshold();
+}
+*/
 int main(int argc, char** argv) {
 
     //gtk code

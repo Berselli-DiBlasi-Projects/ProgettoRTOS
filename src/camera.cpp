@@ -6,30 +6,27 @@
  * @param   : Rect2d rect; Definisce l'area di registrazione della camera.
  * @return  : void
 */
-void takeAPicture(Rect2d rect)
+void displayVideoStream(Rect2d rect)
 {
     ScreenShot screen(rect.x, rect.y, rect.width, rect.height);
     Mat imgCamera;
 	string titleCamera = "Camera";
     screen(imgCamera);
-	/*
-    la camera cattura frame alla massima velocità
-    inserisce lo screenshot nell'oggetto del gestore della
-    memoria condivisa.
-    
-    */
-    while(true)
-	{
-
-		screen(imgCamera);
-    	//--- questo pezzo andrà cancellato ----
-        imshow(titleCamera, imgCamera);
-        //--- fine codice da cancellare     ----
-
+	while(true){
+        screen(imgCamera);
+    	imshow(titleCamera, imgCamera);
         if(!frm->is_visible())
             break;
 
         waitKey(1);
     }
+}
+
+Mat takeAPicture(Rect2d rect){
+    ScreenShot screen(rect.x, rect.y, rect.width, rect.height);
+    Mat imgCamera;
+	string titleCamera = "Camera";
+    screen(imgCamera);
+	return imgCamera;
 }
 

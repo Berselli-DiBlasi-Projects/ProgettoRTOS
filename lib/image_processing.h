@@ -17,4 +17,8 @@ bool getExecutionStarted();
 void preview(Rect2d rect, FrmMain *frmMain);
 Rect2d select_region(Gtk::Label *lblState);
 void setCancelSignal(bool signal);
-void setExecutionStarted(bool started);
+void setExefcutionStarted(bool started);
+void filterFrame(Mat img);
+void histogram(Mat img);
+void displayVideoStream(Rect2d rect);
+Mat takeAPicture(Rect2d rect)
