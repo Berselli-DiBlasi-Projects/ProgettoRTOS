@@ -68,7 +68,7 @@ void startCamera(gestore_t *g){
     }else{
         //i thread stanno analizzando il vecchio frame
         g->bcam++;
-        pthread_mutex_unlock(&g->mutex);
+        
     }
     pthread_mutex_unlock(&g->mutex);
 
@@ -84,6 +84,10 @@ void endCamera(gestore_t *g){
     pthread_mutex_lock(&g->mutex);
     g->ncam--;
     g->state = STATE_ANALISYS;
+    g->nhist++;
+    g->nthres++;
+    g->ndiff++;
+    g->nfilter++;
     pthread_mutex_unlock(&g->mutex);
     
     pthread_mutex_unlock(&g->sem_histo);
@@ -92,7 +96,7 @@ void endCamera(gestore_t *g){
     pthread_mutex_unlock(&g->sem_threshold);
     /*quando la telecamera finisce sveglia i thread di analisi
     */
-    pthread_mutex_unlock(&g->mutex);
+    
 
  
 }
@@ -106,9 +110,7 @@ void startHistogram(gestore_t *g){
     successivamente blocca il mutex ed aggiorna il contatore
     */
     pthread_mutex_lock(&g->sem_histo);
-    pthread_mutex_lock(&g->mutex);
-    g->nhist++;
-    pthread_mutex_unlock(&g->mutex);
+    
     
     //RICHIAMO FUNZIONE HISTOGRAMMA
 }
@@ -135,9 +137,7 @@ void startDifference(gestore_t *g){
     successivamente blocca il mutex ed aggiorna il contatore
     */
     pthread_mutex_lock(&g->sem_difference);
-    pthread_mutex_lock(&g->mutex);
-    g->ndiff++;
-    pthread_mutex_unlock(&g->mutex);
+    
     
     //RICHIAMO FUNZIONE DIFFERENCE
 }
@@ -164,9 +164,7 @@ void startThreshold(gestore_t *g){
     successivamente blocca il mutex ed aggiorna il contatore
     */
     pthread_mutex_lock(&g->sem_threshold);
-    pthread_mutex_lock(&g->mutex);
-    g->nthres++;
-    pthread_mutex_unlock(&g->mutex);
+   
     
     //RICHIAMO FUNZIONE THRESHOLD
 }
@@ -194,9 +192,7 @@ void startFilter(gestore_t *g){
     successivamente blocca il mutex ed aggiorna il contatore
     */
     pthread_mutex_lock(&g->sem_filter);
-    pthread_mutex_lock(&g->mutex);
-    g->nfilter++;
-    pthread_mutex_unlock(&g->mutex);
+    
     
     //RICHIAMO FUNZIONE FILTER
 }

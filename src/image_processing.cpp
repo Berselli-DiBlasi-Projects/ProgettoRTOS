@@ -65,7 +65,7 @@ void preview(Rect2d rect, FrmMain *frmMain)
 
     Mat placeholder_image;
     placeholder_image = imread("../media/placeholder.png",
-                                CV_LOAD_IMAGE_GRAYSCALE);
+                                IMREAD_COLOR);
     string placeholder_titles[4];
     placeholder_titles[0] = "Histogram";
     placeholder_titles[1] = "Filter";
