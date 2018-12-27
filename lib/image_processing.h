@@ -11,7 +11,7 @@
 using namespace std;
 using namespace cv;
 
-void camera(Rect2d rect);
+void takeAPicture(Rect2d rect);
 void histogram(Mat src);
 void preview(Rect2d rect);
 Rect2d select_region(Gtk::Label *lblState);

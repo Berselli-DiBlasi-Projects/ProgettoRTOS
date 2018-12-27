@@ -6,6 +6,10 @@ extern "C" {
 }
 using namespace std;
 
+#define STATE_IDLE      0
+#define STATE_ANALISYS  1;
+
+
 /*--------------------------------------------------------------*/
 /*		            	MAIN process				            */
 /*--------------------------------------------------------------*/
@@ -19,9 +23,15 @@ struct gestore_t{
                     sem_filter, 
                     sem_threshold,
                     sem_difference;
+    int nth;    //numero thread di analisi attivi
+    int bth;    //numero thread di analisi bloccati
+    int ncam;   //numero camere attive
+    int bcam;   //numero camere bloccate
+    int state;  //stato del sistema
 
     //memoria condivisa
-    Mat captured_frame; 
+    Mat     captured_frame; // immagine da analizzare
+    Rect2d  dim_frame;      // dimensione frame da analizzare
 
 } gestore;
 
@@ -34,13 +44,23 @@ void initGestore(struct gestore_t *g) {
     pmux_create_pi(&g->sem_threshold);
     pmux_create_pi(&g->sem_difference);
 
+    g->nth = g->bth = g->ncam = 0 = g->bcam = 0;
+
+    g->state=STATE_IDLE;
+
     ptask_init(SCHED_FIFO, GLOBAL, PRIO_INHERITANCE);
 }
-/*
-body del thread camera
-*/
-void bodyCamera(){
 
+
+void startCamera(gestore_t g){
+    
+    pthread_mutex_lock(&g->mutex);
+    g->ncam++;
+    if(g->state == STATE_IDLE){
+        /*se c'è lo stato di attesa può partire l'analisi*/
+        g->captured_frame = takeAPicture
+
+    }
 }
 
 int main(int argc, char** argv) {
