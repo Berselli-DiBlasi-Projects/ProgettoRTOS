@@ -7,7 +7,8 @@ extern "C" {
 using namespace std;
 
 #define STATE_IDLE      0
-#define STATE_ANALISYS  1;
+#define STATE_ANALISYS  1
+#define STATE_CAMERA    2
 
 
 /*--------------------------------------------------------------*/
@@ -44,7 +45,7 @@ void initGestore(struct gestore_t *g) {
     pmux_create_pi(&g->sem_threshold);
     pmux_create_pi(&g->sem_difference);
 
-    g->nth = g->bth = g->ncam = 0 = g->bcam = 0;
+    g->nth = g->bth = g->ncam = g->bcam = 0;
 
     g->state=STATE_IDLE;
 
@@ -52,15 +53,27 @@ void initGestore(struct gestore_t *g) {
 }
 
 
-void startCamera(gestore_t g){
+void startCamera(gestore_t *g){
     
     pthread_mutex_lock(&g->mutex);
     g->ncam++;
     if(g->state == STATE_IDLE){
+        pthread_mutex_unlock(&g->sem_camera);
+        g->state = STATE_CAMERA;
         /*se c'è lo stato di attesa può partire l'analisi*/
-        g->captured_frame = takeAPicture
-
+    }else{
+        //i thread stanno analizzando il vecchio frame
+        g->bcam++;
+        pthread_mutex_unlock(&g->mutex);
     }
+    pthread_mutex_lock(&g->sem_camera);
+    //può effettuare l'analisi
+    //g->captured_frame = takeAPicture(g->dim_frame);
+}
+
+void endCamera(gestore_t *g){
+    pthread_mutex_lock(&g->mutex);
+    g->ncam++;
 }
 
 int main(int argc, char** argv) {
