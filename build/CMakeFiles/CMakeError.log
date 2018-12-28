@@ -1,22 +1,24 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp
+Change Dir: /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_e140b/fast"
-/usr/bin/make -f CMakeFiles/cmTC_e140b.dir/build.make CMakeFiles/cmTC_e140b.dir/build
-make[1]: Entering directory '/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_e140b.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_e140b.dir/CheckSymbolExists.c.o   -c /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_e140b
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e140b.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_e140b.dir/CheckSymbolExists.c.o  -o cmTC_e140b 
-/usr/bin/ld: CMakeFiles/cmTC_e140b.dir/CheckSymbolExists.c.o: in function `main':
-CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
+Run Build Command:"/usr/bin/make" "cmTC_58cdd/fast"
+/usr/bin/make -f CMakeFiles/cmTC_58cdd.dir/build.make CMakeFiles/cmTC_58cdd.dir/build
+make[1]: ingresso nella directory "/home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp"
+Building C object CMakeFiles/cmTC_58cdd.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_58cdd.dir/CheckSymbolExists.c.o   -c /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_58cdd
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_58cdd.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_58cdd.dir/CheckSymbolExists.c.o  -o cmTC_58cdd 
+CMakeFiles/cmTC_58cdd.dir/CheckSymbolExists.c.o: nella funzione "main":
+CheckSymbolExists.c:(.text+0x1b): riferimento non definito a "pthread_create"
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_e140b.dir/build.make:87: cmTC_e140b] Error 1
-make[1]: Leaving directory '/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_e140b/fast] Error 2
+CMakeFiles/cmTC_58cdd.dir/build.make:97: recipe for target 'cmTC_58cdd' failed
+make[1]: *** [cmTC_58cdd] Error 1
+make[1]: uscita dalla directory "/home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp"
+Makefile:126: recipe for target 'cmTC_58cdd/fast' failed
+make: *** [cmTC_58cdd/fast] Error 2
 
-File /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 

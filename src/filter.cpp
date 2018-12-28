@@ -1,7 +1,7 @@
 #include "../lib/image_processing.h"
 
 
-void filterFrame(Mat img){
+Mat filterFrame(Mat img){
 	Mat im_out,thr;
 	//kernel per il filtro seppia
 	cv::Mat kern = (cv::Mat_<float>(4,4) <<  0.272, 0.534, 0.131, 0,
@@ -18,8 +18,8 @@ void filterFrame(Mat img){
 				break;
 		case 2:
 				//bianco e nero
-				cvtColor(img, im_out, CV_RGB2GRAY); //perform gray scale conversion.
-				threshold(im_out, thr, 100,255,THRESH_BINARY );
+				cvtColor(img, im_out, CV_RGB2GRAY); //conversione in scala di grigi
+				threshold(im_out, thr, 100,255,THRESH_BINARY );//applicazione della soglia
 				im_out = thr.clone();
 				break;
 
@@ -27,6 +27,8 @@ void filterFrame(Mat img){
 				break;
 
 	}
+
+	return im_out;
 
 	
 }
