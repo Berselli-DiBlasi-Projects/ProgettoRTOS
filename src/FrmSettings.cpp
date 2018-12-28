@@ -50,15 +50,15 @@ void FrmSettings::on_sclFrameDifference_value_changed(){
 }
 
 void FrmSettings::on_sclR_value_changed(){
-	cout << sclR->get_value() << endl;
+	setR(sclR->get_value());
 }
 
 void FrmSettings::on_sclG_value_changed(){
-	cout << sclG->get_value() << endl;
+	setG(sclG->get_value());
 }
 
 void FrmSettings::on_sclB_value_changed(){
-	cout << sclB->get_value() << endl;
+	setB(sclB->get_value());
 }
 
 void FrmSettings::on_btnQuit_clicked(){

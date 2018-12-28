@@ -10,6 +10,10 @@ bool execution_started = false;
 
 int frame_difference_value;
 
+int r_value;
+int g_value;
+int b_value;
+
 struct ScreenShot
 {
     ScreenShot(int x, int y, int width, int height):
@@ -71,6 +75,37 @@ int getFrameDifferenceValue()
 {
     return frame_difference_value;
 }
+
+/**
+ * Ritorna valore di R per il threshold.
+ * @param   : none
+ * @return  : int
+*/
+int getR()
+{
+    return r_value;
+}
+
+/**
+ * Ritorna valore di G per il threshold.
+ * @param   : none
+ * @return  : int
+*/
+int getG()
+{
+    return g_value;
+}
+
+/**
+ * Ritorna valore di B per il threshold.
+ * @param   : none
+ * @return  : int
+*/
+int getB()
+{
+    return b_value;
+}
+
 
 /**
  * Crea le finestre di preview dell'esecuzione.
@@ -204,4 +239,34 @@ void setExecutionStarted(bool started)
 void setFrameDifferenceValue(int difference)
 {
     frame_difference_value = difference;
+}
+
+/**
+ * Setta il valore di R, di supporto all'esecuzione.
+ * @param   : int value; Il valore da utilizzare.
+ * @return  : void
+*/
+void setR(int value)
+{
+    r_value = value;
+}
+
+/**
+ * Setta il valore di G, di supporto all'esecuzione.
+ * @param   : int value; Il valore da utilizzare.
+ * @return  : void
+*/
+void setG(int value)
+{
+    g_value = value;
+}
+
+/**
+ * Setta il valore di B, di supporto all'esecuzione.
+ * @param   : int value; Il valore da utilizzare.
+ * @return  : void
+*/
+void setB(int value)
+{
+    b_value = value;
 }
