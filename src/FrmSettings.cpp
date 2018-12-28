@@ -30,19 +30,19 @@ FrmSettings::FrmSettings(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builde
 }
 
 void FrmSettings::on_rdoDefault_clicked(){
-	cout << "ciao" << endl;
+	setFilterChoice(0);
 }
 
 void FrmSettings::on_rdoSeppia_clicked(){
-	cout << "mondo" << endl;
+	setFilterChoice(1);
 }
 
 void FrmSettings::on_rdoGrayScale_clicked(){
-	cout << "ciao" << endl;
+	setFilterChoice(2);
 }
 
 void FrmSettings::on_rdoBN_clicked(){
-	cout << "mondo" << endl;
+	setFilterChoice(3);
 }
 
 void FrmSettings::on_sclFrameDifference_value_changed(){

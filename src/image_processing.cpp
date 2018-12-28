@@ -8,6 +8,8 @@ using namespace cv;
 bool cancel_signal = false;
 bool execution_started = false;
 
+int filter_choice = 0;
+
 int frame_difference_value;
 
 int r_value;
@@ -106,6 +108,15 @@ int getB()
     return b_value;
 }
 
+/**
+ * Ritorna il valore di filter_choice per il filtering.
+ * @param   : none
+ * @return  : int
+*/
+int getFilterChoice()
+{
+    return filter_choice;
+}
 
 /**
  * Crea le finestre di preview dell'esecuzione.
@@ -229,6 +240,16 @@ void setCancelSignal(bool signal)
 void setExecutionStarted(bool started)
 {
     execution_started = started;
+}
+
+/**
+ * Setta il valore di filter_choice per il filtering.
+ * @param   : int; choice
+ * @return  : void
+*/
+void setFilterChoice(int choice)
+{
+    filter_choice = choice;
 }
 
 /**
