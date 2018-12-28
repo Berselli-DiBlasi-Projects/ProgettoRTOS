@@ -1,9 +1,8 @@
 cmake_minimum_required(VERSION 3.1)
 # (REFERENCE CODE) project(video_capture)
-project(ball)
+project(image_processing)
 include_directories(.)
-
-set(CMAKE_GCC_FLAGS "-Wall -Wextra -Wconversion  -pedantic -std=gnu11")
+set(CMAKE_GCC_FLAGS "-Wall -Wextra -Wconversion -pedantic -std=gnu11")
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}")
@@ -21,8 +20,10 @@ set(ptask_INCLUDE_DIRS "${ptask_DIR}/include")
 message("Include dir ${ptask_INCLUDE_DIRS}")
 
 # (REFERENCE CODE) add_executable(video_capture task.c video_capture.c)
-add_executable(application src/main.cpp src/image_processing.cpp src/FrmMain.cpp
-		src/FrmSettings.cpp)
+add_executable(application src/main.cpp src/image_processing.cpp src/camera.cpp
+	       src/filter.cpp src/frame_difference.cpp src/FrmMain.cpp
+	       src/FrmSettings.cpp src/histogram.cpp src/output_manager.cpp
+               src/threshold.cpp)
 
 include_directories ("${ptask_INCLUDE_DIRS}")
 include_directories(${OpenCV_INCLUDE_DIRS} )

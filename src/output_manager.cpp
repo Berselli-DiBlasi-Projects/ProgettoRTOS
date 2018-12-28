@@ -1,8 +1,8 @@
 #include "../lib/image_processing.h"
 
 
-Mat istogramma;
-Mat filtro;
+Mat histogram;
+Mat filter;
 Mat diff;
 Mat thr;
 Mat cam;
@@ -14,55 +14,32 @@ pthread_mutex_t sem_camera,
 
 
 void outputInit(){
-    //pmux_create_pi(&out->mutex);
     pmux_create_pi(&sem_camera);
     pmux_create_pi(&sem_filter);
     pmux_create_pi(&sem_histo);
     pmux_create_pi(&sem_threshold);
     pmux_create_pi(&sem_difference);
 }
-/**
- * prende in input l'istogramma da mandare a video
-*/
-void setOutPlotIstogram(Mat img){
-    pthread_mutex_lock(&sem_histo);
-    istogramma=img.clone();
-    pthread_mutex_unlock(&sem_histo);
-}
 
 /**
- * preleva l'output da visualizzare a video
+ * Preleva il frame camera da stampare a video.
+ * @param   : None
+ * @return  : Mat r; frame camera ritornato.
 */
-Mat getOutPlotIstogram(Mat img){
+Mat getOutCamera(){
     Mat r;
-    pthread_mutex_lock(&sem_histo);
-    r=istogramma.clone();
-    pthread_mutex_unlock(&sem_histo);
+    pthread_mutex_lock(&sem_camera);
+    r=cam.clone();
+    pthread_mutex_unlock(&sem_camera);
     return r;
 }
 
-void setOutFilter(Mat img){
-    pthread_mutex_lock(&sem_filter);
-    filtro=img.clone();
-    pthread_mutex_unlock(&sem_filter);
-}
-
-Mat getOutFilter(Mat img){
-    Mat r;
-    pthread_mutex_lock(&sem_filter);
-    r=filter.clone();
-    pthread_mutex_unlock(&sem_filter);
-    return r;
-}
-
-
-void setOutDifference(Mat img){
-    pthread_mutex_lock(&sem_difference);
-    diff=img.clone();
-    pthread_mutex_unlock(&sem_difference);
-}
-
-Mat getOutDifference(Mat img){
+/**
+ * Preleva il frame difference da stampare a video.
+ * @param   : None
+ * @return  : Mat r; frame Difference ritornato.
+*/
+Mat getOutDifference(){
     Mat r;
     pthread_mutex_lock(&sem_difference);
     r=diff.clone();
@@ -70,33 +47,96 @@ Mat getOutDifference(Mat img){
     return r;
 }
 
-
-
-void setOutThreshold(Mat img){
-    pthread_mutex_lock(&sem_threshold);
-    thr=img.clone();
-    pthread_mutex_unlock(&sem_threshold);
-}
-
-Mat getOutThreshold(Mat img){
+/**
+ * Preleva il frame filtro da stampare a video.
+ * @param   : None
+ * @return  : Mat r; frame filtro ritornato.
+*/
+Mat getOutFilter(){
     Mat r;
-    pthread_mutex_lock(&sem_difference);
-    r=thr.clone();
-    pthread_mutex_unlock(&sem_difference);
+    pthread_mutex_lock(&sem_filter);
+    r=filter.clone();
+    pthread_mutex_unlock(&sem_filter);
     return r;
 }
 
+/**
+ * Preleva il frame istogramma da stampare a video.
+ * @param   : None
+ * @return  : Mat r; frame istogramma ritornato.
+*/
+Mat getOutPlotHistogram(){
+    Mat r;
+    pthread_mutex_lock(&sem_histo);
+    r=histogram.clone();
+    pthread_mutex_unlock(&sem_histo);
+    return r;
+}
 
+/**
+ * Preleva il frame threshold da stampare a video.
+ * @param   : None
+ * @return  : Mat r; frame threshold ritornato.
+*/
+Mat getOutThreshold(){
+    Mat r;
+    pthread_mutex_lock(&sem_threshold);
+    r=thr.clone();
+    pthread_mutex_unlock(&sem_threshold);
+    return r;
+}
+
+/**
+ * Setta il frame camera da stampare a video.
+ * @param   : Mat img; frame Camera da settare.
+ * @return  : None
+*/
 void setOutCamera(Mat img){
     pthread_mutex_lock(&sem_camera);
     cam=img.clone();
     pthread_mutex_unlock(&sem_camera);
 }
 
-Mat getOutDifference(Mat img){
-    Mat r;
-    pthread_mutex_lock(&sem_camera);
-    r=cam.clone();
-    pthread_mutex_unlock(&sem_camera);
-    return r;
+/**
+ * Setta il frame difference da stampare a video.
+ * @param   : Mat img; frame Difference da settare.
+ * @return  : None
+*/
+void setOutDifference(Mat img){
+    pthread_mutex_lock(&sem_difference);
+    diff=img.clone();
+    pthread_mutex_unlock(&sem_difference);
+}
+
+/**
+ * Setta il frame filtro da stampare a video.
+ * @param   : Mat img; frame filtro da settare.
+ * @return  : None
+*/
+void setOutFilter(Mat img){
+    pthread_mutex_lock(&sem_filter);
+    filter=img.clone();
+    pthread_mutex_unlock(&sem_filter);
+}
+
+/**
+ * Setta il frame istogramma da stampare a video.
+ * @param   : Mat img; frame istogramma da settare.
+ * @return  : None
+*/
+void setOutPlotHistogram(Mat img){
+    pthread_mutex_lock(&sem_histo);
+    histogram=img.clone();
+    pthread_mutex_unlock(&sem_histo);
+}
+
+/**
+ * Setta il frame threshold da stampare a video.
+ * @param   : Mat img; frame Threshold da settare.
+ * @return  : None
+*/
+void setOutThreshold(Mat img){
+    pthread_mutex_lock(&sem_threshold);
+    thr=img.clone();
+    pthread_mutex_unlock(&sem_threshold);
 }

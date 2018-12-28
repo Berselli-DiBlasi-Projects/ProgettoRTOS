@@ -1,62 +1,15 @@
 #include "../lib/image_processing.h"
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
 
 using namespace std;
 using namespace cv;
 
 bool cancel_signal = false;
 bool execution_started = false;
-
 int filter_choice = 0;
-
 int frame_difference_value;
-
 int r_value;
 int g_value;
 int b_value;
-
-struct ScreenShot
-{
-    ScreenShot(int x, int y, int width, int height):
-        x(x),
-        y(y),
-        width(width),
-        height(height)
-    {
-        display = XOpenDisplay(nullptr);
-        root = DefaultRootWindow(display);
-
-        init = true;
-    }
-
-    void operator() (Mat& cvImg)
-    {
-        if(init == true)
-            init = false;
-        else
-            XDestroyImage(img);
-
-        img = XGetImage(display, root, x, y, width, height, AllPlanes, ZPixmap);
-
-        cvImg = Mat(height, width, CV_8UC4, img->data);
-    }
-
-    ~ScreenShot()
-    {
-        if(init == false)
-            XDestroyImage(img);
-
-        XCloseDisplay(display);
-    }
-
-    Display* display;
-    Window root;
-    int x,y,width,height;
-    XImage* img;
-
-    bool init;
-};
 
 /**
  * Ritorna il bool execution_started, di supporto all'esecuzione.
@@ -66,6 +19,16 @@ struct ScreenShot
 bool getExecutionStarted()
 {
     return execution_started;
+}
+
+/**
+ * Ritorna il valore di filter_choice per il filtering.
+ * @param   : none
+ * @return  : int
+*/
+int getFilterChoice()
+{
+    return filter_choice;
 }
 
 /**
@@ -106,16 +69,6 @@ int getG()
 int getB()
 {
     return b_value;
-}
-
-/**
- * Ritorna il valore di filter_choice per il filtering.
- * @param   : none
- * @return  : int
-*/
-int getFilterChoice()
-{
-    return filter_choice;
 }
 
 /**
@@ -179,7 +132,7 @@ void preview(Rect2d rect, FrmMain *frmMain)
  * @param   : Gtk::Label *lblState; label di stato del frame FrmMain.
  * @return  : Rect2d; Il rettangolo che definisce l'area scelta.
 */
-Rect2d select_region(Gtk::Label *lblState)
+Rect2d selectRegion(Gtk::Label *lblState)
 {
     Display* disp = XOpenDisplay(NULL);
     Screen*  scrn = DefaultScreenOfDisplay(disp);
@@ -205,21 +158,6 @@ Rect2d select_region(Gtk::Label *lblState)
     lblState->set_text("Confirm to display a\npreview of the execution.");
 
     return rect;
-
-    /* Codice valido per il thread camera */
-    /* bool area_selected = false;
-    char exit_key_press = 0;
-	do
-	{
-		screen(img);
-    	imshow(title, img);
-        if(!frm->is_visible())
-            break;
-        exit_key_press = cvWaitKey(27);
-        waitKey(1);
-	}while(cvGetWindowHandle(title.c_str()) && exit_key_press != 27);
-    if(exit_key_press == 27)
-        destroyWindow(title);*/
 }
 
 /**

@@ -83,9 +83,48 @@ CMakeFiles/application.dir/src/image_processing.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/application.dir/src/image_processing.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/werther/Desktop/ProgettoRTOS/src/image_processing.cpp -o CMakeFiles/application.dir/src/image_processing.cpp.s
 
+CMakeFiles/application.dir/src/camera.cpp.o: CMakeFiles/application.dir/flags.make
+CMakeFiles/application.dir/src/camera.cpp.o: ../src/camera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/application.dir/src/camera.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/application.dir/src/camera.cpp.o -c /home/werther/Desktop/ProgettoRTOS/src/camera.cpp
+
+CMakeFiles/application.dir/src/camera.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/application.dir/src/camera.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/werther/Desktop/ProgettoRTOS/src/camera.cpp > CMakeFiles/application.dir/src/camera.cpp.i
+
+CMakeFiles/application.dir/src/camera.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/application.dir/src/camera.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/werther/Desktop/ProgettoRTOS/src/camera.cpp -o CMakeFiles/application.dir/src/camera.cpp.s
+
+CMakeFiles/application.dir/src/filter.cpp.o: CMakeFiles/application.dir/flags.make
+CMakeFiles/application.dir/src/filter.cpp.o: ../src/filter.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/application.dir/src/filter.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/application.dir/src/filter.cpp.o -c /home/werther/Desktop/ProgettoRTOS/src/filter.cpp
+
+CMakeFiles/application.dir/src/filter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/application.dir/src/filter.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/werther/Desktop/ProgettoRTOS/src/filter.cpp > CMakeFiles/application.dir/src/filter.cpp.i
+
+CMakeFiles/application.dir/src/filter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/application.dir/src/filter.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/werther/Desktop/ProgettoRTOS/src/filter.cpp -o CMakeFiles/application.dir/src/filter.cpp.s
+
+CMakeFiles/application.dir/src/frame_difference.cpp.o: CMakeFiles/application.dir/flags.make
+CMakeFiles/application.dir/src/frame_difference.cpp.o: ../src/frame_difference.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/application.dir/src/frame_difference.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/application.dir/src/frame_difference.cpp.o -c /home/werther/Desktop/ProgettoRTOS/src/frame_difference.cpp
+
+CMakeFiles/application.dir/src/frame_difference.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/application.dir/src/frame_difference.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/werther/Desktop/ProgettoRTOS/src/frame_difference.cpp > CMakeFiles/application.dir/src/frame_difference.cpp.i
+
+CMakeFiles/application.dir/src/frame_difference.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/application.dir/src/frame_difference.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/werther/Desktop/ProgettoRTOS/src/frame_difference.cpp -o CMakeFiles/application.dir/src/frame_difference.cpp.s
+
 CMakeFiles/application.dir/src/FrmMain.cpp.o: CMakeFiles/application.dir/flags.make
 CMakeFiles/application.dir/src/FrmMain.cpp.o: ../src/FrmMain.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/application.dir/src/FrmMain.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/application.dir/src/FrmMain.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/application.dir/src/FrmMain.cpp.o -c /home/werther/Desktop/ProgettoRTOS/src/FrmMain.cpp
 
 CMakeFiles/application.dir/src/FrmMain.cpp.i: cmake_force
@@ -98,7 +137,7 @@ CMakeFiles/application.dir/src/FrmMain.cpp.s: cmake_force
 
 CMakeFiles/application.dir/src/FrmSettings.cpp.o: CMakeFiles/application.dir/flags.make
 CMakeFiles/application.dir/src/FrmSettings.cpp.o: ../src/FrmSettings.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/application.dir/src/FrmSettings.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/application.dir/src/FrmSettings.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/application.dir/src/FrmSettings.cpp.o -c /home/werther/Desktop/ProgettoRTOS/src/FrmSettings.cpp
 
 CMakeFiles/application.dir/src/FrmSettings.cpp.i: cmake_force
@@ -109,20 +148,71 @@ CMakeFiles/application.dir/src/FrmSettings.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/application.dir/src/FrmSettings.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/werther/Desktop/ProgettoRTOS/src/FrmSettings.cpp -o CMakeFiles/application.dir/src/FrmSettings.cpp.s
 
+CMakeFiles/application.dir/src/histogram.cpp.o: CMakeFiles/application.dir/flags.make
+CMakeFiles/application.dir/src/histogram.cpp.o: ../src/histogram.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/application.dir/src/histogram.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/application.dir/src/histogram.cpp.o -c /home/werther/Desktop/ProgettoRTOS/src/histogram.cpp
+
+CMakeFiles/application.dir/src/histogram.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/application.dir/src/histogram.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/werther/Desktop/ProgettoRTOS/src/histogram.cpp > CMakeFiles/application.dir/src/histogram.cpp.i
+
+CMakeFiles/application.dir/src/histogram.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/application.dir/src/histogram.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/werther/Desktop/ProgettoRTOS/src/histogram.cpp -o CMakeFiles/application.dir/src/histogram.cpp.s
+
+CMakeFiles/application.dir/src/output_manager.cpp.o: CMakeFiles/application.dir/flags.make
+CMakeFiles/application.dir/src/output_manager.cpp.o: ../src/output_manager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/application.dir/src/output_manager.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/application.dir/src/output_manager.cpp.o -c /home/werther/Desktop/ProgettoRTOS/src/output_manager.cpp
+
+CMakeFiles/application.dir/src/output_manager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/application.dir/src/output_manager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/werther/Desktop/ProgettoRTOS/src/output_manager.cpp > CMakeFiles/application.dir/src/output_manager.cpp.i
+
+CMakeFiles/application.dir/src/output_manager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/application.dir/src/output_manager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/werther/Desktop/ProgettoRTOS/src/output_manager.cpp -o CMakeFiles/application.dir/src/output_manager.cpp.s
+
+CMakeFiles/application.dir/src/threshold.cpp.o: CMakeFiles/application.dir/flags.make
+CMakeFiles/application.dir/src/threshold.cpp.o: ../src/threshold.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/application.dir/src/threshold.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/application.dir/src/threshold.cpp.o -c /home/werther/Desktop/ProgettoRTOS/src/threshold.cpp
+
+CMakeFiles/application.dir/src/threshold.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/application.dir/src/threshold.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/werther/Desktop/ProgettoRTOS/src/threshold.cpp > CMakeFiles/application.dir/src/threshold.cpp.i
+
+CMakeFiles/application.dir/src/threshold.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/application.dir/src/threshold.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/werther/Desktop/ProgettoRTOS/src/threshold.cpp -o CMakeFiles/application.dir/src/threshold.cpp.s
+
 # Object files for target application
 application_OBJECTS = \
 "CMakeFiles/application.dir/src/main.cpp.o" \
 "CMakeFiles/application.dir/src/image_processing.cpp.o" \
+"CMakeFiles/application.dir/src/camera.cpp.o" \
+"CMakeFiles/application.dir/src/filter.cpp.o" \
+"CMakeFiles/application.dir/src/frame_difference.cpp.o" \
 "CMakeFiles/application.dir/src/FrmMain.cpp.o" \
-"CMakeFiles/application.dir/src/FrmSettings.cpp.o"
+"CMakeFiles/application.dir/src/FrmSettings.cpp.o" \
+"CMakeFiles/application.dir/src/histogram.cpp.o" \
+"CMakeFiles/application.dir/src/output_manager.cpp.o" \
+"CMakeFiles/application.dir/src/threshold.cpp.o"
 
 # External object files for target application
 application_EXTERNAL_OBJECTS =
 
 application: CMakeFiles/application.dir/src/main.cpp.o
 application: CMakeFiles/application.dir/src/image_processing.cpp.o
+application: CMakeFiles/application.dir/src/camera.cpp.o
+application: CMakeFiles/application.dir/src/filter.cpp.o
+application: CMakeFiles/application.dir/src/frame_difference.cpp.o
 application: CMakeFiles/application.dir/src/FrmMain.cpp.o
 application: CMakeFiles/application.dir/src/FrmSettings.cpp.o
+application: CMakeFiles/application.dir/src/histogram.cpp.o
+application: CMakeFiles/application.dir/src/output_manager.cpp.o
+application: CMakeFiles/application.dir/src/threshold.cpp.o
 application: CMakeFiles/application.dir/build.make
 application: /usr/local/lib/libopencv_dnn.so.3.4.4
 application: /usr/local/lib/libopencv_ml.so.3.4.4
@@ -143,7 +233,7 @@ application: /usr/local/lib/libopencv_imgcodecs.so.3.4.4
 application: /usr/local/lib/libopencv_imgproc.so.3.4.4
 application: /usr/local/lib/libopencv_core.so.3.4.4
 application: CMakeFiles/application.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable application"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable application"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/application.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

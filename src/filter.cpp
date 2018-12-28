@@ -26,7 +26,7 @@ Mat filterFrame(Mat img){
 				threshold(im_out, thr, 100,255,THRESH_BINARY );//applicazione della soglia
 				im_out = thr.clone();
 				break;
-		case default:
+		default:
 			break;
 
 	}

@@ -1,8 +1,9 @@
 #include "../lib/image_processing.h"
 
-int count = 0;
-Mat img_old = NULL;
-Mat img_out = NULL;
+int frame_count = 0;
+Mat img_old;
+Mat img_out;
+bool begin_difference = true;
 
 /**
  * Fa la differenza assoluta fra due frame tenendo conto
@@ -14,24 +15,26 @@ Mat frameDifference(Mat img){
     //Frame difference value -> da 0 a 30
     int frame_difference_value = getFrameDifferenceValue();
 
-    if(img_old == NULL || count == 0)
+    if(frame_count == 0)
         img_old = img;
 
-    if(img_out == NULL)
+    if(begin_difference)
         img_out = img;
 
-    if(frame_difference_value == count)
+    if(frame_difference_value == frame_count)
     {
         absdiff(img_old, img, img_out);
-        count = 0;
+        frame_count = 0;
     }
     else
     {
-        count++;
+        frame_count++;
     }
 
-    if(frame_difference_value < count)
-        count = 0;
+    if(frame_difference_value < frame_count)
+        frame_count = 0;
+
+    begin_difference = false;
     
     return img_out;
 }

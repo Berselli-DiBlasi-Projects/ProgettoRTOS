@@ -29,7 +29,7 @@ FrmMain::FrmMain(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refG
 
 void FrmMain::on_btnSelezionaArea_clicked(){
 	btnSelezionaArea->set_sensitive(false);
-	rect = select_region(lblState);
+	rect = selectRegion(lblState);
 	btnSelezionaArea->set_sensitive(true);
 	btnConferma->set_sensitive(true);
 }

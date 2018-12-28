@@ -1,9 +1,4 @@
 #include "../lib/image_processing.h"
-extern "C" {
-#include "pmutex.h"
-#include "ptask.h"
-#include "tstat.h"
-}
 
 using namespace std;
 
@@ -274,30 +269,39 @@ void* bodyCamera(){
     gestore.captured_frame = takeAPicture(gestore.dim_frame);
     endCamera(&gestore);
 
+    return NULL;
 }
 
 void* bodyHistogram(){
     startHistogram(&gestore);
     plotHistogram(gestore.captured_frame);
     endHistogram(&gestore);
+
+    return NULL;
 }
 
 void* bodyDifference(){
     startDifference(&gestore);
     frameDifference(gestore.captured_frame);
     endDifference(&gestore);
+
+    return NULL;
 }
 
 void* bodyFilter(){
     startFilter(&gestore);
     filterFrame(gestore.captured_frame);
     endFilter(&gestore);
+
+    return NULL;
 }
 
 void* bodyThreshold(){
     startThreshold(&gestore);
     threshold(gestore.captured_frame);
     endThreshold(&gestore);
+
+    return NULL;
 }
 
 int main(int argc, char** argv) {

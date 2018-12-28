@@ -177,6 +177,114 @@ src/FrmSettings.cpp.s:
 	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/FrmSettings.cpp.s
 .PHONY : src/FrmSettings.cpp.s
 
+src/camera.o: src/camera.cpp.o
+
+.PHONY : src/camera.o
+
+# target to build an object file
+src/camera.cpp.o:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/camera.cpp.o
+.PHONY : src/camera.cpp.o
+
+src/camera.i: src/camera.cpp.i
+
+.PHONY : src/camera.i
+
+# target to preprocess a source file
+src/camera.cpp.i:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/camera.cpp.i
+.PHONY : src/camera.cpp.i
+
+src/camera.s: src/camera.cpp.s
+
+.PHONY : src/camera.s
+
+# target to generate assembly for a file
+src/camera.cpp.s:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/camera.cpp.s
+.PHONY : src/camera.cpp.s
+
+src/filter.o: src/filter.cpp.o
+
+.PHONY : src/filter.o
+
+# target to build an object file
+src/filter.cpp.o:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/filter.cpp.o
+.PHONY : src/filter.cpp.o
+
+src/filter.i: src/filter.cpp.i
+
+.PHONY : src/filter.i
+
+# target to preprocess a source file
+src/filter.cpp.i:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/filter.cpp.i
+.PHONY : src/filter.cpp.i
+
+src/filter.s: src/filter.cpp.s
+
+.PHONY : src/filter.s
+
+# target to generate assembly for a file
+src/filter.cpp.s:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/filter.cpp.s
+.PHONY : src/filter.cpp.s
+
+src/frame_difference.o: src/frame_difference.cpp.o
+
+.PHONY : src/frame_difference.o
+
+# target to build an object file
+src/frame_difference.cpp.o:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/frame_difference.cpp.o
+.PHONY : src/frame_difference.cpp.o
+
+src/frame_difference.i: src/frame_difference.cpp.i
+
+.PHONY : src/frame_difference.i
+
+# target to preprocess a source file
+src/frame_difference.cpp.i:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/frame_difference.cpp.i
+.PHONY : src/frame_difference.cpp.i
+
+src/frame_difference.s: src/frame_difference.cpp.s
+
+.PHONY : src/frame_difference.s
+
+# target to generate assembly for a file
+src/frame_difference.cpp.s:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/frame_difference.cpp.s
+.PHONY : src/frame_difference.cpp.s
+
+src/histogram.o: src/histogram.cpp.o
+
+.PHONY : src/histogram.o
+
+# target to build an object file
+src/histogram.cpp.o:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/histogram.cpp.o
+.PHONY : src/histogram.cpp.o
+
+src/histogram.i: src/histogram.cpp.i
+
+.PHONY : src/histogram.i
+
+# target to preprocess a source file
+src/histogram.cpp.i:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/histogram.cpp.i
+.PHONY : src/histogram.cpp.i
+
+src/histogram.s: src/histogram.cpp.s
+
+.PHONY : src/histogram.s
+
+# target to generate assembly for a file
+src/histogram.cpp.s:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/histogram.cpp.s
+.PHONY : src/histogram.cpp.s
+
 src/image_processing.o: src/image_processing.cpp.o
 
 .PHONY : src/image_processing.o
@@ -231,6 +339,60 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/output_manager.o: src/output_manager.cpp.o
+
+.PHONY : src/output_manager.o
+
+# target to build an object file
+src/output_manager.cpp.o:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/output_manager.cpp.o
+.PHONY : src/output_manager.cpp.o
+
+src/output_manager.i: src/output_manager.cpp.i
+
+.PHONY : src/output_manager.i
+
+# target to preprocess a source file
+src/output_manager.cpp.i:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/output_manager.cpp.i
+.PHONY : src/output_manager.cpp.i
+
+src/output_manager.s: src/output_manager.cpp.s
+
+.PHONY : src/output_manager.s
+
+# target to generate assembly for a file
+src/output_manager.cpp.s:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/output_manager.cpp.s
+.PHONY : src/output_manager.cpp.s
+
+src/threshold.o: src/threshold.cpp.o
+
+.PHONY : src/threshold.o
+
+# target to build an object file
+src/threshold.cpp.o:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/threshold.cpp.o
+.PHONY : src/threshold.cpp.o
+
+src/threshold.i: src/threshold.cpp.i
+
+.PHONY : src/threshold.i
+
+# target to preprocess a source file
+src/threshold.cpp.i:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/threshold.cpp.i
+.PHONY : src/threshold.cpp.i
+
+src/threshold.s: src/threshold.cpp.s
+
+.PHONY : src/threshold.s
+
+# target to generate assembly for a file
+src/threshold.cpp.s:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/threshold.cpp.s
+.PHONY : src/threshold.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -246,12 +408,30 @@ help:
 	@echo "... src/FrmSettings.o"
 	@echo "... src/FrmSettings.i"
 	@echo "... src/FrmSettings.s"
+	@echo "... src/camera.o"
+	@echo "... src/camera.i"
+	@echo "... src/camera.s"
+	@echo "... src/filter.o"
+	@echo "... src/filter.i"
+	@echo "... src/filter.s"
+	@echo "... src/frame_difference.o"
+	@echo "... src/frame_difference.i"
+	@echo "... src/frame_difference.s"
+	@echo "... src/histogram.o"
+	@echo "... src/histogram.i"
+	@echo "... src/histogram.s"
 	@echo "... src/image_processing.o"
 	@echo "... src/image_processing.i"
 	@echo "... src/image_processing.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/output_manager.o"
+	@echo "... src/output_manager.i"
+	@echo "... src/output_manager.s"
+	@echo "... src/threshold.o"
+	@echo "... src/threshold.i"
+	@echo "... src/threshold.s"
 .PHONY : help
 
 
