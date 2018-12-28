@@ -30,7 +30,28 @@ void setB(int value);
 void setFilterChoice(int choice);
 Mat filterFrame(Mat img);
 Mat frameDifference(Mat img);
-Mat histogram(Mat img);
+Mat plotHistogram(Mat img);
 //void displayVideoStream(Rect2d rect);
 Mat takeAPicture(Rect2d rect);
 Mat threshold(Mat img);
+
+
+
+
+
+void outputInit();
+
+void setOutPlotIstogram(Mat img);
+Mat getOutPlotIstogram(Mat img);
+
+void setOutFilter(Mat img);
+Mat getOutFilter(Mat img);
+
+void setOutDifference(Mat img);
+Mat getOutDifference(Mat img);
+
+void setOutThreshold(Mat img);
+Mat getOutThreshold(Mat img);
+
+void setOutCamera(Mat img);
+Mat getOutDifference(Mat img);

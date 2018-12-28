@@ -5,7 +5,7 @@
  * @param   : Mat src; immagine da processare.
  * @return  : restituisce l'oggetto Mat contenente il grafico
 */
-Mat histogram(Mat src)
+Mat plotHistogram(Mat src)
 {
     //separo l'immagine nei 3 layer  B G R
     vector<Mat> bgr_planes;

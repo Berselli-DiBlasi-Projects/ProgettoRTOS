@@ -36,6 +36,8 @@ struct gestore_t{
 
 } gestore;
 
+
+
 void initGestore(struct gestore_t *g) {
     
     pmux_create_pi(&g->mutex);
@@ -266,38 +268,38 @@ void show_settings_frame(string glade_file, string frame_id, string title,
 	cout << "Frame settings End" << endl;
 }
 
-/*
+
 void* bodyCamera(){
     startCamera(&gestore);
     gestore.captured_frame = takeAPicture(gestore.dim_frame);
-    endCamera();
+    endCamera(&gestore);
 
 }
 
 void* bodyHistogram(){
     startHistogram(&gestore);
-    histogram(gestore.captured_frame);
-    endHistogram();
+    plotHistogram(gestore.captured_frame);
+    endHistogram(&gestore);
 }
 
 void* bodyDifference(){
     startDifference(&gestore);
-    difference(gestore.captured_frame);
-    endDifference();
-}(
+    frameDifference(gestore.captured_frame);
+    endDifference(&gestore);
+}
 
 void* bodyFilter(){
     startFilter(&gestore);
     filterFrame(gestore.captured_frame);
-    endFilter();
+    endFilter(&gestore);
 }
 
 void* bodyThreshold(){
     startThreshold(&gestore);
-    frameThreshold(gestore.captured_frame);
-    endThreshold();
+    threshold(gestore.captured_frame);
+    endThreshold(&gestore);
 }
-*/
+
 int main(int argc, char** argv) {
 
     //gtk code
