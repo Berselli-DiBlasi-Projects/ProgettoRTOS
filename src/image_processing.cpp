@@ -132,7 +132,7 @@ void preview(Rect2d rect, FrmMain *frmMain)
  * @param   : Gtk::Label *lblState; label di stato del frame FrmMain.
  * @return  : Rect2d; Il rettangolo che definisce l'area scelta.
 */
-Rect2d selectRegion(Gtk::Label *lblState)
+void selectRegion(Gtk::Label *lblState)
 {
     Display* disp = XOpenDisplay(NULL);
     Screen*  scrn = DefaultScreenOfDisplay(disp);
@@ -143,9 +143,7 @@ Rect2d selectRegion(Gtk::Label *lblState)
     Rect2d rect;
 	string title = "Select area (SPACE or ENTER to confirm)";
     screen(img);
-
-    // Select ROI: rect.x, rect.y, rect.x + rect.width,
-    // rect.y + regt.height
+    
     do {
         rect = selectROI(title, img);
 
@@ -157,7 +155,7 @@ Rect2d selectRegion(Gtk::Label *lblState)
     destroyWindow(title);
     lblState->set_text("Confirm to display a\npreview of the execution.");
 
-    return rect;
+    setRect(rect);
 }
 
 /**

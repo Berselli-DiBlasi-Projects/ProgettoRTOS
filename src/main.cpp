@@ -26,7 +26,6 @@ struct gestore_t{
     int state;  //stato del sistema
 
     //memoria condivisa
-    Mat     captured_frame; // immagine da analizzare
     Rect2d  dim_frame;      // dimensione frame da analizzare
 
 } gestore;
@@ -266,7 +265,7 @@ void show_settings_frame(string glade_file, string frame_id, string title,
 
 void* bodyCamera(){
     startCamera(&gestore);
-    gestore.captured_frame = takeAPicture(gestore.dim_frame);
+    setOutCamera(takeAPicture(gestore.dim_frame));
     endCamera(&gestore);
 
     return NULL;
@@ -274,7 +273,7 @@ void* bodyCamera(){
 
 void* bodyHistogram(){
     startHistogram(&gestore);
-    plotHistogram(gestore.captured_frame);
+    setOutPlotHistogram(plotHistogram(getOutCamera()));
     endHistogram(&gestore);
 
     return NULL;
@@ -282,7 +281,7 @@ void* bodyHistogram(){
 
 void* bodyDifference(){
     startDifference(&gestore);
-    frameDifference(gestore.captured_frame);
+    setOutDifference(frameDifference(getOutCamera()));
     endDifference(&gestore);
 
     return NULL;
@@ -290,7 +289,7 @@ void* bodyDifference(){
 
 void* bodyFilter(){
     startFilter(&gestore);
-    filterFrame(gestore.captured_frame);
+    setOutFilter(filterFrame(getOutCamera()));
     endFilter(&gestore);
 
     return NULL;
@@ -298,7 +297,7 @@ void* bodyFilter(){
 
 void* bodyThreshold(){
     startThreshold(&gestore);
-    threshold(gestore.captured_frame);
+    setOutThreshold(threshold(getOutCamera()));
     endThreshold(&gestore);
 
     return NULL;

@@ -1,6 +1,7 @@
 #include "../lib/image_processing.h"
 
 
+Rect2d rect;
 Mat histogram;
 Mat filter;
 Mat diff;
@@ -87,6 +88,15 @@ Mat getOutThreshold(){
 }
 
 /**
+ * Preleva il rettangolo della ROI.
+ * @param   : None
+ * @return  : Rect2d r; rect ritornato.
+*/
+Rect2d getRect(){
+    return rect;
+}
+
+/**
  * Setta il frame camera da stampare a video.
  * @param   : Mat img; frame Camera da settare.
  * @return  : None
@@ -139,4 +149,13 @@ void setOutThreshold(Mat img){
     pthread_mutex_lock(&sem_threshold);
     thr=img.clone();
     pthread_mutex_unlock(&sem_threshold);
+}
+
+/**
+ * Setta il rettangolo della ROI.
+ * @param   : Rect2d r; Il rettangolo da settare
+ * @return  : None
+*/
+void setRect(Rect2d r){
+    rect = r;
 }

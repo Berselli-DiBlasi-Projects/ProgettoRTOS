@@ -3,8 +3,6 @@
 using namespace std;
 using namespace Gtk;
 
-Rect2d rect;
-
 FrmMain::FrmMain(BaseObjectType* cobject,
 				 const Glib::RefPtr<Gtk::Builder>& refGlade):
 	Window(cobject), builder(refGlade){
@@ -34,7 +32,7 @@ FrmMain::FrmMain(BaseObjectType* cobject,
 
 void FrmMain::on_btnSelezionaArea_clicked(){
 	btnSelezionaArea->set_sensitive(false);
-	rect = selectRegion(lblState);
+	selectRegion(lblState);
 	btnSelezionaArea->set_sensitive(true);
 	btnConferma->set_sensitive(true);
 }
@@ -45,7 +43,7 @@ void FrmMain::on_btnConferma_clicked(){
 	btnSelezionaArea->set_sensitive(false);
 	btnAnnulla->set_sensitive(true);
 	btnAvvia->set_sensitive(true);
-	preview(rect, this);
+	preview(getRect(), this);
 }
 
 void FrmMain::on_btnAnnulla_clicked(){

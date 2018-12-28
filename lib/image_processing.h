@@ -72,7 +72,7 @@ int getR();
 int getG();
 int getB();
 void preview(Rect2d rect, FrmMain *frmMain);
-Rect2d selectRegion(Gtk::Label *lblState);
+void selectRegion(Gtk::Label *lblState);
 void setCancelSignal(bool signal);
 void setExecutionStarted(bool started);
 void setFilterChoice(int choice);
