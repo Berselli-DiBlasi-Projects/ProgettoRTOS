@@ -12,7 +12,8 @@ protected:
 	Gtk::Button *btnAnnulla;
 	Gtk::Button *btnAvvia;
 public:
-	FrmMain(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refGlade); //constructor
+	FrmMain(BaseObjectType* cobject, 
+			const Glib::RefPtr<Gtk::Builder>& refGlade);
 
 protected:
 	//signal handlers

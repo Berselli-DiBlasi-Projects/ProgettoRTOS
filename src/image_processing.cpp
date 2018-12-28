@@ -150,7 +150,7 @@ Rect2d selectRegion(Gtk::Label *lblState)
         rect = selectROI(title, img);
 
         if(rect.width > MAX_WIDTH || rect.height > MAX_HEIGHT)
-            cout << "Error: maximum ROI dimensions exceeded. (MAX_WIDTH: "<< 
+            cout << "Error: maximum ROI dimensions exceeded. (MAX_WIDTH: "<<
                 MAX_WIDTH << ", MAX_HEIGHT: " << MAX_HEIGHT << ")" << endl;
 
     } while(rect.width > MAX_WIDTH || rect.height > MAX_HEIGHT);

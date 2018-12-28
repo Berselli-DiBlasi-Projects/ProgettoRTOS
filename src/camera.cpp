@@ -19,7 +19,8 @@ void displayVideoStream(Rect2d rect)
 }
 */
 /**
- * Cattura dello schermo (deve prendere in ingresso l'area tracciata dall'utente).
+ * Cattura dello schermo (deve prendere in ingresso l'area
+ * tracciata dall'utente).
  * @param   : Rect2d rect; Definisce l'area di registrazione della camera.
  * @return  : void
 */

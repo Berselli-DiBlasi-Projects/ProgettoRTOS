@@ -20,10 +20,11 @@ Mat filterFrame(Mat img){
 				cvtColor(img,im_out,CV_RGB2GRAY);
 				break;
 
-		case 3:
-				//bianco e nero
-				cvtColor(img, im_out, CV_RGB2GRAY); //conversione in scala di grigi
-				threshold(im_out, thr, 100,255,THRESH_BINARY );//applicazione della soglia
+		case 3: //bianco e nero
+				//conversione in scala di grigi
+				cvtColor(img, im_out, CV_RGB2GRAY);
+				//applicazione della soglia
+				threshold(im_out, thr, 100,255,THRESH_BINARY );
 				im_out = thr.clone();
 				break;
 		default:

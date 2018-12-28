@@ -307,12 +307,13 @@ void* bodyThreshold(){
 int main(int argc, char** argv) {
 
     //gtk code
-	show_main_frame("../glade/frmMain.glade", "frmMain",
-                    "Image Processing", "../media/image_processing.png", argc, argv);
+	show_main_frame("../glade/frmMain.glade", "frmMain", "Image Processing",
+                    "../media/image_processing.png", argc, argv);
 
     if(getExecutionStarted())
         show_settings_frame("../glade/frmSettings.glade", "frmSettings",
-                            "Settings", "../media/image_processing.png", argc, argv);
+                            "Settings", "../media/image_processing.png", 
+                            argc, argv);
 
     return 0;
 }

@@ -16,7 +16,8 @@ protected:
 
 	Gtk::Button *btnQuit;
 public:
-	FrmSettings(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refGlade); //constructor
+	FrmSettings(BaseObjectType* cobject, 
+                const Glib::RefPtr<Gtk::Builder>& refGlade);
 
 protected:
 	//signal handlers

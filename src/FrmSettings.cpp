@@ -3,7 +3,8 @@
 using namespace std;
 using namespace Gtk;
 
-FrmSettings::FrmSettings(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refGlade) :
+FrmSettings::FrmSettings(BaseObjectType* cobject, 
+						 const Glib::RefPtr<Gtk::Builder>& refGlade):
 	Window(cobject), builder(refGlade){
 
 	builder->get_widget("rdoDefault", rdoDefault);
@@ -16,17 +17,27 @@ FrmSettings::FrmSettings(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builde
 	builder->get_widget("sclB", sclB);
 	builder->get_widget("btnQuit", btnQuit);
 
-	rdoDefault->signal_clicked().connect(sigc::mem_fun(*this, &FrmSettings::on_rdoDefault_clicked) );
-	rdoSeppia->signal_clicked().connect(sigc::mem_fun(*this, &FrmSettings::on_rdoSeppia_clicked) );
-	rdoGrayScale->signal_clicked().connect(sigc::mem_fun(*this, &FrmSettings::on_rdoGrayScale_clicked));
-	rdoBN->signal_clicked().connect(sigc::mem_fun(*this, &FrmSettings::on_rdoBN_clicked) );
+	rdoDefault->signal_clicked().connect(
+		sigc::mem_fun(*this, &FrmSettings::on_rdoDefault_clicked));
+	rdoSeppia->signal_clicked().connect(
+		sigc::mem_fun(*this, &FrmSettings::on_rdoSeppia_clicked));
+	rdoGrayScale->signal_clicked().connect(
+		sigc::mem_fun(*this, &FrmSettings::on_rdoGrayScale_clicked));
+	rdoBN->signal_clicked().connect(
+		sigc::mem_fun(*this, &FrmSettings::on_rdoBN_clicked));
 
-	sclFrameDifference->signal_value_changed().connect(sigc::mem_fun(*this, &FrmSettings::on_sclFrameDifference_value_changed));
-	sclR->signal_value_changed().connect(sigc::mem_fun(*this, &FrmSettings::on_sclR_value_changed));
-	sclG->signal_value_changed().connect(sigc::mem_fun(*this, &FrmSettings::on_sclG_value_changed));
-	sclB->signal_value_changed().connect(sigc::mem_fun(*this, &FrmSettings::on_sclB_value_changed));
+	sclFrameDifference->signal_value_changed().connect(
+		sigc::mem_fun(*this, 
+			&FrmSettings::on_sclFrameDifference_value_changed));
+	sclR->signal_value_changed().connect(
+		sigc::mem_fun(*this, &FrmSettings::on_sclR_value_changed));
+	sclG->signal_value_changed().connect(
+		sigc::mem_fun(*this, &FrmSettings::on_sclG_value_changed));
+	sclB->signal_value_changed().connect(
+		sigc::mem_fun(*this, &FrmSettings::on_sclB_value_changed));
 
-	btnQuit->signal_clicked().connect(sigc::mem_fun(*this, &FrmSettings::on_btnQuit_clicked));
+	btnQuit->signal_clicked().connect(
+		sigc::mem_fun(*this, &FrmSettings::on_btnQuit_clicked));
 }
 
 void FrmSettings::on_rdoDefault_clicked(){

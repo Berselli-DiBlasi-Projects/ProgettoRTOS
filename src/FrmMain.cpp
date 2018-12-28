@@ -5,7 +5,8 @@ using namespace Gtk;
 
 Rect2d rect;
 
-FrmMain::FrmMain(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refGlade) :
+FrmMain::FrmMain(BaseObjectType* cobject,
+				 const Glib::RefPtr<Gtk::Builder>& refGlade):
 	Window(cobject), builder(refGlade){
 
 	builder->get_widget("cmbFps", cmbFps);
@@ -19,10 +20,14 @@ FrmMain::FrmMain(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refG
 	builder->get_widget("btnAnnulla", btnAnnulla);
 	builder->get_widget("btnAvvia", btnAvvia);
 
-	btnSelezionaArea->signal_clicked().connect(sigc::mem_fun(*this, &FrmMain::on_btnSelezionaArea_clicked));
-	btnConferma->signal_clicked().connect(sigc::mem_fun(*this, &FrmMain::on_btnConferma_clicked));
-	btnAnnulla->signal_clicked().connect(sigc::mem_fun(*this, &FrmMain::on_btnAnnulla_clicked));
-	btnAvvia->signal_clicked().connect(sigc::mem_fun(*this, &FrmMain::on_btnAvvia_clicked));
+	btnSelezionaArea->signal_clicked().connect(
+		sigc::mem_fun(*this, &FrmMain::on_btnSelezionaArea_clicked));
+	btnConferma->signal_clicked().connect(
+		sigc::mem_fun(*this, &FrmMain::on_btnConferma_clicked));
+	btnAnnulla->signal_clicked().connect(
+		sigc::mem_fun(*this, &FrmMain::on_btnAnnulla_clicked));
+	btnAvvia->signal_clicked().connect(
+		sigc::mem_fun(*this, &FrmMain::on_btnAvvia_clicked));
 	
 }
 

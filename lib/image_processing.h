@@ -43,7 +43,8 @@ struct ScreenShot
         else
             XDestroyImage(img);
 
-        img = XGetImage(display, root, x, y, width, height, AllPlanes, ZPixmap);
+        img = XGetImage(display, root, x, y, width, height, 
+                        AllPlanes, ZPixmap);
 
         cvImg = Mat(height, width, CV_8UC4, img->data);
     }
