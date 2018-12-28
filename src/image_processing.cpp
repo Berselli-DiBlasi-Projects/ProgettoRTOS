@@ -8,6 +8,8 @@ using namespace cv;
 bool cancel_signal = false;
 bool execution_started = false;
 
+int frame_difference_value;
+
 struct ScreenShot
 {
     ScreenShot(int x, int y, int width, int height):
@@ -58,6 +60,16 @@ struct ScreenShot
 bool getExecutionStarted()
 {
     return execution_started;
+}
+
+/**
+ * Ritorna valore di frame_difference_value, di supporto all'esecuzione.
+ * @param   : none
+ * @return  : int
+*/
+int getFrameDifferenceValue()
+{
+    return frame_difference_value;
 }
 
 /**
@@ -182,4 +194,14 @@ void setCancelSignal(bool signal)
 void setExecutionStarted(bool started)
 {
     execution_started = started;
+}
+
+/**
+ * Setta il valore di frame_difference, di supporto all'esecuzione.
+ * @param   : int difference; Il valore da utilizzare.
+ * @return  : void
+*/
+void setFrameDifferenceValue(int difference)
+{
+    frame_difference_value = difference;
 }

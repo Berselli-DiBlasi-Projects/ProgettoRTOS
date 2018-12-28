@@ -14,11 +14,14 @@ using namespace std;
 using namespace cv;
 
 bool getExecutionStarted();
+int getFrameDifferenceValue();
 void preview(Rect2d rect, FrmMain *frmMain);
 Rect2d select_region(Gtk::Label *lblState);
 void setCancelSignal(bool signal);
-void setExefcutionStarted(bool started);
+void setExecutionStarted(bool started);
+void setFrameDifferenceValue(int difference);
 void filterFrame(Mat img);
+Mat frameDifference(Mat img);
 void histogram(Mat img);
 void displayVideoStream(Rect2d rect);
 Mat takeAPicture(Rect2d rect);

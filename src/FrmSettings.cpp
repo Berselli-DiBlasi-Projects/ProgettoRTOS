@@ -46,7 +46,7 @@ void FrmSettings::on_rdoBN_clicked(){
 }
 
 void FrmSettings::on_sclFrameDifference_value_changed(){
-	cout << sclFrameDifference->get_value() << endl;
+	setFrameDifferenceValue(sclFrameDifference->get_value());
 }
 
 void FrmSettings::on_sclR_value_changed(){

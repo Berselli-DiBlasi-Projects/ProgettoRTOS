@@ -25,15 +25,19 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkWindow" id="wndSettings">
+  <object class="GtkWindow" id="frmSettings">
     <property name="can_focus">False</property>
     <child>
       <placeholder/>
     </child>
     <child>
-      <object class="GtkFrame" id="frmSettings">
+      <object class="GtkFrame" id="frmSettingsFrame">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="margin_left">15</property>
+        <property name="margin_right">10</property>
+        <property name="margin_top">20</property>
+        <property name="margin_bottom">10</property>
         <property name="label_xalign">0</property>
         <property name="shadow_type">none</property>
         <child>
@@ -300,7 +304,6 @@
           <object class="GtkLabel" id="lblSettings">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Settings</property>
             <attributes>
               <attribute name="font-desc" value="Sans 10"/>
             </attributes>
