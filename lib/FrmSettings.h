@@ -15,6 +15,7 @@ protected:
     Gtk::Scale *sclB;
 
 	Gtk::Button *btnQuit;
+    Gtk::Button *btnRun;
 public:
 	FrmSettings(BaseObjectType* cobject, 
                 const Glib::RefPtr<Gtk::Builder>& refGlade);
@@ -32,4 +33,5 @@ protected:
     void on_sclB_value_changed();
 
     void on_btnQuit_clicked();
+    void on_btnRun_clicked();
 };

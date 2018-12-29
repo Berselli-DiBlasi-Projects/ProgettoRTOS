@@ -366,6 +366,33 @@ src/output_manager.cpp.s:
 	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/output_manager.cpp.s
 .PHONY : src/output_manager.cpp.s
 
+src/thread_manager.o: src/thread_manager.cpp.o
+
+.PHONY : src/thread_manager.o
+
+# target to build an object file
+src/thread_manager.cpp.o:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/thread_manager.cpp.o
+.PHONY : src/thread_manager.cpp.o
+
+src/thread_manager.i: src/thread_manager.cpp.i
+
+.PHONY : src/thread_manager.i
+
+# target to preprocess a source file
+src/thread_manager.cpp.i:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/thread_manager.cpp.i
+.PHONY : src/thread_manager.cpp.i
+
+src/thread_manager.s: src/thread_manager.cpp.s
+
+.PHONY : src/thread_manager.s
+
+# target to generate assembly for a file
+src/thread_manager.cpp.s:
+	$(MAKE) -f CMakeFiles/application.dir/build.make CMakeFiles/application.dir/src/thread_manager.cpp.s
+.PHONY : src/thread_manager.cpp.s
+
 src/threshold.o: src/threshold.cpp.o
 
 .PHONY : src/threshold.o
@@ -429,6 +456,9 @@ help:
 	@echo "... src/output_manager.o"
 	@echo "... src/output_manager.i"
 	@echo "... src/output_manager.s"
+	@echo "... src/thread_manager.o"
+	@echo "... src/thread_manager.i"
+	@echo "... src/thread_manager.s"
 	@echo "... src/threshold.o"
 	@echo "... src/threshold.i"
 	@echo "... src/threshold.s"

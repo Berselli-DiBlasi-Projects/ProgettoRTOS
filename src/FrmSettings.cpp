@@ -16,6 +16,7 @@ FrmSettings::FrmSettings(BaseObjectType* cobject,
 	builder->get_widget("sclG", sclG);
 	builder->get_widget("sclB", sclB);
 	builder->get_widget("btnQuit", btnQuit);
+	builder->get_widget("btnRun", btnRun);
 
 	rdoDefault->signal_clicked().connect(
 		sigc::mem_fun(*this, &FrmSettings::on_rdoDefault_clicked));
@@ -38,6 +39,8 @@ FrmSettings::FrmSettings(BaseObjectType* cobject,
 
 	btnQuit->signal_clicked().connect(
 		sigc::mem_fun(*this, &FrmSettings::on_btnQuit_clicked));
+	btnRun->signal_clicked().connect(
+		sigc::mem_fun(*this, &FrmSettings::on_btnRun_clicked));
 }
 
 void FrmSettings::on_rdoDefault_clicked(){
@@ -74,4 +77,8 @@ void FrmSettings::on_sclB_value_changed(){
 
 void FrmSettings::on_btnQuit_clicked(){
 	hide();
+}
+
+void FrmSettings::on_btnRun_clicked(){
+	runExecutionThreads(this);
 }

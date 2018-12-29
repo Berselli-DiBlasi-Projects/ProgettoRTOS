@@ -14,7 +14,7 @@ pthread_mutex_t sem_camera,
                 sem_difference;
 
 
-void outputInit(){
+void initOutput(){
     pmux_create_pi(&sem_camera);
     pmux_create_pi(&sem_filter);
     pmux_create_pi(&sem_histo);

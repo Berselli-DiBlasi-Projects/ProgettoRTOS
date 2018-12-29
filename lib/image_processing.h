@@ -7,14 +7,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include "../lib/FrmMain.h"
-#include "../lib/FrmSettings.h"
-#include "../lib/output_manager.h"
-
-extern "C" {
-#include "pmutex.h"
-#include "ptask.h"
-#include "tstat.h"
-}
+#include "../lib/thread_manager.h"
 
 #define MAX_WIDTH 800
 #define MAX_HEIGHT 600
@@ -80,9 +73,3 @@ void setFrameDifferenceValue(int difference);
 void setR(int value);
 void setG(int value);
 void setB(int value);
-
-Mat filterFrame(Mat img);
-Mat frameDifference(Mat img);
-Mat plotHistogram(Mat src);
-Mat takeAPicture(Rect2d rect);
-Mat threshold(Mat img);

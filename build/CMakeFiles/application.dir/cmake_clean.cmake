@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/application.dir/src/FrmSettings.cpp.o"
   "CMakeFiles/application.dir/src/histogram.cpp.o"
   "CMakeFiles/application.dir/src/output_manager.cpp.o"
+  "CMakeFiles/application.dir/src/thread_manager.cpp.o"
   "CMakeFiles/application.dir/src/threshold.cpp.o"
   "application.pdb"
   "application"

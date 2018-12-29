@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/werther/Desktop/ProgettoRTOS/src/image_processing.cpp" "/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/application.dir/src/image_processing.cpp.o"
   "/home/werther/Desktop/ProgettoRTOS/src/main.cpp" "/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/application.dir/src/main.cpp.o"
   "/home/werther/Desktop/ProgettoRTOS/src/output_manager.cpp" "/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/application.dir/src/output_manager.cpp.o"
+  "/home/werther/Desktop/ProgettoRTOS/src/thread_manager.cpp" "/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/application.dir/src/thread_manager.cpp.o"
   "/home/werther/Desktop/ProgettoRTOS/src/threshold.cpp" "/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/application.dir/src/threshold.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

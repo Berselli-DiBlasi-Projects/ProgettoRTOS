@@ -1,10 +1,15 @@
 #include "opencv2/imgproc.hpp"
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgcodecs.hpp"
+extern "C" {
+#include "pmutex.h"
+#include "ptask.h"
+#include "tstat.h"
+}
 
 using namespace cv;
 
-void outputInit();
+void initOutput();
 Mat getOutCamera();
 Mat getOutDifference();
 Mat getOutFilter();

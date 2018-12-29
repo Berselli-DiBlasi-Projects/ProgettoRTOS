@@ -23,7 +23,7 @@ message("Include dir ${ptask_INCLUDE_DIRS}")
 add_executable(application src/main.cpp src/image_processing.cpp src/camera.cpp
 	       src/filter.cpp src/frame_difference.cpp src/FrmMain.cpp
 	       src/FrmSettings.cpp src/histogram.cpp src/output_manager.cpp
-               src/threshold.cpp)
+               src/thread_manager.cpp src/threshold.cpp)
 
 include_directories ("${ptask_INCLUDE_DIRS}")
 include_directories(${OpenCV_INCLUDE_DIRS} )

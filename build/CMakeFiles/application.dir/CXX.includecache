@@ -6,37 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/werther/Desktop/ProgettoRTOS/lib/FrmMain.h
-gtkmm.h
--
-
 /home/werther/Desktop/ProgettoRTOS/lib/FrmSettings.h
 gtkmm.h
 -
 
-/home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
+/home/werther/Desktop/ProgettoRTOS/lib/output_manager.h
 opencv2/imgproc.hpp
 /home/werther/Desktop/ProgettoRTOS/lib/opencv2/imgproc.hpp
 opencv2/highgui.hpp
 /home/werther/Desktop/ProgettoRTOS/lib/opencv2/highgui.hpp
 opencv2/imgcodecs.hpp
 /home/werther/Desktop/ProgettoRTOS/lib/opencv2/imgcodecs.hpp
-string
--
-iostream
--
-gtkmm.h
--
-X11/Xlib.h
--
-X11/Xutil.h
--
-../lib/FrmMain.h
-/home/werther/Desktop/ProgettoRTOS/lib/FrmMain.h
-../lib/FrmSettings.h
-/home/werther/Desktop/ProgettoRTOS/lib/FrmSettings.h
-../lib/output_manager.h
-/home/werther/Desktop/ProgettoRTOS/lib/output_manager.h
 pmutex.h
 /home/werther/Desktop/ProgettoRTOS/lib/pmutex.h
 ptask.h
@@ -44,17 +24,33 @@ ptask.h
 tstat.h
 /home/werther/Desktop/ProgettoRTOS/lib/tstat.h
 
-/home/werther/Desktop/ProgettoRTOS/lib/output_manager.h
+/home/werther/Desktop/ProgettoRTOS/lib/thread_manager.h
+string
+-
+iostream
+-
+stdio.h
+-
 opencv2/imgproc.hpp
 /home/werther/Desktop/ProgettoRTOS/lib/opencv2/imgproc.hpp
 opencv2/highgui.hpp
 /home/werther/Desktop/ProgettoRTOS/lib/opencv2/highgui.hpp
 opencv2/imgcodecs.hpp
 /home/werther/Desktop/ProgettoRTOS/lib/opencv2/imgcodecs.hpp
+pmutex.h
+/home/werther/Desktop/ProgettoRTOS/lib/pmutex.h
+ptask.h
+/home/werther/Desktop/ProgettoRTOS/lib/ptask.h
+tstat.h
+/home/werther/Desktop/ProgettoRTOS/lib/tstat.h
+../lib/output_manager.h
+/home/werther/Desktop/ProgettoRTOS/lib/output_manager.h
+../lib/FrmSettings.h
+/home/werther/Desktop/ProgettoRTOS/lib/FrmSettings.h
 
-/home/werther/Desktop/ProgettoRTOS/src/FrmMain.cpp
-../lib/image_processing.h
-/home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
+/home/werther/Desktop/ProgettoRTOS/src/thread_manager.cpp
+../lib/thread_manager.h
+/home/werther/Desktop/ProgettoRTOS/lib/thread_manager.h
 
 /home/werther/Desktop/ptask-master/build/src/include/dle_timer.h
 ptask.h

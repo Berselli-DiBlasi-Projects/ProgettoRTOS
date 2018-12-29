@@ -27,8 +27,6 @@ void displayVideoStream(Rect2d rect)
 Mat takeAPicture(Rect2d rect){
     ScreenShot screen(rect.x, rect.y, rect.width, rect.height);
     Mat imgCamera;
-	string titleCamera = "Camera";
     screen(imgCamera);
 	return imgCamera;
 }
-
