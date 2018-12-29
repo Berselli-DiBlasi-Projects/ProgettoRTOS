@@ -14,7 +14,9 @@ extern "C" {
 
 Mat filterFrame(Mat img);
 Mat frameDifference(Mat img);
+int getFpsValue();
 Mat plotHistogram(Mat src);
+void setFpsValue(int fps);
 Mat takeAPicture(Rect2d rect);
 Mat threshold(Mat img);
 void runExecutionThreads(FrmSettings *frmSettings);

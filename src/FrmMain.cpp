@@ -61,5 +61,6 @@ void FrmMain::on_btnAvvia_clicked(){
 	setCancelSignal(true);
 	//Fai partire l'elaborazione
 	setExecutionStarted(true);
+	setFpsValue(stoi(cmbFps->get_active_text()));
 	hide();
 }

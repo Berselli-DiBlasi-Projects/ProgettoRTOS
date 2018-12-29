@@ -10,6 +10,8 @@
 using namespace std;
 using namespace cv;
 
+int fps_value;
+
 struct gestore_t{
     //mutua esclusione
     pthread_mutex_t mutex;
@@ -56,6 +58,26 @@ void initGestore(struct gestore_t *g) {
     g->state=STATE_IDLE;
 
     ptask_init(SCHED_RR, GLOBAL, NO_PROTOCOL);
+}
+
+/**
+ * Ritorna il valore di fps scelti dall'utente.
+ * @param   : none
+ * @return  : int
+*/
+int getFpsValue()
+{
+    return fps_value;
+}
+
+/**
+ * Setta il valore di fps scelto dall'utente.
+ * @param   : int; choice
+ * @return  : void
+*/
+void setFpsValue(int fps)
+{
+    fps_value = fps;
 }
 
 void startCamera(struct gestore_t *g){
@@ -207,7 +229,6 @@ void bodyHistogram(){
         startHistogram(&gestore);
         setOutPlotHistogram(plotHistogram(getOutCamera()));
         endHistogram(&gestore);
-        //ptask_wait_for_period();
     }
 }
 
@@ -217,7 +238,6 @@ void bodyDifference(){
         startDifference(&gestore);
         setOutDifference(frameDifference(getOutCamera()));
         endDifference(&gestore);
-        //ptask_wait_for_period();
     }
 }
 
@@ -227,7 +247,6 @@ void bodyFilter(){
         startFilter(&gestore);
         setOutFilter(filterFrame(getOutCamera()));
         endFilter(&gestore);
-        //ptask_wait_for_period();
     }
 }
 
@@ -237,7 +256,6 @@ void bodyThreshold(){
         startThreshold(&gestore);
         setOutThreshold(threshold(getOutCamera()));
         endThreshold(&gestore);
-        //ptask_wait_for_period();
     }
 }
 
@@ -259,7 +277,6 @@ void runExecutionThreads(FrmSettings *frmSettings)
         params[i].priority = PRIO;
         params[i].measure_flag = 1;
         params[i].act_flag = NOW;
-        /* a round robin assignment */
         params[i].processor = last_proc++;
         if (last_proc >= max_proc)
             last_proc = 0;
@@ -268,32 +285,52 @@ void runExecutionThreads(FrmSettings *frmSettings)
     int ret;
 
     ret = ptask_create_param(bodyFilter, &params[0]);
-    if (ret != -1) {
-        printf("Task %d created and activated\n", ret);
-    } else {
+    if (ret == -1) {
         printf("Error in creating task!\n");
     }
     ret = ptask_create_param(bodyDifference, &params[0]);
-    if (ret != -1) {
-        printf("Task %d created and activated\n", ret);
-    } else {
+    if (ret == -1) {
         printf("Error in creating task!\n");
     }
     ret = ptask_create_param(bodyThreshold, &params[0]);
-    if (ret != -1) {
-        printf("Task %d created and activated\n", ret);
-    } else {
+    if (ret == -1) {
         printf("Error in creating task!\n");
     }
     ret = ptask_create_param(bodyHistogram, &params[0]);
-    if (ret != -1) {
-        printf("Task %d created and activated\n", ret);
-    } else {
+    if (ret == -1) {
         printf("Error in creating task!\n");
     }
 
+    time_t start = time(0);
+    time_t time_taken = 0;
+    int count = 0;
+    //Fa in modo che gli fps si avvicinino a quelli scelti dall'utente.
+    int bias = 0;
+    int base_wait;
+    int wait_time;
+
+    if(fps_value == 15)
+        base_wait = 65;
+    if(fps_value == 30)
+        base_wait = 31;
+    if(fps_value == 60)
+        base_wait = 15;
     while(true)
     {
+        time_t end = time(0);
+
+        if(time_taken != end - start) {
+            cout << "FPS: " << count << endl;
+            if(count < fps_value)
+                bias--;
+            else
+                bias++;
+            count = 0;
+        }
+        else
+            count++;
+
+        time_taken = end - start;
 
         bodyCamera();
         
@@ -309,6 +346,11 @@ void runExecutionThreads(FrmSettings *frmSettings)
             break;
         }
 
-        waitKey(17);
+        if(base_wait + bias > 0)
+            wait_time = base_wait + bias;
+        else
+            wait_time = base_wait;
+
+        waitKey(wait_time);
     }
 }
