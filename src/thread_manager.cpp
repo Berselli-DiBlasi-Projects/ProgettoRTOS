@@ -307,14 +307,21 @@ void runExecutionThreads(FrmSettings *frmSettings)
     //Fa in modo che gli fps si avvicinino a quelli scelti dall'utente.
     int bias = 0;
     int base_wait;
-    int wait_time;
 
     if(fps_value == 15)
         base_wait = 65;
     if(fps_value == 30)
         base_wait = 31;
+    if(fps_value == 40)
+        base_wait = 23;
+    if(fps_value == 50)
+        base_wait = 18;
+    if(fps_value == 55)
+        base_wait = 16;
     if(fps_value == 60)
         base_wait = 15;
+
+    int wait_time = base_wait;
     while(true)
     {
         time_t end = time(0);
@@ -325,6 +332,10 @@ void runExecutionThreads(FrmSettings *frmSettings)
                 bias--;
             else
                 bias++;
+            if(base_wait + bias > 5)
+                wait_time = base_wait + bias;
+            else
+                wait_time = base_wait;
             count = 0;
         }
         else
@@ -345,11 +356,6 @@ void runExecutionThreads(FrmSettings *frmSettings)
             destroyAllWindows();
             break;
         }
-
-        if(base_wait + bias > 0)
-            wait_time = base_wait + bias;
-        else
-            wait_time = base_wait;
 
         waitKey(wait_time);
     }

@@ -43,7 +43,7 @@ void FrmMain::on_btnConferma_clicked(){
 	btnSelezionaArea->set_sensitive(false);
 	btnAnnulla->set_sensitive(true);
 	btnAvvia->set_sensitive(true);
-	preview(getRect(), this);
+	preview(this);
 }
 
 void FrmMain::on_btnAnnulla_clicked(){

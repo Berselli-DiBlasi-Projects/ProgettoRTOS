@@ -131,6 +131,9 @@
                     <items>
                       <item translatable="yes">15</item>
                       <item translatable="yes">30</item>
+                      <item translatable="yes">40</item>
+                      <item translatable="yes">50</item>
+                      <item translatable="yes">55</item>
                       <item translatable="yes">60</item>
                     </items>
                   </object>

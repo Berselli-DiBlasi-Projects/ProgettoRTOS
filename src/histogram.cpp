@@ -29,7 +29,7 @@ Mat plotHistogram(Mat src)
              &histRange, uniform, accumulate);
    
     //tracciamento delle curve
-    int hist_w = 512, hist_h = 400;
+    int hist_w = getRect().width, hist_h = getRect().height;
     int bin_w = cvRound( (double) hist_w/histSize );
 
     Mat histImage( hist_h, hist_w, CV_8UC3, Scalar( 0,0,0) );

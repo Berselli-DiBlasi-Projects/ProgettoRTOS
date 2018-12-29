@@ -63,7 +63,7 @@ int getFilterChoice();
 int getFrameDifferenceValue();
 int getThresholdType();
 int getThresholdValue();
-void preview(Rect2d rect, FrmMain *frmMain);
+void preview(FrmMain *frmMain);
 void selectRegion(Gtk::Label *lblState);
 void setCancelSignal(bool signal);
 void setExecutionStarted(bool started);

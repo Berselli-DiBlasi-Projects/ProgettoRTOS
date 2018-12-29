@@ -62,20 +62,25 @@ int getThresholdValue()
 
 /**
  * Crea le finestre di preview dell'esecuzione.
- * @param   : Rect2d rect; Definisce l'area di registrazione della camera.
+ * @param   : frmMain; riferimento al frmMain chiamante.
  * @return  : void
 */
-void preview(Rect2d rect, FrmMain *frmMain)
+void preview(FrmMain *frmMain)
 {
+    Rect2d rect = getRect();
     ScreenShot screen(rect.x, rect.y, rect.width, rect.height);
     Mat imgCamera;
 	string titleCamera = "Camera";
     screen(imgCamera);
 	setCancelSignal(false);
 
-    Mat placeholder_image;
+    Mat placeholder_image, placeholder_image_resized;
     placeholder_image = imread("../media/placeholder.png",
                                 IMREAD_COLOR);
+
+    resize(placeholder_image, placeholder_image_resized,
+           rect.size(), 0, 0, cv::INTER_CUBIC);
+
     string placeholder_titles[4];
     placeholder_titles[0] = "Histogram";
     placeholder_titles[1] = "Filter";
@@ -85,7 +90,7 @@ void preview(Rect2d rect, FrmMain *frmMain)
     time_t start = time(0);
     time_t time_taken = 0;
     int count = 0;
-
+    
     while(true)
 	{
         time_t end = time(0);
@@ -105,14 +110,14 @@ void preview(Rect2d rect, FrmMain *frmMain)
         //Mostra le finestre dei placeholders
         for(int i = 0; i < 
             sizeof(placeholder_titles) / sizeof(placeholder_titles[0]); i++)
-            imshow(placeholder_titles[i], placeholder_image);
+            imshow(placeholder_titles[i], placeholder_image_resized);
         
         if(!frmMain->is_visible() || cancel_signal)
         {
             destroyAllWindows();
             break;
         }
-        waitKey(15); //17 ms -> limit to 60 FPS.
+        waitKey(16); //16 ms -> limit to 60 FPS.
     }
 }
 
