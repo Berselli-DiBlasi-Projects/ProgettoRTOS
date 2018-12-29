@@ -6,9 +6,35 @@
 
 #IncludeRegexTransform: 
 
+/home/werther/Desktop/ProgettoRTOS/lib/FrmMain.h
+gtkmm.h
+-
+
 /home/werther/Desktop/ProgettoRTOS/lib/FrmSettings.h
 gtkmm.h
 -
+
+/home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
+opencv2/imgproc.hpp
+/home/werther/Desktop/ProgettoRTOS/lib/opencv2/imgproc.hpp
+opencv2/highgui.hpp
+/home/werther/Desktop/ProgettoRTOS/lib/opencv2/highgui.hpp
+opencv2/imgcodecs.hpp
+/home/werther/Desktop/ProgettoRTOS/lib/opencv2/imgcodecs.hpp
+string
+-
+iostream
+-
+gtkmm.h
+-
+X11/Xlib.h
+-
+X11/Xutil.h
+-
+../lib/FrmMain.h
+/home/werther/Desktop/ProgettoRTOS/lib/FrmMain.h
+../lib/thread_manager.h
+/home/werther/Desktop/ProgettoRTOS/lib/thread_manager.h
 
 /home/werther/Desktop/ProgettoRTOS/lib/output_manager.h
 opencv2/imgproc.hpp
@@ -48,9 +74,9 @@ tstat.h
 ../lib/FrmSettings.h
 /home/werther/Desktop/ProgettoRTOS/lib/FrmSettings.h
 
-/home/werther/Desktop/ProgettoRTOS/src/thread_manager.cpp
-../lib/thread_manager.h
-/home/werther/Desktop/ProgettoRTOS/lib/thread_manager.h
+/home/werther/Desktop/ProgettoRTOS/src/threshold.cpp
+../lib/image_processing.h
+/home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
 
 /home/werther/Desktop/ptask-master/build/src/include/dle_timer.h
 ptask.h

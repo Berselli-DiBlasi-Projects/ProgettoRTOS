@@ -29,12 +29,18 @@ struct gestore_t{
 
 void initGestore(struct gestore_t *g) {
 
-    pmux_create_pi(&g->mutex);
+    pthread_mutex_init(&g->mutex, NULL);
+    pthread_mutex_init(&g->sem_camera, NULL);
+    pthread_mutex_init(&g->sem_filter, NULL);
+    pthread_mutex_init(&g->sem_histo, NULL);
+    pthread_mutex_init(&g->sem_threshold, NULL);
+    pthread_mutex_init(&g->sem_difference, NULL);
+    /*pmux_create_pi(&g->mutex);
     pmux_create_pi(&g->sem_camera);
     pmux_create_pi(&g->sem_filter);
     pmux_create_pi(&g->sem_histo);
     pmux_create_pi(&g->sem_threshold);
-    pmux_create_pi(&g->sem_difference);
+    pmux_create_pi(&g->sem_difference);*/
 
     g->ncam = 0;
 
@@ -62,16 +68,13 @@ void startCamera(struct gestore_t *g){
     }
     pthread_mutex_unlock(&g->mutex);
 
-    cout << "camera blocks" << endl;
     pthread_mutex_lock(&g->sem_camera);
-    cout << "START CAMERA" << endl;
     //può effettuare l'analisi
     //g->captured_frame = takeAPicture(g->dim_frame);
 }
 
 void endCamera(struct gestore_t *g){
     pthread_mutex_lock(&g->mutex);
-    cout << "END CAMERA" << endl;
 
     g->ncam--;
     g->state = STATE_ANALISYS;
@@ -88,7 +91,6 @@ void endCamera(struct gestore_t *g){
     */
 
     pthread_mutex_unlock(&g->mutex);
-    cout << "CAMERA USCITA" << endl;
 }
 
 void startHistogram(struct gestore_t *g){
@@ -99,9 +101,7 @@ void startHistogram(struct gestore_t *g){
     continuare l'analisi
     successivamente blocca il mutex ed aggiorna il contatore
     */
-    cout << "histogram blocks" << endl;
     pthread_mutex_lock(&g->sem_histo);
-    cout << "START HISTOGRAM" << endl;
     
     //RICHIAMO FUNZIONE HISTOGRAMMA
 }
@@ -109,7 +109,6 @@ void startHistogram(struct gestore_t *g){
 void endHistogram(struct gestore_t *g){
     
     pthread_mutex_lock(&g->mutex);
-    cout << "END HISTOGRAM" << endl;
 
     g->nhist--;
     if(!g->ndiff && !g->nthres && !g->nfilter){
@@ -128,9 +127,7 @@ void startDifference(struct gestore_t *g){
     continuare l'analisi
     successivamente blocca il mutex ed aggiorna il contatore
     */
-    cout << "difference blocks" << endl;
     pthread_mutex_lock(&g->sem_difference);
-    cout << "START DIFFERENCE" << endl;
     
     //RICHIAMO FUNZIONE DIFFERENCE
 }
@@ -138,7 +135,6 @@ void startDifference(struct gestore_t *g){
 void endDifference(struct gestore_t *g){
     
     pthread_mutex_lock(&g->mutex);
-    cout << "END DIFFERENCE" << endl;
     g->ndiff--;
     if(!g->nhist && !g->nthres && !g->nfilter){
         //non c'è nessun thread di analisi attivo   
@@ -156,9 +152,7 @@ void startThreshold(struct gestore_t *g){
     continuare l'analisi
     successivamente blocca il mutex ed aggiorna il contatore
     */
-    cout << "threshold blocks" << endl;
     pthread_mutex_lock(&g->sem_threshold);
-    cout << "START THRESHOLD" << endl;
     
     //RICHIAMO FUNZIONE THRESHOLD
 }
@@ -166,7 +160,6 @@ void startThreshold(struct gestore_t *g){
 void endThreshold(struct gestore_t *g){
     
     pthread_mutex_lock(&g->mutex);
-    cout << "END THRESHOLD" << endl;
     g->nthres--;
     if(!g->nhist && !g->ndiff && !g->nfilter){
         //non c'è nessun thread di analisi attivo   
@@ -184,9 +177,7 @@ void startFilter(struct gestore_t *g){
     continuare l'analisi
     successivamente blocca il mutex ed aggiorna il contatore
     */
-    cout << "filter blocks" << endl;
     pthread_mutex_lock(&g->sem_filter);
-    cout << "START FILTER" << endl;
     
     //RICHIAMO FUNZIONE FILTER
 }
@@ -194,7 +185,6 @@ void startFilter(struct gestore_t *g){
 void endFilter(struct gestore_t *g){
     
     pthread_mutex_lock(&g->mutex);
-    cout << "END FILTER" << endl;
 
     g->nfilter--;
     if(!g->nhist && !g->nthres && !g->ndiff){
@@ -308,6 +298,10 @@ void runExecutionThreads(FrmSettings *frmSettings)
         bodyCamera();
         
         imshow("Camera", getOutCamera());
+        imshow("Filter", getOutFilter());
+        imshow("Frame difference", getOutDifference());
+        imshow("Threshold", getOutThreshold());
+        imshow("Histogram", getOutPlotHistogram());
 
         if(!frmSettings->is_visible())
         {
