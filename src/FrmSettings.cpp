@@ -12,9 +12,9 @@ FrmSettings::FrmSettings(BaseObjectType* cobject,
 	builder->get_widget("rdoGrayScale", rdoGrayScale);
 	builder->get_widget("rdoBN", rdoBN);
 	builder->get_widget("sclFrameDifference", sclFrameDifference);
-	builder->get_widget("sclR", sclR);
-	builder->get_widget("sclG", sclG);
-	builder->get_widget("sclB", sclB);
+	builder->get_widget("sclThresholdType", sclThresholdType);
+	builder->get_widget("sclThresholdValue", sclThresholdValue);
+	builder->get_widget("lblThresholdType", lblThresholdType);
 	builder->get_widget("btnQuit", btnQuit);
 	builder->get_widget("btnRun", btnRun);
 
@@ -30,12 +30,10 @@ FrmSettings::FrmSettings(BaseObjectType* cobject,
 	sclFrameDifference->signal_value_changed().connect(
 		sigc::mem_fun(*this, 
 			&FrmSettings::on_sclFrameDifference_value_changed));
-	sclR->signal_value_changed().connect(
-		sigc::mem_fun(*this, &FrmSettings::on_sclR_value_changed));
-	sclG->signal_value_changed().connect(
-		sigc::mem_fun(*this, &FrmSettings::on_sclG_value_changed));
-	sclB->signal_value_changed().connect(
-		sigc::mem_fun(*this, &FrmSettings::on_sclB_value_changed));
+	sclThresholdType->signal_value_changed().connect(
+		sigc::mem_fun(*this, &FrmSettings::on_sclThresholdType_value_changed));
+	sclThresholdValue->signal_value_changed().connect(
+		sigc::mem_fun(*this, &FrmSettings::on_sclThresholdValue_value_changed));
 
 	btnQuit->signal_clicked().connect(
 		sigc::mem_fun(*this, &FrmSettings::on_btnQuit_clicked));
@@ -63,16 +61,24 @@ void FrmSettings::on_sclFrameDifference_value_changed(){
 	setFrameDifferenceValue(sclFrameDifference->get_value());
 }
 
-void FrmSettings::on_sclR_value_changed(){
-	setR(sclR->get_value());
+void FrmSettings::on_sclThresholdType_value_changed(){
+	int threshold_type = sclThresholdType->get_value();
+	setThresholdType(threshold_type);
+
+	if(threshold_type == 1)
+		lblThresholdType->set_text("Binary");
+	if(threshold_type == 2)
+		lblThresholdType->set_text("Binary Inverted");
+	if(threshold_type == 3)
+		lblThresholdType->set_text("Threshold truncated");
+	if(threshold_type == 4)
+		lblThresholdType->set_text("Threshold to zero");
+	if(threshold_type == 5)
+		lblThresholdType->set_text("Threshold to zero inverted");
 }
 
-void FrmSettings::on_sclG_value_changed(){
-	setG(sclG->get_value());
-}
-
-void FrmSettings::on_sclB_value_changed(){
-	setB(sclB->get_value());
+void FrmSettings::on_sclThresholdValue_value_changed(){
+	setThresholdValue(sclThresholdValue->get_value());
 }
 
 void FrmSettings::on_btnQuit_clicked(){
@@ -80,5 +86,6 @@ void FrmSettings::on_btnQuit_clicked(){
 }
 
 void FrmSettings::on_btnRun_clicked(){
+	btnRun->set_sensitive(false);
 	runExecutionThreads(this);
 }

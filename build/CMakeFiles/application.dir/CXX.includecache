@@ -74,7 +74,7 @@ tstat.h
 ../lib/FrmSettings.h
 /home/werther/Desktop/ProgettoRTOS/lib/FrmSettings.h
 
-/home/werther/Desktop/ProgettoRTOS/src/threshold.cpp
+/home/werther/Desktop/ProgettoRTOS/src/FrmSettings.cpp
 ../lib/image_processing.h
 /home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
 

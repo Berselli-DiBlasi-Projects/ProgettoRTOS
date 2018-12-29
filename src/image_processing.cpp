@@ -7,9 +7,8 @@ bool cancel_signal = false;
 bool execution_started = false;
 int filter_choice = 0;
 int frame_difference_value;
-int r_value;
-int g_value;
-int b_value;
+int threshold_type;
+int threshold_value;
 
 /**
  * Ritorna il bool execution_started, di supporto all'esecuzione.
@@ -42,33 +41,23 @@ int getFrameDifferenceValue()
 }
 
 /**
- * Ritorna valore di R per il threshold.
+ * Ritorna valore di threshold type per il threshold.
  * @param   : none
  * @return  : int
 */
-int getR()
+int getThresholdType()
 {
-    return r_value;
+    return threshold_type;
 }
 
 /**
- * Ritorna valore di G per il threshold.
+ * Ritorna valore di threshold per il thread di threshold.
  * @param   : none
  * @return  : int
 */
-int getG()
+int getThresholdValue()
 {
-    return g_value;
-}
-
-/**
- * Ritorna valore di B per il threshold.
- * @param   : none
- * @return  : int
-*/
-int getB()
-{
-    return b_value;
+    return threshold_value;
 }
 
 /**
@@ -199,31 +188,21 @@ void setFrameDifferenceValue(int difference)
 }
 
 /**
- * Setta il valore di R, di supporto all'esecuzione.
+ * Setta il valore di threshold_type, di supporto all'esecuzione.
  * @param   : int value; Il valore da utilizzare.
  * @return  : void
 */
-void setR(int value)
+void setThresholdType(int value)
 {
-    r_value = value;
+    threshold_type = value;
 }
 
 /**
- * Setta il valore di G, di supporto all'esecuzione.
+ * Setta il valore di threshold, di supporto all'esecuzione.
  * @param   : int value; Il valore da utilizzare.
  * @return  : void
 */
-void setG(int value)
+void setThresholdValue(int value)
 {
-    g_value = value;
-}
-
-/**
- * Setta il valore di B, di supporto all'esecuzione.
- * @param   : int value; Il valore da utilizzare.
- * @return  : void
-*/
-void setB(int value)
-{
-    b_value = value;
+    threshold_value = value;
 }

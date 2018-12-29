@@ -7,13 +7,11 @@
 */
 Mat threshold(Mat img){
     Mat img_out, img_gray;
-    int r = getR();
-    int g = getG();
-    int b = getB();
-    cout << r << endl;
-    inRange(img, Scalar(r, g, b), Scalar(255, 255, 255), img_out);
-    cvtColor(img, img_gray, CV_BGR2GRAY);
-    threshold(img_gray, img_out, 0, 255, 3);
+    int threshold_type = getThresholdType();
+    int threshold_value = getThresholdValue();
+
+    //cvtColor(img, img_gray, CV_BGR2GRAY);
+    threshold(img, img_out, threshold_value, 255, threshold_type);
     
     return img_out;
 }
