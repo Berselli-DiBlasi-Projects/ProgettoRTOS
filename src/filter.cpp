@@ -17,12 +17,12 @@ Mat filterFrame(Mat img){
 				break;
 
 		case 2:	//scala di grigi
-				cvtColor(img,im_out,CV_RGB2GRAY);
+				cvtColor(img,im_out,cv::COLOR_RGB2GRAY);
 				break;
 
 		case 3: //bianco e nero
 				//conversione in scala di grigi
-				cvtColor(img, im_out, CV_RGB2GRAY);
+				cvtColor(img, im_out, cv::COLOR_RGB2GRAY);
 				//applicazione della soglia
 				threshold(im_out, thr, 100,255,THRESH_BINARY );
 				im_out = thr.clone();
