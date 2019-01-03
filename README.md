@@ -4,4 +4,5 @@ Image processing. Simulate a fixed camera looking at a given portion of an anima
 Dipendenze:
 
 sudo apt-get install libsdl2-dev
+
 sudo apt-get install glade
