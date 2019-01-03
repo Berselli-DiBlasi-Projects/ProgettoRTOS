@@ -10,6 +10,8 @@ protected:
 
     Gtk::Scale *sclFrameDifference;
 
+    Gtk::Scale *sclFrameScaling;
+
     Gtk::Scale *sclThresholdType;
     Gtk::Scale *sclThresholdValue;
     Gtk::Label *lblThresholdType;
@@ -28,6 +30,9 @@ protected:
     void on_rdoBN_clicked();
 
     void on_sclFrameDifference_value_changed();
+
+    void on_sclFrameScaling_value_changed();
+
     void on_sclThresholdType_value_changed();
     void on_sclThresholdValue_value_changed();
 

@@ -322,8 +322,15 @@ void runExecutionThreads(FrmSettings *frmSettings)
         base_wait = 15;
 
     int wait_time = base_wait;
+
+    
+
     while(true)
     {
+
+       
+
+
         time_t end = time(0);
 
         if(time_taken != end - start) {
@@ -345,11 +352,14 @@ void runExecutionThreads(FrmSettings *frmSettings)
 
         bodyCamera();
         
+        
         imshow("Camera", getOutCamera());
         imshow("Filter", getOutFilter());
         imshow("Frame difference", getOutDifference());
         imshow("Threshold", getOutThreshold());
         imshow("Histogram", getOutPlotHistogram());
+        
+        //cv::resize(img, im_out, cv::Size(), reduction , reduction);
 
         if(!frmSettings->is_visible())
         {

@@ -2,8 +2,12 @@
 
 
 Mat filterFrame(Mat img){
-	Mat im_out = img, thr;
+	Mat im_out = img.clone(), thr;
 	//kernel per il filtro seppia
+
+	float reduction = (float ) getFrameScalingValue();
+	reduction = reduction / 100;
+
 	cv::Mat kern = (cv::Mat_<float>(4,4) <<  0.272, 0.534, 0.131, 0,
                                              0.349, 0.686, 0.168, 0,
                                              0.393, 0.769, 0.189, 0,
@@ -31,8 +35,16 @@ Mat filterFrame(Mat img){
 			break;
 
 	}
+	/*cv::Size s = im_out.size();
+	s.height = s.height * reduction;
+	s.width = s.width * reduction;
+	Mat dst;
+	//dst= cvCreateImage(cvSize(150,150),image.depth,image.channels())
 
-	return im_out;
+	cv::resize(im_out, dst, s);
+	//printf("\nscaling %f ", reduction);
+	*/
+	return imageScale(im_out);
 
 	
 }

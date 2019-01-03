@@ -12,6 +12,9 @@ FrmSettings::FrmSettings(BaseObjectType* cobject,
 	builder->get_widget("rdoGrayScale", rdoGrayScale);
 	builder->get_widget("rdoBN", rdoBN);
 	builder->get_widget("sclFrameDifference", sclFrameDifference);
+	//---
+	builder->get_widget("sclFrameScaling", sclFrameScaling);
+	//---
 	builder->get_widget("sclThresholdType", sclThresholdType);
 	builder->get_widget("sclThresholdValue", sclThresholdValue);
 	builder->get_widget("lblThresholdType", lblThresholdType);
@@ -30,6 +33,13 @@ FrmSettings::FrmSettings(BaseObjectType* cobject,
 	sclFrameDifference->signal_value_changed().connect(
 		sigc::mem_fun(*this, 
 			&FrmSettings::on_sclFrameDifference_value_changed));
+
+	//---
+	sclFrameScaling->signal_value_changed().connect(
+		sigc::mem_fun(*this, 
+			&FrmSettings::on_sclFrameScaling_value_changed));
+	//---
+
 	sclThresholdType->signal_value_changed().connect(
 		sigc::mem_fun(*this, &FrmSettings::on_sclThresholdType_value_changed));
 	sclThresholdValue->signal_value_changed().connect(
@@ -60,6 +70,12 @@ void FrmSettings::on_rdoBN_clicked(){
 void FrmSettings::on_sclFrameDifference_value_changed(){
 	setFrameDifferenceValue(sclFrameDifference->get_value());
 }
+
+//---
+void FrmSettings::on_sclFrameScaling_value_changed(){
+	setFrameScalingValue(sclFrameScaling->get_value());
+}
+//---
 
 void FrmSettings::on_sclThresholdType_value_changed(){
 	int threshold_type = sclThresholdType->get_value();

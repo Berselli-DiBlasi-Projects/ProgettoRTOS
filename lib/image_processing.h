@@ -71,3 +71,6 @@ void setFilterChoice(int choice);
 void setFrameDifferenceValue(int difference);
 void setThresholdType(int value);
 void setThresholdValue(int value);
+void setFrameScalingValue(int difference);
+int getFrameScalingValue();
+Mat imageScale(Mat src);

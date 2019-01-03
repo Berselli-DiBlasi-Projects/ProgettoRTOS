@@ -7,6 +7,7 @@ bool cancel_signal = false;
 bool execution_started = false;
 int filter_choice = 0;
 int frame_difference_value;
+int frame_scaling_value;
 int threshold_type;
 int threshold_value;
 
@@ -39,6 +40,18 @@ int getFrameDifferenceValue()
 {
     return frame_difference_value;
 }
+
+
+/**
+ * Ritorna valore di frame_scaling_value, di supporto all'esecuzione.
+ * @param   : none
+ * @return  : int
+*/
+int getFrameScalingValue()
+{
+    return frame_scaling_value;
+}
+
 
 /**
  * Ritorna valore di threshold type per il threshold.
@@ -192,6 +205,20 @@ void setFrameDifferenceValue(int difference)
     frame_difference_value = difference;
 }
 
+
+
+/**
+ * Setta il valore di frame_scaling, di supporto all'esecuzione.
+ * @param   : int scaling; Il valore da utilizzare.
+ * @return  : void
+*/
+void setFrameScalingValue(int difference)
+{
+    frame_scaling_value = difference;
+}
+
+
+
 /**
  * Setta il valore di threshold_type, di supporto all'esecuzione.
  * @param   : int value; Il valore da utilizzare.
@@ -210,4 +237,26 @@ void setThresholdType(int value)
 void setThresholdValue(int value)
 {
     threshold_value = value;
+}
+
+
+/**
+ * Riduce le dimensioni dell'immagine prendendo come 
+ * come parametro di riduzione quello impostato dall'utente
+ * in frame settings
+ * @param : matrice da ridimensionare
+ * @return : resized Mat 
+*/
+Mat imageScale(Mat src){
+    float reduction = (float ) getFrameScalingValue();
+	reduction = reduction / 100;
+    cv::Size s = src.size();
+	s.height = s.height * reduction;
+	s.width = s.width * reduction;
+	Mat dst;
+
+	cv::resize(src, dst, s);
+	
+    return dst;
+
 }

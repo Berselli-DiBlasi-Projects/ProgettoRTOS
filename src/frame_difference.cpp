@@ -36,5 +36,5 @@ Mat frameDifference(Mat img){
 
     begin_difference = false;
     
-    return img_out;
+    return imageScale(img_out);
 }
