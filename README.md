@@ -3,16 +3,29 @@ Image processing. Simulate a fixed camera looking at a given portion of an anima
 
 Dipendenze:
 
-sudo apt-get install build-essential
+ptask
 
-sudo apt-get install libopencv-dev python3-opencv
+sudo apt-get install git
+
+sudo apt-get install build-essential
 
 sudo apt-get install libsdl2-dev
 
-sudo apt-get install glade
-
 sudo apt-get install libgtkmm-3.0-dev
 
-sudo apt-get install libgtk2.0-dev
+Opencv
+cd ~/<my_working_directory>
 
-sudo apt-get install pkg-config
+git clone https://github.com/opencv/opencv.git
+
+git clone https://github.com/opencv/opencv_contrib.git
+
+cd ~/opencv
+
+mkdir build
+
+cd build
+
+cmake -DOPENCV_EXTRA_MODULES_PATH=<opencv_contrib>/modules <opencv_source_directory>
+
+make -j5
