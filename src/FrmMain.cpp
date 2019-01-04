@@ -9,7 +9,6 @@ FrmMain::FrmMain(BaseObjectType* cobject,
 
 	builder->get_widget("cmbFps", cmbFps);
 	builder->get_widget("cmbScalaColori", cmbScalaColori);
-	builder->get_widget("cmbScaling", cmbScaling);
 	
 	builder->get_widget("lblState", lblState);
 
