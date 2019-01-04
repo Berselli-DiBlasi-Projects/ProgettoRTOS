@@ -3,6 +3,8 @@ Image processing. Simulate a fixed camera looking at a given portion of an anima
 
 Dipendenze:
 
+sudo apt-get install build-essential
+
 sudo apt-get install libopencv-dev python3-opencv
 
 sudo apt-get install libsdl2-dev
