@@ -249,6 +249,9 @@ void setThresholdValue(int value)
 */
 Mat imageScale(Mat src){
     float reduction = (float ) getFrameScalingValue();
+    if (reduction == 0){
+        reduction = 1;
+    }
 	reduction = reduction / 100;
     cv::Size s = src.size();
 	s.height = s.height * reduction;
