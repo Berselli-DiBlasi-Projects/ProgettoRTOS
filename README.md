@@ -13,7 +13,10 @@ sudo apt-get install libsdl2-dev
 
 sudo apt-get install libgtkmm-3.0-dev
 
+//-------------------------------------------------------------------------------------
+
 Opencv
+
 cd ~/<my_working_directory>
 
 git clone https://github.com/opencv/opencv.git
@@ -29,3 +32,5 @@ cd build
 cmake -DOPENCV_EXTRA_MODULES_PATH=<opencv_contrib>/modules <opencv_source_directory>
 
 make -j5
+
+//--------------------------------------------------------------------------------------
