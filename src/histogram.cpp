@@ -57,5 +57,5 @@ Mat plotHistogram(Mat src)
               Scalar( 0, 0, 255), 2, 8, 0  );
     }
     
-    return histImage;
+    return imageScale(histImage);
 }

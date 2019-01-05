@@ -23,7 +23,7 @@ void initOutput(){
 }
 
 /**
- * Preleva il frame camera da stampare a video.
+ * Preleva il frame camera da analizzare.
  * @param   : None
  * @return  : Mat r; frame camera ritornato.
 */
@@ -33,6 +33,21 @@ Mat getOutCamera(){
     r=cam.clone();
     pthread_mutex_unlock(&sem_camera);
     return r;
+}
+
+
+/**
+ * Preleva il frame camera da stampare a video effettuando il resize.
+ * in questo modo si preserva la coerenza del tracciamento dei grafici
+ * @param   : None
+ * @return  : Mat r; frame camera ritornato.
+*/
+Mat getOutCameraScaled(){
+    Mat r;
+    pthread_mutex_lock(&sem_camera);
+    r=cam.clone();
+    pthread_mutex_unlock(&sem_camera);
+    return imageScale(r);
 }
 
 /**

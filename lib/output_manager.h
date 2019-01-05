@@ -11,6 +11,7 @@ using namespace cv;
 
 void initOutput();
 Mat getOutCamera();
+Mat getOutCameraScaled();
 Mat getOutDifference();
 Mat getOutFilter();
 Mat getOutPlotHistogram();

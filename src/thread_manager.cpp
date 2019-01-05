@@ -353,7 +353,7 @@ void runExecutionThreads(FrmSettings *frmSettings)
         bodyCamera();
         
         
-        imshow("Camera", getOutCamera());
+        imshow("Camera", getOutCameraScaled());
         imshow("Filter", getOutFilter());
         imshow("Frame difference", getOutDifference());
         imshow("Threshold", getOutThreshold());
