@@ -327,10 +327,6 @@ void runExecutionThreads(FrmSettings *frmSettings)
 
     while(true)
     {
-
-       
-
-
         time_t end = time(0);
 
         if(time_taken != end - start) {

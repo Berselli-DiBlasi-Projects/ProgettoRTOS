@@ -9,8 +9,8 @@
 #include "../lib/FrmMain.h"
 #include "../lib/thread_manager.h"
 
-#define MAX_WIDTH 800
-#define MAX_HEIGHT 600
+#define MAX_WIDTH 1920
+#define MAX_HEIGHT 1080
 
 using namespace std;
 using namespace cv;

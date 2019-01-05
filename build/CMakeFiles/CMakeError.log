@@ -1,24 +1,22 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp
+Change Dir: /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_4f5ad/fast"
-/usr/bin/make -f CMakeFiles/cmTC_4f5ad.dir/build.make CMakeFiles/cmTC_4f5ad.dir/build
-make[1]: ingresso nella directory "/home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp"
-Building C object CMakeFiles/cmTC_4f5ad.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_4f5ad.dir/CheckSymbolExists.c.o   -c /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_4f5ad
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4f5ad.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_4f5ad.dir/CheckSymbolExists.c.o  -o cmTC_4f5ad 
-CMakeFiles/cmTC_4f5ad.dir/CheckSymbolExists.c.o: nella funzione "main":
-CheckSymbolExists.c:(.text+0x1b): riferimento non definito a "pthread_create"
+Run Build Command:"/usr/bin/make" "cmTC_e0222/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e0222.dir/build.make CMakeFiles/cmTC_e0222.dir/build
+make[1]: Entering directory '/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e0222.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_e0222.dir/CheckSymbolExists.c.o   -c /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_e0222
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e0222.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_e0222.dir/CheckSymbolExists.c.o  -o cmTC_e0222 
+/usr/bin/ld: CMakeFiles/cmTC_e0222.dir/CheckSymbolExists.c.o: in function `main':
+CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_4f5ad.dir/build.make:97: recipe for target 'cmTC_4f5ad' failed
-make[1]: *** [cmTC_4f5ad] Error 1
-make[1]: uscita dalla directory "/home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp"
-Makefile:126: recipe for target 'cmTC_4f5ad/fast' failed
-make: *** [cmTC_4f5ad/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_e0222.dir/build.make:87: cmTC_e0222] Error 1
+make[1]: Leaving directory '/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_e0222/fast] Error 2
 
-File /home/fabrizio/Documenti/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 

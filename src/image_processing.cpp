@@ -82,14 +82,18 @@ int getThresholdValue()
 */
 Mat imageScale(Mat src){
     float reduction = (float ) frame_scaling_value;
-    
-	reduction = reduction / 100;
-    cv::Size s = src.size();
-	s.height = s.height * reduction;
-	s.width = s.width * reduction;
-	Mat dst;
+    Mat dst;
 
-	cv::resize(src, dst, s);
+    if(reduction != 100)
+    {
+        reduction = reduction / 100;
+        cv::Size s = src.size();
+        s.height = s.height * reduction;
+        s.width = s.width * reduction;
+        cv::resize(src, dst, s);
+    }
+	else
+        return src;
 	
     return dst;
 
