@@ -1,9 +1,9 @@
 # ProgettoRTOS
 Image processing. Simulate a fixed camera looking at a given portion of an animated screen and write 4 periodic tasks performing different computations on the same image and displaying the results on other images. For example, task1 displays the histogram, task2 displays the image after applying a threshold, task3 displays the difference between consecutive frames, task4 displays the result of a filter. The user must be able to vary some parameters of such tasks.
 
-Dipendenze:
+Dependences:
 
-ptask
+Ptask:
 
 sudo apt-get install git
 
@@ -17,9 +17,24 @@ sudo apt-get install libgtkmm-3.0-dev
 
 sudo apt-get install liballegro4.2-dev
 
+/* 
+   _(PTASK ISSUE)_
+   In order to compile and install ptask with allegro and the new glibc library,
+   add "#define ALLEGRO_NO_FIX_ALIASES" on top of those files:
+   examples/pcp.c
+   examples/activation_example/animation.c
+   examples/ball.c
+   examples/advanced_act_test/animation.c
+   examples/system_example/testSystem.c
+   examples/system_example/testProt.c
+   examples/system_example/testPart.c
+   examples/system_example/animation.c
+*/
+   
+
 //-------------------------------------------------------------------------------------
 
-Opencv
+Opencv:
 
 cd ~/<my_working_directory>
 
@@ -38,3 +53,6 @@ cmake -DOPENCV_EXTRA_MODULES_PATH=<opencv_contrib>/modules <opencv_source_direct
 make -j4     (depending on number of cores -> nproc)
 
 //--------------------------------------------------------------------------------------
+When Image Processing application is compiled, in order to avoid "warning: "_GNU_SOURCE" redefined", delete the instruction "#define _GNU_SOURCE" from pmutex.h
+(inside ptask installation folder). Anyway, it could be also ignored.
+

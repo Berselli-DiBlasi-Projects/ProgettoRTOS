@@ -110,6 +110,10 @@ tstat.h
 ../lib/image_processing.h
 /home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
 
+/home/werther/Desktop/ProgettoRTOS/src/thread_manager.cpp
+../lib/thread_manager.h
+/home/werther/Desktop/ProgettoRTOS/lib/thread_manager.h
+
 /home/werther/Desktop/ProgettoRTOS/src/threshold.cpp
 ../lib/image_processing.h
 /home/werther/Desktop/ProgettoRTOS/lib/image_processing.h
