@@ -1,3 +1,0 @@
-/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/rebuild_cache.dir
-/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/application.dir
-/home/werther/Desktop/ProgettoRTOS/build/CMakeFiles/edit_cache.dir

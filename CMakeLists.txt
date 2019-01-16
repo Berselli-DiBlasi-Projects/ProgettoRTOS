@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.1)
-# (REFERENCE CODE) project(video_capture)
 project(image_processing)
 include_directories(.)
 set(CMAKE_GCC_FLAGS "-Wall -Wextra -Wconversion -pedantic -std=gnu11")
@@ -19,7 +18,6 @@ find_package(SDL2 REQUIRED)
 set(ptask_INCLUDE_DIRS "${ptask_DIR}/include")
 message("Include dir ${ptask_INCLUDE_DIRS}")
 
-# (REFERENCE CODE) add_executable(video_capture task.c video_capture.c)
 add_executable(application src/main.cpp src/image_processing.cpp src/camera.cpp
 	       src/filter.cpp src/frame_difference.cpp src/FrmMain.cpp
 	       src/FrmSettings.cpp src/histogram.cpp src/output_manager.cpp
@@ -28,17 +26,12 @@ add_executable(application src/main.cpp src/image_processing.cpp src/camera.cpp
 include_directories ("${ptask_INCLUDE_DIRS}")
 include_directories(${OpenCV_INCLUDE_DIRS} )
 include_directories(${ALLEGRO_INCLUDE_DIR})
-# include_directories(${SDL2_INCLUDE_DIRS})
 
 # Setup CMake to use GTK+, tell the compiler where to look for headers
 # and to the linker where to look for libraries
 LINK_DIRECTORIES(${GTKMM_LIBRARY_DIRS})
 include_directories(${GTKMM_INCLUDE_DIRS})
 
-# LINK_DIRECTORIES(${X11_LIBRARY_DIRS})
 include_directories(${X11_INCLUDE_DIR})
-# Add other flags to the compiler
-# ADD_DEFINITIONS(${GTKMM_CFLAGS_OTHER})
 
-# (REFERENCE CODE) target_link_libraries(video_capture ${OpenCV_LIBS} ptask Threads::Threads ${ALLEGRO_LIBRARY} rt m)
 target_link_libraries(application ${X11_LIBRARIES} ${OpenCV_LIBS} ${GTKMM_LIBRARIES} ptask Threads::Threads ${ALLEGRO_LIBRARY} rt m)

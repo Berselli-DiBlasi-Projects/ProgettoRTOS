@@ -1,2 +1,0 @@
-***22/12/2018*** Inserito esempio funzionante con Gtkmm (versione di Gtk+ supportato bene da C++), Glade, Allegro, OpenCV, Ptask. Dall'esempio di partenza ho sostituito la libreria di Gtk+ con Gtkmm perchè alcune istruzioni di Gtk+ non funzionavano in c++ ma solo in c. Credo che sia meglio tornare ad utilizzare glade per semplicità, nell'esempio c'è anche una piccola gui di prova con glade.
--In fase di compilazione, includere nella cartella "build" oltre a lena.png anche il file gui.glade.
