@@ -16,6 +16,10 @@ FrmSettings::FrmSettings(BaseObjectType* cobject,
 	builder->get_widget("sclThresholdType", sclThresholdType);
 	builder->get_widget("sclThresholdValue", sclThresholdValue);
 	builder->get_widget("lblThresholdType", lblThresholdType);
+	builder->get_widget("btnFilteringActive", btnFilteringActive);
+	builder->get_widget("btnFrameDifferenceActive", btnFrameDifferenceActive);
+	builder->get_widget("btnThresholdActive", btnThresholdActive);
+	builder->get_widget("btnHistogramActive", btnHistogramActive);
 	builder->get_widget("btnQuit", btnQuit);
 	builder->get_widget("btnRun", btnRun);
 
@@ -40,6 +44,15 @@ FrmSettings::FrmSettings(BaseObjectType* cobject,
 	sclThresholdValue->signal_value_changed().connect(
 		sigc::mem_fun(*this, &FrmSettings::on_sclThresholdValue_value_changed));
 
+	btnFilteringActive->signal_clicked().connect(
+		sigc::mem_fun(*this, &FrmSettings::on_btnFilteringActive_clicked));
+	btnFrameDifferenceActive->signal_clicked().connect(
+		sigc::mem_fun(*this, &FrmSettings::on_btnFrameDifferenceActive_clicked));
+	btnThresholdActive->signal_clicked().connect(
+		sigc::mem_fun(*this, &FrmSettings::on_btnThresholdActive_clicked));
+	btnHistogramActive->signal_clicked().connect(
+		sigc::mem_fun(*this, &FrmSettings::on_btnHistogramActive_clicked));
+	
 	btnQuit->signal_clicked().connect(
 		sigc::mem_fun(*this, &FrmSettings::on_btnQuit_clicked));
 	btnRun->signal_clicked().connect(
@@ -66,11 +79,9 @@ void FrmSettings::on_sclFrameDifference_value_changed(){
 	setFrameDifferenceValue(sclFrameDifference->get_value());
 }
 
-//---
 void FrmSettings::on_sclFrameScaling_value_changed(){
 	setFrameScalingValue(sclFrameScaling->get_value());
 }
-//---
 
 void FrmSettings::on_sclThresholdType_value_changed(){
 	int threshold_type = sclThresholdType->get_value();
@@ -90,6 +101,82 @@ void FrmSettings::on_sclThresholdType_value_changed(){
 
 void FrmSettings::on_sclThresholdValue_value_changed(){
 	setThresholdValue(sclThresholdValue->get_value());
+}
+
+void FrmSettings::on_btnFilteringActive_clicked(){
+	if(getFilteringActive()) //disattiva
+	{
+		setFilteringActive(false);
+		Gtk::Image *eyegray;
+		eyegray = Gtk::manage(new Gtk::Image());
+    	eyegray->set("../media/eyegray.png");
+		btnFilteringActive->set_image(*eyegray);
+	}
+	else //riattiva
+	{
+		setFilteringActive(true);
+		Gtk::Image *eye;
+		eye = Gtk::manage(new Gtk::Image());
+		eye->set("../media/eye.png");
+		btnFilteringActive->set_image(*eye);
+	}
+}
+
+void FrmSettings::on_btnFrameDifferenceActive_clicked(){
+	if(getFrameDifferenceActive()) //disattiva
+	{
+		setFrameDifferenceActive(false);
+		Gtk::Image *eyegray;
+		eyegray = Gtk::manage(new Gtk::Image());
+    	eyegray->set("../media/eyegray.png");
+		btnFrameDifferenceActive->set_image(*eyegray);
+	}
+	else //riattiva
+	{
+		setFrameDifferenceActive(true);
+		Gtk::Image *eye;
+		eye = Gtk::manage(new Gtk::Image());
+		eye->set("../media/eye.png");
+		btnFrameDifferenceActive->set_image(*eye);
+	}
+}
+
+void FrmSettings::on_btnThresholdActive_clicked(){
+	if(getThresholdActive()) //disattiva
+	{
+		setThresholdActive(false);
+		Gtk::Image *eyegray;
+		eyegray = Gtk::manage(new Gtk::Image());
+    	eyegray->set("../media/eyegray.png");
+		btnThresholdActive->set_image(*eyegray);
+	}
+	else //riattiva
+	{
+		setThresholdActive(true);
+		Gtk::Image *eye;
+		eye = Gtk::manage(new Gtk::Image());
+		eye->set("../media/eye.png");
+		btnThresholdActive->set_image(*eye);
+	}
+}
+
+void FrmSettings::on_btnHistogramActive_clicked(){
+	if(getHistogramActive()) //disattiva
+	{
+		setHistogramActive(false);
+		Gtk::Image *eyegray;
+		eyegray = Gtk::manage(new Gtk::Image());
+    	eyegray->set("../media/eyegray.png");
+		btnHistogramActive->set_image(*eyegray);
+	}
+	else //riattiva
+	{
+		setHistogramActive(true);
+		Gtk::Image *eye;
+		eye = Gtk::manage(new Gtk::Image());
+		eye->set("../media/eye.png");
+		btnHistogramActive->set_image(*eye);
+	}
 }
 
 void FrmSettings::on_btnQuit_clicked(){

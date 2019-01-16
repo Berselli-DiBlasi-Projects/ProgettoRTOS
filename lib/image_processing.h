@@ -71,6 +71,15 @@ void setCancelSignal(bool signal);
 void setExecutionStarted(bool started);
 void setFilterChoice(int choice);
 void setFrameDifferenceValue(int difference);
-void setFrameScalingValue(int difference);
+void setFrameScalingValue(int scaling);
 void setThresholdType(int value);
 void setThresholdValue(int value);
+
+
+
+
+
+
+
+
+

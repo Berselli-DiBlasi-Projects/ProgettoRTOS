@@ -52,7 +52,6 @@ int getFrameScalingValue()
     return frame_scaling_value;
 }
 
-
 /**
  * Ritorna valore di threshold type per il threshold.
  * @param   : none
@@ -231,19 +230,15 @@ void setFrameDifferenceValue(int difference)
     frame_difference_value = difference;
 }
 
-
-
 /**
  * Setta il valore di frame_scaling, di supporto all'esecuzione.
  * @param   : int scaling; Il valore da utilizzare.
  * @return  : void
 */
-void setFrameScalingValue(int difference)
+void setFrameScalingValue(int scaling)
 {
-    frame_scaling_value = difference;
+    frame_scaling_value = scaling;
 }
-
-
 
 /**
  * Setta il valore di threshold_type, di supporto all'esecuzione.

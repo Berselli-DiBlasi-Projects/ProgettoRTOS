@@ -16,6 +16,11 @@ protected:
     Gtk::Scale *sclThresholdValue;
     Gtk::Label *lblThresholdType;
 
+    Gtk::Button *btnFilteringActive;
+    Gtk::Button *btnFrameDifferenceActive;
+    Gtk::Button *btnThresholdActive;
+    Gtk::Button *btnHistogramActive;
+
 	Gtk::Button *btnQuit;
     Gtk::Button *btnRun;
 public:
@@ -35,6 +40,11 @@ protected:
 
     void on_sclThresholdType_value_changed();
     void on_sclThresholdValue_value_changed();
+
+    void on_btnFilteringActive_clicked();
+    void on_btnFrameDifferenceActive_clicked();
+    void on_btnThresholdActive_clicked();
+    void on_btnHistogramActive_clicked();
 
     void on_btnQuit_clicked();
     void on_btnRun_clicked();

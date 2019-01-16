@@ -11,6 +11,10 @@ using namespace std;
 using namespace cv;
 
 int fps_value;
+bool filtering_active = true;
+bool frame_difference_active = true;
+bool threshold_active = true;
+bool histogram_active = true;
 
 struct gestore_t{
     //mutua esclusione
@@ -61,6 +65,16 @@ void initGestore(struct gestore_t *g) {
 }
 
 /**
+ * Ritorna il valore di filtering_active.
+ * @param   : none
+ * @return  : bool
+*/
+bool getFilteringActive()
+{
+    return filtering_active;
+}
+
+/**
  * Ritorna il valore di fps scelti dall'utente.
  * @param   : none
  * @return  : int
@@ -71,6 +85,46 @@ int getFpsValue()
 }
 
 /**
+ * Ritorna il valore di frame_difference_active.
+ * @param   : none
+ * @return  : bool
+*/
+bool getFrameDifferenceActive()
+{
+    return frame_difference_active;
+}
+
+/**
+ * Ritorna il valore di histogram_active.
+ * @param   : none
+ * @return  : bool
+*/
+bool getHistogramActive()
+{
+    return histogram_active;
+}
+
+/**
+ * Ritorna il valore di threshold_active.
+ * @param   : none
+ * @return  : bool
+*/
+bool getThresholdActive()
+{
+    return threshold_active;
+}
+
+/**
+ * Setta il valore di filtering_active.
+ * @param   : bool; value
+ * @return  : void
+*/
+void setFilteringActive(bool value)
+{
+    filtering_active = value;
+}
+
+/**
  * Setta il valore di fps scelto dall'utente.
  * @param   : int; choice
  * @return  : void
@@ -78,6 +132,36 @@ int getFpsValue()
 void setFpsValue(int fps)
 {
     fps_value = fps;
+}
+
+/**
+ * Setta il valore di frame_difference_active.
+ * @param   : bool; value
+ * @return  : void
+*/
+void setFrameDifferenceActive(bool value)
+{
+    frame_difference_active = value;
+}
+
+/**
+ * Setta il valore di histogram_active.
+ * @param   : bool; value
+ * @return  : void
+*/
+void setHistogramActive(bool value)
+{
+    histogram_active = value;
+}
+
+/**
+ * Setta il valore di threshold_active.
+ * @param   : bool; value
+ * @return  : void
+*/
+void setThresholdActive(bool value)
+{
+    threshold_active = value;
 }
 
 void startCamera(struct gestore_t *g){
@@ -224,37 +308,81 @@ void bodyCamera(){
 }
 
 void bodyHistogram(){
+    bool toggle = false; //used to increase performance when feature is hidden.
     while(1)
     {
         startHistogram(&gestore);
-        setOutPlotHistogram(plotHistogram(getOutCamera()));
+        if(histogram_active)
+        {
+            toggle = true;
+            setOutPlotHistogram(plotHistogram(getOutCamera()));
+        }
+        else
+            if(toggle)
+            {
+                cvDestroyWindow("Histogram");
+                toggle = false;
+            }
         endHistogram(&gestore);
     }
 }
 
 void bodyDifference(){
+    bool toggle = false; //used to increase performance when feature is hidden.
     while(1)
     {
         startDifference(&gestore);
-        setOutDifference(frameDifference(getOutCamera()));
+        if(frame_difference_active)
+        {
+            toggle = true;
+            setOutDifference(frameDifference(getOutCamera()));
+        }
+        else
+            if(toggle)
+            {
+                cvDestroyWindow("Frame difference");
+                toggle = false;
+            }
         endDifference(&gestore);
     }
 }
 
 void bodyFilter(){
+    bool toggle = false; //used to increase performance when feature is hidden.
     while(1)
     {
         startFilter(&gestore);
-        setOutFilter(filterFrame(getOutCamera()));
+        if(filtering_active)
+        {
+            toggle = true;
+            setOutFilter(filterFrame(getOutCamera()));
+        }
+        else
+            if(toggle)
+            {
+                cvDestroyWindow("Filter");
+                toggle = false;
+            }
         endFilter(&gestore);
     }
 }
 
 void bodyThreshold(){
+    bool toggle = false; //used to increase performance when feature is hidden.
     while(1)
     {
         startThreshold(&gestore);
-        setOutThreshold(threshold(getOutCamera()));
+        if(threshold_active)
+        {
+            toggle = true;
+            setOutThreshold(threshold(getOutCamera()));
+        }
+        else
+            if(toggle)
+            {
+                cvDestroyWindow("Threshold");
+                toggle = false;
+            }
         endThreshold(&gestore);
     }
 }
@@ -350,10 +478,14 @@ void runExecutionThreads(FrmSettings *frmSettings)
         
         
         imshow("Camera", getOutCameraScaled());
-        imshow("Filter", getOutFilter());
-        imshow("Frame difference", getOutDifference());
-        imshow("Threshold", getOutThreshold());
-        imshow("Histogram", getOutPlotHistogram());
+        if(filtering_active)
+            imshow("Filter", getOutFilter());
+        if(frame_difference_active)
+            imshow("Frame difference", getOutDifference());
+        if(threshold_active)
+            imshow("Threshold", getOutThreshold());
+        if(histogram_active)
+            imshow("Histogram", getOutPlotHistogram());
         
         //cv::resize(img, im_out, cv::Size(), reduction , reduction);
 
