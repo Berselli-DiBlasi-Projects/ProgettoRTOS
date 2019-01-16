@@ -15,6 +15,8 @@ sudo apt-get install libsdl2-dev
 
 sudo apt-get install libgtkmm-3.0-dev
 
+sudo apt-get install liballegro4.2-dev
+
 //-------------------------------------------------------------------------------------
 
 Opencv
@@ -33,6 +35,6 @@ cd build
 
 cmake -DOPENCV_EXTRA_MODULES_PATH=<opencv_contrib>/modules <opencv_source_directory>
 
-make -j5
+make -j4     (depending on number of cores -> nproc)
 
 //--------------------------------------------------------------------------------------

@@ -8,7 +8,6 @@ FrmMain::FrmMain(BaseObjectType* cobject,
 	Window(cobject), builder(refGlade){
 
 	builder->get_widget("cmbFps", cmbFps);
-	builder->get_widget("cmbScalaColori", cmbScalaColori);
 	
 	builder->get_widget("lblState", lblState);
 
