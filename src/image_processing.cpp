@@ -93,7 +93,7 @@ Mat imageScale(Mat src){
         cv::resize(src, dst, s);
     }
 	else
-        return src;
+        dst = src.clone();
 	
     return dst;
 
