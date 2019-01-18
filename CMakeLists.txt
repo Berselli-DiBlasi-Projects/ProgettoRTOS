@@ -18,10 +18,7 @@ find_package(SDL2 REQUIRED)
 set(ptask_INCLUDE_DIRS "${ptask_DIR}/include")
 message("Include dir ${ptask_INCLUDE_DIRS}")
 
-add_executable(application src/main.cpp src/image_processing.cpp src/camera.cpp
-	       src/filter.cpp src/frame_difference.cpp src/FrmMain.cpp
-	       src/FrmSettings.cpp src/histogram.cpp src/output_manager.cpp
-               src/thread_manager.cpp src/threshold.cpp)
+add_executable(application src/main.cpp src/image_processing.cpp src/gui.cpp)
 
 include_directories ("${ptask_INCLUDE_DIRS}")
 include_directories(${OpenCV_INCLUDE_DIRS} )
