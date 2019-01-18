@@ -9,9 +9,7 @@ make
 ./application
 
 
-Dependences:
-
-Ptask:
+Extern Dependences:
 
 sudo apt-get install git
 
@@ -25,6 +23,18 @@ sudo apt-get install libgtkmm-3.0-dev
 
 sudo apt-get install liballegro4.2-dev
 
+//-------------------------------------------------------------------------------------
+
+Ptask:
+
+git clone https://github.com/glipari/ptask.git
+mkdir build
+cd build
+cmake ..
+make
+make install
+
+
 /* 
    _(PTASK ISSUE)_
    In order to compile and install ptask with allegro and the new glibc library,
@@ -37,6 +47,11 @@ sudo apt-get install liballegro4.2-dev
    examples/system_example/testProt.c
    examples/system_example/testPart.c
    examples/system_example/animation.c
+   
+   or
+   
+   comment inside CMakeLists.txt the row 11:
+   add_subdirectory(examples)
 */
    
 
