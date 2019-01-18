@@ -1,5 +1,6 @@
 #include "../lib/thread_manager.h"
 
+
 #define STATE_IDLE      0
 #define STATE_ANALISYS  1
 
@@ -11,6 +12,7 @@ using namespace std;
 using namespace cv;
 
 int fps_value;
+int bit_for_channel;
 bool filtering_active = true;
 bool frame_difference_active = true;
 bool threshold_active = true;
@@ -65,6 +67,15 @@ void initGestore(struct gestore_t *g) {
 }
 
 /**
+ * Ritorna il valore dei bit per canale.
+ * @param   : none
+ * @return  : int
+*/
+int getBitForChannelValue(){
+    return bit_for_channel;
+}
+
+/**
  * Ritorna il valore di filtering_active.
  * @param   : none
  * @return  : bool
@@ -114,6 +125,14 @@ bool getThresholdActive()
     return threshold_active;
 }
 
+/**
+ * Setta il valore di dei bit per canale.
+ * @param   : int value
+ * @return  : void
+*/
+void setBitForChannelValue(int value){
+    bit_for_channel = value;
+}
 /**
  * Setta il valore di filtering_active.
  * @param   : bool; value
@@ -320,7 +339,7 @@ void bodyHistogram(){
         else
             if(toggle)
             {
-                cvDestroyWindow("Histogram");
+                destroyWindow("Histogram");
                 toggle = false;
             }
         endHistogram(&gestore);
@@ -340,7 +359,7 @@ void bodyDifference(){
         else
             if(toggle)
             {
-                cvDestroyWindow("Frame difference");
+                destroyWindow("Frame difference");
                 toggle = false;
             }
         endDifference(&gestore);
@@ -360,7 +379,7 @@ void bodyFilter(){
         else
             if(toggle)
             {
-                cvDestroyWindow("Filter");
+                destroyWindow("Filter");
                 toggle = false;
             }
         endFilter(&gestore);
@@ -380,7 +399,7 @@ void bodyThreshold(){
         else
             if(toggle)
             {
-                cvDestroyWindow("Threshold");
+                destroyWindow("Threshold");
                 toggle = false;
             }
         endThreshold(&gestore);

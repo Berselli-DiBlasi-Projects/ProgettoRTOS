@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <stdio.h>
+
 #include "opencv2/imgproc.hpp"
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgcodecs.hpp"
@@ -14,12 +15,15 @@ extern "C" {
 
 Mat filterFrame(Mat img);
 Mat frameDifference(Mat img);
+int getBitForChannelValue();
 bool getFilteringActive();
 int getFpsValue();
 bool getFrameDifferenceActive();
 bool getHistogramActive();
 bool getThresholdActive();
 Mat plotHistogram(Mat src);
+Mat quantizeImage(Mat inImage, int numBits);
+void setBitForChannelValue(int value);
 void setFilteringActive(bool value);
 void setFpsValue(int fps);
 void setFrameDifferenceActive(bool value);

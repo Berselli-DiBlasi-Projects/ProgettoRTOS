@@ -8,7 +8,8 @@ FrmMain::FrmMain(BaseObjectType* cobject,
 	Window(cobject), builder(refGlade){
 
 	builder->get_widget("cmbFps", cmbFps);
-	
+	builder->get_widget("cmbScalaColori", cmbScalaColori);
+
 	builder->get_widget("lblState", lblState);
 
 	builder->get_widget("btnSelezionaArea", btnSelezionaArea);
@@ -60,5 +61,6 @@ void FrmMain::on_btnAvvia_clicked(){
 	//Fai partire l'elaborazione
 	setExecutionStarted(true);
 	setFpsValue(stoi(cmbFps->get_active_text()));
+	setBitForChannelValue(atoi(cmbScalaColori->get_active_text().c_str()));
 	hide();
 }
