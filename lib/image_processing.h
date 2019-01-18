@@ -66,11 +66,6 @@ struct ScreenShot
 
 bool getExecutionStarted();
 int getFilterChoice();
-
-//int getFrameDifferenceValue();
-//int getFrameScalingValue();
-//int getThresholdType();
-//int getThresholdValue();
 Mat imageScale(Mat src);
 void preview(FrmMain *frmMain);
 void selectRegion(Gtk::Label *lblState);
@@ -81,15 +76,9 @@ void setFrameDifferenceValue(int difference);
 void setFrameScalingValue(int scaling);
 void setThresholdType(int value);
 void setThresholdValue(int value);
-
-
-
-
 Mat filterFrame(Mat img);
 Mat frameDifference(Mat img);
-//int getBitForChannelValue();
 bool getFilteringActive();
-//int getFpsValue();
 bool getFrameDifferenceActive();
 bool getHistogramActive();
 bool getThresholdActive();
@@ -104,8 +93,6 @@ void setThresholdActive(bool value);
 Mat takeAPicture(Rect2d rect);
 Mat threshold(Mat img);
 void runExecutionThreads(FrmSettings *frmSettings);
-
-
 void initOutput();
 Mat getOutCamera();
 Mat getOutCameraScaled();

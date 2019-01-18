@@ -93,29 +93,23 @@ void preview(FrmMain *frmMain)
 	time_t time_taken = 0;
 	int count = 0;
 	
-	while(true)
-	{
+	while(true){
 		time_t end = time(0);
 
 		if(time_taken != end - start) {
 			cout << "FPS: " << count << endl;
 			count = 0;
-		}
-		else
+		}else{
 			count++;
-
+        }
 		time_taken = end - start;
-
 		screen(imgCamera);
 		imshow(titleCamera, imgCamera);
-
 		//Mostra le finestre dei placeholders
 		for(int i = 0; i < 
 			sizeof(placeholder_titles) / sizeof(placeholder_titles[0]); i++)
 			imshow(placeholder_titles[i], placeholder_image_resized);
-		
-		if(!frmMain->is_visible() || cancel_signal)
-		{
+		if(!frmMain->is_visible() || cancel_signal)		{
 			destroyAllWindows();
 			break;
 		}
@@ -257,15 +251,8 @@ void initGestore(struct gestore_t *g) {
     pthread_mutex_init(&g->sem_histo, NULL);
     pthread_mutex_init(&g->sem_threshold, NULL);
     pthread_mutex_init(&g->sem_difference, NULL);
-    /*pmux_create_pi(&g->mutex);
-    pmux_create_pi(&g->sem_camera);
-    pmux_create_pi(&g->sem_filter);
-    pmux_create_pi(&g->sem_histo);
-    pmux_create_pi(&g->sem_threshold);
-    pmux_create_pi(&g->sem_difference);*/
-
+    
     g->ncam = 0;
-
     g->nhist = g->ndiff = g->nthres = g->nfilter = 0;
     g->bhist = g->bdiff = g->bthres = g->bfilter = 0;
 
@@ -279,13 +266,6 @@ void initGestore(struct gestore_t *g) {
 
     ptask_init(SCHED_RR, GLOBAL, NO_PROTOCOL);
 }
-
-/**
- * Ritorna il valore dei bit per canale.
- * @param   : none
- * @return  : int
-*/
-
 
 /**
  * Ritorna il valore di filtering_active.
@@ -458,7 +438,6 @@ void startDifference(struct gestore_t *g){
     */
     pthread_mutex_lock(&g->sem_difference);
     
-    //RICHIAMO FUNZIONE DIFFERENCE
 }
 
 void endDifference(struct gestore_t *g){
@@ -483,7 +462,6 @@ void startThreshold(struct gestore_t *g){
     */
     pthread_mutex_lock(&g->sem_threshold);
     
-    //RICHIAMO FUNZIONE THRESHOLD
 }
 
 void endThreshold(struct gestore_t *g){
@@ -532,8 +510,7 @@ void bodyCamera(){
 
 void bodyHistogram(){
     bool toggle = false; //used to increase performance when feature is hidden.
-    while(1)
-    {
+    while(1){
         startHistogram(&gestore);
         if(histogram_active)
         {
@@ -552,8 +529,7 @@ void bodyHistogram(){
 
 void bodyDifference(){
     bool toggle = false; //used to increase performance when feature is hidden.
-    while(1)
-    {
+    while(1){
         startDifference(&gestore);
         if(frame_difference_active)
         {
@@ -572,8 +548,7 @@ void bodyDifference(){
 
 void bodyFilter(){
     bool toggle = false; //used to increase performance when feature is hidden.
-    while(1)
-    {
+    while(1){
         startFilter(&gestore);
         if(filtering_active)
         {
@@ -592,8 +567,7 @@ void bodyFilter(){
 
 void bodyThreshold(){
     bool toggle = false; //used to increase performance when feature is hidden.
-    while(1)
-    {
+    while(1){
         startThreshold(&gestore);
         if(threshold_active)
         {
@@ -610,8 +584,7 @@ void bodyThreshold(){
     }
 }
 
-void runExecutionThreads(FrmSettings *frmSettings)
-{
+void runExecutionThreads(FrmSettings *frmSettings){
     tpars params[4]; //Parametri dei thread
     int last_proc = 0;                  /* last assigned processor      */
     int max_proc = ptask_getnumcores(); /* max number of procs  */
@@ -620,8 +593,7 @@ void runExecutionThreads(FrmSettings *frmSettings)
     initGestore(&gestore);
     initOutput();
 
-    for(int i = 0; i < 4; i++)
-    {
+    for(int i = 0; i < 4; i++){
         params[i] = TASK_SPEC_DFL;
         params[i].period = tspec_from(PER, MILLI);
         params[i].rdline = tspec_from(DREL, MILLI);
@@ -674,10 +646,7 @@ void runExecutionThreads(FrmSettings *frmSettings)
 
     int wait_time = base_wait;
 
-    
-
-    while(true)
-    {
+    while(true){
         time_t end = time(0);
 
         if(time_taken != end - start) {
@@ -699,8 +668,7 @@ void runExecutionThreads(FrmSettings *frmSettings)
 
         bodyCamera();
         
-        if(!getOutCameraScaled().empty()) //Used to prevent empty imshows
-        {
+        if(!getOutCameraScaled().empty()){ //Used to prevent empty imshows
             imshow("Camera", getOutCameraScaled());
             if(filtering_active)
                 imshow("Filter", getOutFilter());
@@ -712,8 +680,7 @@ void runExecutionThreads(FrmSettings *frmSettings)
                 imshow("Histogram", getOutPlotHistogram());
         }
 
-        if(!frmSettings->is_visible())
-        {
+        if(!frmSettings->is_visible()){
             destroyAllWindows();
             break;
         }
@@ -745,30 +712,20 @@ Mat frameDifference(Mat img){
 	Mat img_old;
 	Mat img_out;
 	bool begin_difference = true;
-    //Frame difference value -> da 0 a 30
-   // int frame_difference_value = getFrameDifferenceValue();
-
+    
     if(frame_count == 0)
         img_old = img;
-
     if(begin_difference)
         img_out = img;
-
-    if(frame_difference_value == frame_count)
-    {
+    if(frame_difference_value == frame_count){
         absdiff(img_old, img, img_out);
         frame_count = 0;
-    }
-    else
-    {
+    }else{
         frame_count++;
     }
-
     if(frame_difference_value < frame_count)
         frame_count = 0;
-
     begin_difference = false;
-    
     return imageScale(img_out);
 }
 
@@ -779,7 +736,6 @@ Mat frameDifference(Mat img){
 */
 Mat threshold(Mat img){
 	Mat img_out, img_gray;
-	//cvtColor(img, img_gray, CV_BGR2GRAY);
 	threshold(img, img_out, threshold_value, 255, threshold_type);
 	
 	return imageScale(img_out);
@@ -841,26 +797,21 @@ Mat plotHistogram(Mat src){
 */
 Mat filterFrame(Mat img){
 	Mat im_out = img.clone(), thr;
-	
 	float reduction = frame_scaling_value;
 	reduction = reduction / 100;
-
 	cv::Mat kern = (cv::Mat_<float>(4,4) <<  0.272, 0.534, 0.131, 0,
 											 0.349, 0.686, 0.168, 0,
 											 0.393, 0.769, 0.189, 0,
 											 0, 0, 0, 1); 
-
 	switch(filter_choice){
 		case 0:
 			break;
 		case 1: //seppia filter
 				cv::transform(img, im_out, kern);
 				break;
-
 		case 2:	//scala di grigi
 				cvtColor(img,im_out,cv::COLOR_RGB2GRAY);
 				break;
-
 		case 3: //bianco e nero
 				//conversione in scala di grigi
 				cvtColor(img, im_out, cv::COLOR_RGB2GRAY);
@@ -870,7 +821,6 @@ Mat filterFrame(Mat img){
 				break;
 		default:
 			break;
-
 	}
 	return imageScale(im_out);
 	
