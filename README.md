@@ -28,10 +28,15 @@ sudo apt-get install liballegro4.2-dev
 Ptask:
 
 git clone https://github.com/glipari/ptask.git
+
 mkdir build
+
 cd build
+
 cmake ..
+
 make
+
 make install
 
 
