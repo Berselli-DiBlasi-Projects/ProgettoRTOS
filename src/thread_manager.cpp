@@ -495,18 +495,18 @@ void runExecutionThreads(FrmSettings *frmSettings)
 
         bodyCamera();
         
-        
-        imshow("Camera", getOutCameraScaled());
-        if(filtering_active)
-            imshow("Filter", getOutFilter());
-        if(frame_difference_active)
-            imshow("Frame difference", getOutDifference());
-        if(threshold_active)
-            imshow("Threshold", getOutThreshold());
-        if(histogram_active)
-            imshow("Histogram", getOutPlotHistogram());
-        
-        //cv::resize(img, im_out, cv::Size(), reduction , reduction);
+        if(!getOutCameraScaled().empty()) //Used to prevent empty imshows
+        {
+            imshow("Camera", getOutCameraScaled());
+            if(filtering_active)
+                imshow("Filter", getOutFilter());
+            if(frame_difference_active)
+                imshow("Frame difference", getOutDifference());
+            if(threshold_active)
+                imshow("Threshold", getOutThreshold());
+            if(histogram_active)
+                imshow("Histogram", getOutPlotHistogram());
+        }
 
         if(!frmSettings->is_visible())
         {
