@@ -64,6 +64,8 @@ struct ScreenShot
     bool init;
 };
 
+int computeWaitTime();
+void createTasks(tpars params[], int *last_proc, int *max_proc);
 bool getExecutionStarted();
 int getFilterChoice();
 Mat imageScale(Mat src);

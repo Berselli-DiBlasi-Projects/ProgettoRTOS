@@ -5,7 +5,6 @@ using namespace cv;
 
 #define STATE_IDLE      0
 #define STATE_ANALISYS  1
-
 #define PER 20   /* task period in ms		*/
 #define DREL 20  /* realtive deadline in ms	*/
 #define PRIO 80  /* task priority		*/
@@ -13,7 +12,11 @@ using namespace cv;
 bool cancel_signal = false;
 bool execution_started = false;
 int filter_choice = 0;
+bool begin_difference = true;
 int frame_difference_value = 0;
+int frame_difference_count = 0;
+Mat img_difference_old;
+Mat img_difference_out;
 int frame_scaling_value = 100;
 int threshold_type;
 int threshold_value;
@@ -23,8 +26,6 @@ bool filtering_active = true;
 bool frame_difference_active = true;
 bool threshold_active = true;
 bool histogram_active = true;
-
-
 
 /**
  * Ritorna il bool execution_started, di supporto all'esecuzione.
@@ -43,7 +44,8 @@ bool getExecutionStarted()
  * @param : matrice da ridimensionare
  * @return : resized Mat 
 */
-Mat imageScale(Mat src){
+Mat imageScale(Mat src)
+{
 	float reduction = (float ) frame_scaling_value;
 	Mat dst;
 
@@ -59,7 +61,6 @@ Mat imageScale(Mat src){
 		dst = src.clone();
 	
 	return dst;
-
 }
 
 /**
@@ -82,8 +83,8 @@ void preview(FrmMain *frmMain)
 
 	resize(placeholder_image, placeholder_image_resized,
 		   rect.size(), 0, 0, cv::INTER_CUBIC);
-
 	string placeholder_titles[4];
+
 	placeholder_titles[0] = "Histogram";
 	placeholder_titles[1] = "Filter";
 	placeholder_titles[2] = "Frame difference";
@@ -92,8 +93,7 @@ void preview(FrmMain *frmMain)
 	time_t start = time(0);
 	time_t time_taken = 0;
 	int count = 0;
-	
-	while(true){
+	while(true) {
 		time_t end = time(0);
 
 		if(time_taken != end - start) {
@@ -226,7 +226,8 @@ void setThresholdValue(int value)
 //_____________________________________________________________________________
 //_____________________________________________________________________________
 
-struct gestore_t{
+struct gestore_t
+{
     //mutua esclusione
     pthread_mutex_t mutex;
     
@@ -243,8 +244,8 @@ struct gestore_t{
 
 } gestore;
 
-void initGestore(struct gestore_t *g) {
-
+void initGestore(struct gestore_t *g)
+{
     pthread_mutex_init(&g->mutex, NULL);
     pthread_mutex_init(&g->sem_camera, NULL);
     pthread_mutex_init(&g->sem_filter, NULL);
@@ -276,8 +277,6 @@ bool getFilteringActive()
 {
     return filtering_active;
 }
-
-
 
 /**
  * Ritorna il valore di frame_difference_active.
@@ -317,6 +316,7 @@ bool getThresholdActive()
 void setBitForChannelValue(int value){
     bit_for_channel = value;
 }
+
 /**
  * Setta il valore di filtering_active.
  * @param   : bool; value
@@ -367,22 +367,23 @@ void setThresholdActive(bool value)
     threshold_active = value;
 }
 
-void startCamera(struct gestore_t *g){
+void startCamera(struct gestore_t *g)
+{
     pthread_mutex_lock(&g->mutex);
 
     g->ncam++;
     if(g->state == STATE_IDLE){
         pthread_mutex_unlock(&g->sem_camera);
-        /*se c'è lo stato di attesa può partire l'analisi*/
+        //se c'è lo stato di attesa può partire l'analisi
     }
     pthread_mutex_unlock(&g->mutex);
 
     pthread_mutex_lock(&g->sem_camera);
     //può effettuare l'analisi
-    //g->captured_frame = takeAPicture(g->dim_frame);
 }
 
-void endCamera(struct gestore_t *g){
+void endCamera(struct gestore_t *g)
+{
     pthread_mutex_lock(&g->mutex);
 
     g->ncam--;
@@ -396,13 +397,13 @@ void endCamera(struct gestore_t *g){
     pthread_mutex_unlock(&g->sem_difference);
     pthread_mutex_unlock(&g->sem_filter);
     pthread_mutex_unlock(&g->sem_threshold);
-    /*quando la telecamera finisce sveglia i thread di analisi
-    */
+    //quando la telecamera finisce sveglia i thread di analisi
 
     pthread_mutex_unlock(&g->mutex);
 }
 
-void startHistogram(struct gestore_t *g){
+void startHistogram(struct gestore_t *g)
+{
     /*
     per prima cosa si blocca sul suo semaforo
     in questo modo si ha la certezza che, se la camera,
@@ -415,8 +416,8 @@ void startHistogram(struct gestore_t *g){
     //RICHIAMO FUNZIONE HISTOGRAMMA
 }
 
-void endHistogram(struct gestore_t *g){
-    
+void endHistogram(struct gestore_t *g)
+{
     pthread_mutex_lock(&g->mutex);
 
     g->nhist--;
@@ -428,7 +429,8 @@ void endHistogram(struct gestore_t *g){
     pthread_mutex_unlock(&g->mutex);
 }
 
-void startDifference(struct gestore_t *g){
+void startDifference(struct gestore_t *g)
+{
     /*
     per prima cosa si blocca sul suo semaforo
     in questo modo si ha la certezza che, se la camera,
@@ -440,8 +442,8 @@ void startDifference(struct gestore_t *g){
     
 }
 
-void endDifference(struct gestore_t *g){
-    
+void endDifference(struct gestore_t *g)
+{
     pthread_mutex_lock(&g->mutex);
     g->ndiff--;
     if(!g->nhist && !g->nthres && !g->nfilter){
@@ -452,7 +454,8 @@ void endDifference(struct gestore_t *g){
     pthread_mutex_unlock(&g->mutex);
 }
 
-void startThreshold(struct gestore_t *g){
+void startThreshold(struct gestore_t *g)
+{
     /*
     per prima cosa si blocca sul suo semaforo
     in questo modo si ha la certezza che, se la camera,
@@ -464,8 +467,8 @@ void startThreshold(struct gestore_t *g){
     
 }
 
-void endThreshold(struct gestore_t *g){
-    
+void endThreshold(struct gestore_t *g)
+{
     pthread_mutex_lock(&g->mutex);
     g->nthres--;
     if(!g->nhist && !g->ndiff && !g->nfilter){
@@ -476,7 +479,8 @@ void endThreshold(struct gestore_t *g){
     pthread_mutex_unlock(&g->mutex);
 }
 
-void startFilter(struct gestore_t *g){
+void startFilter(struct gestore_t *g)
+{
     /*
     per prima cosa si blocca sul suo semaforo
     in questo modo si ha la certezza che, se la camera,
@@ -489,8 +493,8 @@ void startFilter(struct gestore_t *g){
     //RICHIAMO FUNZIONE FILTER
 }
 
-void endFilter(struct gestore_t *g){
-    
+void endFilter(struct gestore_t *g)
+{
     pthread_mutex_lock(&g->mutex);
 
     g->nfilter--;
@@ -502,13 +506,15 @@ void endFilter(struct gestore_t *g){
     pthread_mutex_unlock(&g->mutex);
 }
 
-void bodyCamera(){
+void bodyCamera()
+{
     startCamera(&gestore);
     setOutCamera(takeAPicture(getRect()));
     endCamera(&gestore);
 }
 
-void bodyHistogram(){
+void bodyHistogram()
+{
     bool toggle = false; //used to increase performance when feature is hidden.
     while(1){
         startHistogram(&gestore);
@@ -527,7 +533,8 @@ void bodyHistogram(){
     }
 }
 
-void bodyDifference(){
+void bodyDifference()
+{
     bool toggle = false; //used to increase performance when feature is hidden.
     while(1){
         startDifference(&gestore);
@@ -546,7 +553,8 @@ void bodyDifference(){
     }
 }
 
-void bodyFilter(){
+void bodyFilter()
+{
     bool toggle = false; //used to increase performance when feature is hidden.
     while(1){
         startFilter(&gestore);
@@ -565,7 +573,8 @@ void bodyFilter(){
     }
 }
 
-void bodyThreshold(){
+void bodyThreshold()
+{
     bool toggle = false; //used to increase performance when feature is hidden.
     while(1){
         startThreshold(&gestore);
@@ -584,11 +593,15 @@ void bodyThreshold(){
     }
 }
 
-void runExecutionThreads(FrmSettings *frmSettings){
-    tpars params[4]; //Parametri dei thread
-    int last_proc = 0;                  /* last assigned processor      */
-    int max_proc = ptask_getnumcores(); /* max number of procs  */
-
+/**
+ * Crea i task per l'elaborazione.
+ * @param   : tpars params[]; Parametri del thread
+ * @param   : int *last_proc; Ultimo processore assegnato
+ * @param   : int *max_proc; Massimo numero di processori
+ * @return  : void;
+*/
+void createTasks(tpars params[], int *last_proc, int *max_proc)
+{
     //inizializzazione della memoria condivisa
     initGestore(&gestore);
     initOutput();
@@ -600,9 +613,9 @@ void runExecutionThreads(FrmSettings *frmSettings){
         params[i].priority = PRIO;
         params[i].measure_flag = 1;
         params[i].act_flag = NOW;
-        params[i].processor = last_proc++;
-        if (last_proc >= max_proc)
-            last_proc = 0;
+        params[i].processor = *last_proc++;
+        if (*last_proc >= *max_proc)
+            *last_proc = 0;
     }
     
     int ret;
@@ -623,12 +636,15 @@ void runExecutionThreads(FrmSettings *frmSettings){
     if (ret == -1) {
         printf("Error in creating task!\n");
     }
+}
 
-    time_t start = time(0);
-    time_t time_taken = 0;
-    int count = 0;
-    //Fa in modo che gli fps si avvicinino a quelli scelti dall'utente.
-    int bias = 0;
+/**
+ * Calcola il tempo di wait in base alla scelta dell'utente
+ * @param   : void;
+ * @return  : int base_wait; Tempo base di attesa tra un'iterazione e l'altra.
+*/
+int computeWaitTime()
+{
     int base_wait;
 
     if(fps_value == 15)
@@ -643,10 +659,71 @@ void runExecutionThreads(FrmSettings *frmSettings){
         base_wait = 16;
     if(fps_value == 60)
         base_wait = 15;
+    
+    return base_wait;
+}
 
-    int wait_time = base_wait;
+/**
+ * Mostra i risultati delle elaborazioni.
+ * @param   : FrmSettings *frmSettings; Parametro per tenere sotto controllo 
+ *                                      il frame settings. 
+ * @param   : int wait_time; tempo di attesa dopo gli imshow.
+ * @return  : int ret_value; 0 se il frame settings è stato chiuso,
+ *                           1 altrimenti.
+*/
+int showResults(FrmSettings *frmSettings, int wait_time)
+{
+    int ret_value;
 
-    while(true){
+    if(!getOutCameraScaled().empty() &&
+       !getOutFilter().empty() &&
+       !getOutDifference().empty() &&
+       !getOutThreshold().empty() &&
+       !getOutPlotHistogram().empty()){ //Used to prevent empty imshows
+
+        imshow("Camera", getOutCameraScaled());
+        if(filtering_active)
+            imshow("Filter", getOutFilter());
+        if(frame_difference_active)
+            imshow("Frame difference", getOutDifference());
+        if(threshold_active)
+            imshow("Threshold", getOutThreshold());
+        if(histogram_active)
+            imshow("Histogram", getOutPlotHistogram());
+    }
+
+    if(!frmSettings->is_visible()){
+        destroyAllWindows();
+        ret_value = 0;
+    }
+    else
+        ret_value = 1;
+
+    waitKey(wait_time);
+
+    return ret_value;
+}
+
+/**
+ * Avvia e mantiene attivo il funzionamento dei thread.
+ * @param   : FrmSettings *frmSettings; Parametro per tenere sotto controllo 
+ *                                      il frame settings.
+ * @return  : void;
+*/
+void runExecutionThreads(FrmSettings *frmSettings)
+{
+    tpars params[4]; //Parametri dei thread
+    int last_proc = 0;                  /* last assigned processor      */
+    int max_proc = ptask_getnumcores(); /* max number of procs  */
+    int results_value, base_wait, wait_time, count = 0, bias = 0;
+
+    createTasks(params, &last_proc, &max_proc);
+
+    time_t start = time(0);
+    time_t time_taken = 0;
+    base_wait = wait_time = computeWaitTime();
+
+    do{
         time_t end = time(0);
 
         if(time_taken != end - start) {
@@ -668,29 +745,10 @@ void runExecutionThreads(FrmSettings *frmSettings){
 
         bodyCamera();
         
-        if(!getOutCameraScaled().empty()){ //Used to prevent empty imshows
-            imshow("Camera", getOutCameraScaled());
-            if(filtering_active)
-                imshow("Filter", getOutFilter());
-            if(frame_difference_active)
-                imshow("Frame difference", getOutDifference());
-            if(threshold_active)
-                imshow("Threshold", getOutThreshold());
-            if(histogram_active)
-                imshow("Histogram", getOutPlotHistogram());
-        }
-
-        if(!frmSettings->is_visible()){
-            destroyAllWindows();
-            break;
-        }
-
-        waitKey(wait_time);
-    }
+        results_value = showResults(frmSettings, wait_time);
+        
+    } while(results_value);
 }
-
-
-
 
 //_____________________________________________________________________________
 //_____________________________________________________________________________
@@ -707,26 +765,22 @@ void runExecutionThreads(FrmSettings *frmSettings){
  * @param   : Mat img; Immagine in ingresso, l'ultima catturata dalla camera.
  * @return  : Mat; Immagine risultante dopo aver applicato la sottrazione.
 */
-Mat frameDifference(Mat img){
-	int frame_count = 0;
-	Mat img_old;
-	Mat img_out;
-	bool begin_difference = true;
-    
-    if(frame_count == 0)
-        img_old = img;
+Mat frameDifference(Mat img)
+{
+    if(frame_difference_count == 0)
+        img_difference_old = img;
     if(begin_difference)
-        img_out = img;
-    if(frame_difference_value == frame_count){
-        absdiff(img_old, img, img_out);
-        frame_count = 0;
+        img_difference_out = img;
+    if(frame_difference_value == frame_difference_count){
+        absdiff(img_difference_old, img, img_difference_out);
+        frame_difference_count = 0;
     }else{
-        frame_count++;
+        frame_difference_count++;
     }
-    if(frame_difference_value < frame_count)
-        frame_count = 0;
+    if(frame_difference_value < frame_difference_count)
+        frame_difference_count = 0;
     begin_difference = false;
-    return imageScale(img_out);
+    return imageScale(img_difference_out);
 }
 
 /**
@@ -734,7 +788,8 @@ Mat frameDifference(Mat img){
  * @param   : Mat img; Immagine in ingresso, l'ultima catturata dalla camera.
  * @return  : Mat; Immagine risultante dopo aver applicato il threshold.
 */
-Mat threshold(Mat img){
+Mat threshold(Mat img)
+{
 	Mat img_out, img_gray;
 	threshold(img, img_out, threshold_value, 255, threshold_type);
 	
@@ -747,7 +802,8 @@ Mat threshold(Mat img){
  * @param   : Mat src; immagine da processare.
  * @return  : restituisce l'oggetto Mat contenente il grafico
 */
-Mat plotHistogram(Mat src){
+Mat plotHistogram(Mat src)
+{
 	//separo l'immagine nei 3 layer  B G R
 	vector<Mat> bgr_planes;
 	split( src, bgr_planes );
@@ -795,7 +851,8 @@ Mat plotHistogram(Mat src){
  * @param   : Mat src; immagine da processare.
  * @return  : restituisce l'oggetto Mat contenente il grafico
 */
-Mat filterFrame(Mat img){
+Mat filterFrame(Mat img)
+{
 	Mat im_out = img.clone(), thr;
 	float reduction = frame_scaling_value;
 	reduction = reduction / 100;
@@ -825,14 +882,15 @@ Mat filterFrame(Mat img){
 	return imageScale(im_out);
 	
 }
+
 /**
  * Cattura dello schermo (deve prendere in ingresso l'area
  * tracciata dall'utente).
  * @param   : Rect2d rect; Definisce l'area di registrazione della camera.
  * @return  : void
 */
-
-Mat takeAPicture(Rect2d rect){
+Mat takeAPicture(Rect2d rect)
+{
 	ScreenShot screen(rect.x, rect.y, rect.width, rect.height);
 	Mat imgCamera, ret;
 	int nbit = bit_for_channel;
@@ -844,14 +902,15 @@ Mat takeAPicture(Rect2d rect){
 	}
 	return ret;
 }
+
 /**
  * Modifica il numero di bit per canale
  * @param   : Mat inImage immagienda modificare
  *            int numBits numero di bit desiderati
  * @return  : void
 */
-
-Mat quantizeImage(Mat inImage, int numBits){
+Mat quantizeImage(Mat inImage, int numBits)
+{
 	cv::Mat retImage = inImage.clone();
 
 	uchar maskBit = 0xFF;
@@ -878,7 +937,9 @@ Mat quantizeImage(Mat inImage, int numBits){
 
 //_____________________________________________________________________________
 //_____________________________________________________________________________
-struct output_g{
+
+struct output_g
+{
 	Rect2d rect;
 	Mat histogram;
 	Mat filter;
@@ -892,7 +953,8 @@ struct output_g{
                 sem_difference;
 } output;
 
-void initOutput(){
+void initOutput()
+{
     pmux_create_pi(&output.sem_camera);
     pmux_create_pi(&output.sem_filter);
     pmux_create_pi(&output.sem_histo);
@@ -905,7 +967,8 @@ void initOutput(){
  * @param   : None
  * @return  : Mat r; frame camera ritornato.
 */
-Mat getOutCamera(){
+Mat getOutCamera()
+{
     Mat r;
     pthread_mutex_lock(&output.sem_camera);
     r=output.cam.clone();
@@ -913,14 +976,14 @@ Mat getOutCamera(){
     return r;
 }
 
-
 /**
  * Preleva il frame camera da stampare a video effettuando il resize.
  * in questo modo si preserva la coerenza del tracciamento dei grafici
  * @param   : None
  * @return  : Mat r; frame camera ritornato.
 */
-Mat getOutCameraScaled(){
+Mat getOutCameraScaled()
+{
     Mat r;
     pthread_mutex_lock(&output.sem_camera);
     r=output.cam.clone();
@@ -933,7 +996,8 @@ Mat getOutCameraScaled(){
  * @param   : None
  * @return  : Mat r; frame Difference ritornato.
 */
-Mat getOutDifference(){
+Mat getOutDifference()
+{
     Mat r;
     pthread_mutex_lock(&output.sem_difference);
     r=output.diff.clone();
@@ -946,7 +1010,8 @@ Mat getOutDifference(){
  * @param   : None
  * @return  : Mat r; frame filtro ritornato.
 */
-Mat getOutFilter(){
+Mat getOutFilter()
+{
     Mat r;
     pthread_mutex_lock(&output.sem_filter);
     r=output.filter.clone();
@@ -959,7 +1024,8 @@ Mat getOutFilter(){
  * @param   : None
  * @return  : Mat r; frame istogramma ritornato.
 */
-Mat getOutPlotHistogram(){
+Mat getOutPlotHistogram()
+{
     Mat r;
     pthread_mutex_lock(&output.sem_histo);
     r=output.histogram.clone();
@@ -972,7 +1038,8 @@ Mat getOutPlotHistogram(){
  * @param   : None
  * @return  : Mat r; frame threshold ritornato.
 */
-Mat getOutThreshold(){
+Mat getOutThreshold()
+{
     Mat r;
     pthread_mutex_lock(&output.sem_threshold);
     r=output.thr.clone();
@@ -985,9 +1052,9 @@ Mat getOutThreshold(){
  * @param   : None
  * @return  : Rect2d r; rect ritornato.
 */
-Rect2d getRect(){
+Rect2d getRect()
+{
     return output.rect;
-
 }
 
 /**
@@ -995,7 +1062,8 @@ Rect2d getRect(){
  * @param   : Mat img; frame Camera da settare.
  * @return  : None
 */
-void setOutCamera(Mat img){
+void setOutCamera(Mat img)
+{
     pthread_mutex_lock(&output.sem_camera);
     output.cam=img.clone();
     pthread_mutex_unlock(&output.sem_camera);
@@ -1006,7 +1074,8 @@ void setOutCamera(Mat img){
  * @param   : Mat img; frame Difference da settare.
  * @return  : None
 */
-void setOutDifference(Mat img){
+void setOutDifference(Mat img)
+{
     pthread_mutex_lock(&output.sem_difference);
     output.diff=img.clone();
     pthread_mutex_unlock(&output.sem_difference);
@@ -1017,7 +1086,8 @@ void setOutDifference(Mat img){
  * @param   : Mat img; frame filtro da settare.
  * @return  : None
 */
-void setOutFilter(Mat img){
+void setOutFilter(Mat img)
+{
     pthread_mutex_lock(&output.sem_filter);
     output.filter=img.clone();
     pthread_mutex_unlock(&output.sem_filter);
@@ -1028,7 +1098,8 @@ void setOutFilter(Mat img){
  * @param   : Mat img; frame istogramma da settare.
  * @return  : None
 */
-void setOutPlotHistogram(Mat img){
+void setOutPlotHistogram(Mat img)
+{
     pthread_mutex_lock(&output.sem_histo);
     output.histogram=img.clone();
     pthread_mutex_unlock(&output.sem_histo);
@@ -1039,7 +1110,8 @@ void setOutPlotHistogram(Mat img){
  * @param   : Mat img; frame Threshold da settare.
  * @return  : None
 */
-void setOutThreshold(Mat img){
+void setOutThreshold(Mat img)
+{
     pthread_mutex_lock(&output.sem_threshold);
     output.thr=img.clone();
     pthread_mutex_unlock(&output.sem_threshold);
@@ -1050,6 +1122,7 @@ void setOutThreshold(Mat img){
  * @param   : Rect2d r; Il rettangolo da settare
  * @return  : None
 */
-void setRect(Rect2d r){
+void setRect(Rect2d r)
+{
     output.rect = r;
 }
