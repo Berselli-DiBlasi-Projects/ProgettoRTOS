@@ -5,11 +5,11 @@ using namespace cv;
 
 #define STATE_IDLE      0
 #define STATE_ANALISYS  1
-#define PER 20      /* task period in ms		*/
-#define DREL 20     /* realtive deadline in ms	*/
-#define PRIO 80     /* task priority		*/
-#define MAX_WIDTH 1920
-#define MAX_HEIGHT 1080
+#define PER     20      /* task period in ms    */
+#define DREL    20     /* realtive deadline in ms	*/
+#define PRIO    80     /* task priority		*/
+#define MAX_WIDTH   1920
+#define MAX_HEIGHT  1080
 
 bool cancel_signal = false;
 bool execution_started = false;

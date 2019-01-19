@@ -35,14 +35,16 @@ FrmMain::FrmMain(BaseObjectType* cobject,
 }
 
 
-void FrmMain::on_btnSelezionaArea_clicked(){
+void FrmMain::on_btnSelezionaArea_clicked()
+{
 	btnSelezionaArea->set_sensitive(false);
 	selectRegion(lblState);
 	btnSelezionaArea->set_sensitive(true);
 	btnConferma->set_sensitive(true);
 }
 
-void FrmMain::on_btnConferma_clicked(){
+void FrmMain::on_btnConferma_clicked()
+{
 	lblState->set_text("Press Cancel to select a\nnew area otherwise Start");
 	btnConferma->set_sensitive(false);
 	btnSelezionaArea->set_sensitive(false);
@@ -51,7 +53,8 @@ void FrmMain::on_btnConferma_clicked(){
 	preview(this);
 }
 
-void FrmMain::on_btnAnnulla_clicked(){
+void FrmMain::on_btnAnnulla_clicked()
+{
 	lblState->set_text("Configure the application\nand then Select the area.");
 	btnAnnulla->set_sensitive(false);
 	btnAvvia->set_sensitive(false);
@@ -59,7 +62,8 @@ void FrmMain::on_btnAnnulla_clicked(){
 	setCancelSignal(true);
 }
 
-void FrmMain::on_btnAvvia_clicked(){
+void FrmMain::on_btnAvvia_clicked()
+{
 	lblState->set_text("Running...");
 	btnAvvia->set_sensitive(false);
 	btnAnnulla->set_sensitive(false);
@@ -78,8 +82,7 @@ void FrmMain::on_btnAvvia_clicked(){
 //_____________________________________________________________________________
 FrmSettings::FrmSettings(BaseObjectType* cobject, 
 						 const Glib::RefPtr<Gtk::Builder>& refGlade):
-	Window(cobject), builder(refGlade){
-
+	Window(cobject), builder(refGlade) {
 	builder->get_widget("rdoDefault", rdoDefault);
 	builder->get_widget("rdoSeppia", rdoSeppia);
 	builder->get_widget("rdoGrayScale", rdoGrayScale);
@@ -132,31 +135,38 @@ FrmSettings::FrmSettings(BaseObjectType* cobject,
 		sigc::mem_fun(*this, &FrmSettings::on_btnRun_clicked));
 }
 
-void FrmSettings::on_rdoDefault_clicked(){
+void FrmSettings::on_rdoDefault_clicked()
+{
 	setFilterChoice(0);
 }
 
-void FrmSettings::on_rdoSeppia_clicked(){
+void FrmSettings::on_rdoSeppia_clicked()
+{
 	setFilterChoice(1);
 }
 
-void FrmSettings::on_rdoGrayScale_clicked(){
+void FrmSettings::on_rdoGrayScale_clicked()
+{
 	setFilterChoice(2);
 }
 
-void FrmSettings::on_rdoBN_clicked(){
+void FrmSettings::on_rdoBN_clicked()
+{
 	setFilterChoice(3);
 }
 
-void FrmSettings::on_sclFrameDifference_value_changed(){
+void FrmSettings::on_sclFrameDifference_value_changed()
+{
 	setFrameDifferenceValue(sclFrameDifference->get_value());
 }
 
-void FrmSettings::on_sclFrameScaling_value_changed(){
+void FrmSettings::on_sclFrameScaling_value_changed()
+{
 	setFrameScalingValue(sclFrameScaling->get_value());
 }
 
-void FrmSettings::on_sclThresholdType_value_changed(){
+void FrmSettings::on_sclThresholdType_value_changed()
+{
 	int threshold_type = sclThresholdType->get_value();
 	setThresholdType(threshold_type);
 
@@ -172,91 +182,98 @@ void FrmSettings::on_sclThresholdType_value_changed(){
 		lblThresholdType->set_text("Threshold to zero inverted");
 }
 
-void FrmSettings::on_sclThresholdValue_value_changed(){
+void FrmSettings::on_sclThresholdValue_value_changed()
+{
 	setThresholdValue(sclThresholdValue->get_value());
 }
 
-void FrmSettings::on_btnFilteringActive_clicked(){
-	if(getFilteringActive()) //disattiva
+void FrmSettings::on_btnFilteringActive_clicked()
+{
+	if(getFilteringActive())	//disattiva
 	{
-		setFilteringActive(false);
 		Gtk::Image *eyegray;
+		setFilteringActive(false);
 		eyegray = Gtk::manage(new Gtk::Image());
     	eyegray->set("../media/eyegray.png");
 		btnFilteringActive->set_image(*eyegray);
 	}
-	else //riattiva
+	else	//riattiva
 	{
-		setFilteringActive(true);
 		Gtk::Image *eye;
+		setFilteringActive(true);
 		eye = Gtk::manage(new Gtk::Image());
 		eye->set("../media/eye.png");
 		btnFilteringActive->set_image(*eye);
 	}
 }
 
-void FrmSettings::on_btnFrameDifferenceActive_clicked(){
-	if(getFrameDifferenceActive()) //disattiva
+void FrmSettings::on_btnFrameDifferenceActive_clicked()
+{
+	if(getFrameDifferenceActive())	//disattiva
 	{
-		setFrameDifferenceActive(false);
 		Gtk::Image *eyegray;
+		setFrameDifferenceActive(false);
 		eyegray = Gtk::manage(new Gtk::Image());
     	eyegray->set("../media/eyegray.png");
 		btnFrameDifferenceActive->set_image(*eyegray);
 	}
-	else //riattiva
+	else	//riattiva
 	{
-		setFrameDifferenceActive(true);
 		Gtk::Image *eye;
+		setFrameDifferenceActive(true);
 		eye = Gtk::manage(new Gtk::Image());
 		eye->set("../media/eye.png");
 		btnFrameDifferenceActive->set_image(*eye);
 	}
 }
 
-void FrmSettings::on_btnThresholdActive_clicked(){
-	if(getThresholdActive()) //disattiva
+void FrmSettings::on_btnThresholdActive_clicked()
+{
+	if(getThresholdActive())	//disattiva
 	{
-		setThresholdActive(false);
 		Gtk::Image *eyegray;
+		setThresholdActive(false);
 		eyegray = Gtk::manage(new Gtk::Image());
     	eyegray->set("../media/eyegray.png");
 		btnThresholdActive->set_image(*eyegray);
 	}
-	else //riattiva
+	else	//riattiva
 	{
-		setThresholdActive(true);
 		Gtk::Image *eye;
+		setThresholdActive(true);
 		eye = Gtk::manage(new Gtk::Image());
 		eye->set("../media/eye.png");
 		btnThresholdActive->set_image(*eye);
 	}
 }
 
-void FrmSettings::on_btnHistogramActive_clicked(){
-	if(getHistogramActive()) //disattiva
+void FrmSettings::on_btnHistogramActive_clicked()
+{
+	if(getHistogramActive())	//disattiva
 	{
-		setHistogramActive(false);
 		Gtk::Image *eyegray;
+		setHistogramActive(false);
 		eyegray = Gtk::manage(new Gtk::Image());
     	eyegray->set("../media/eyegray.png");
 		btnHistogramActive->set_image(*eyegray);
 	}
-	else //riattiva
+	else	//riattiva
 	{
-		setHistogramActive(true);
 		Gtk::Image *eye;
+		setHistogramActive(true);
 		eye = Gtk::manage(new Gtk::Image());
 		eye->set("../media/eye.png");
 		btnHistogramActive->set_image(*eye);
 	}
 }
 
-void FrmSettings::on_btnQuit_clicked(){
+void FrmSettings::on_btnQuit_clicked()
+{
 	hide();
 }
 
-void FrmSettings::on_btnRun_clicked(){
+void FrmSettings::on_btnRun_clicked()
+{
 	btnRun->set_sensitive(false);
 	runExecutionThreads(this);
 }

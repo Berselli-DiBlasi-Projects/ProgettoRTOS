@@ -8,16 +8,17 @@ using namespace std;
  *            string frame_id; Id della finestra.
  *            string title; Titolo della finestra.
  *            string icon_file; Icona della finestra.
- *            int argc; argc del main
- *            char** argv; argv del main
- * @return  : void
+ *            int argc; argc del main.
+ *            char** argv; argv del main.
+ * @return  : void.
 */
 void show_main_frame(string glade_file, string frame_id, string title,
      string icon_file, int argc, char** argv)
 {
+    FrmMain *frm;
+    frm = 0;
+    auto app = Gtk::Application::create(argc, argv, "org.gtkmm.example");
     cout << "Frame main Started" << endl;
-    FrmMain *frm = 0;
-	auto app = Gtk::Application::create(argc, argv, "org.gtkmm.example");
     Glib::RefPtr<Gtk::Builder> builder = 
         Gtk::Builder::create_from_file(glade_file);
 
@@ -36,16 +37,17 @@ void show_main_frame(string glade_file, string frame_id, string title,
  *            string frame_id; Id della finestra.
  *            string title; Titolo della finestra.
  *            string icon_file; Icona della finestra.
- *            int argc; argc del main
- *            char** argv; argv del main
- * @return  : void
+ *            int argc; argc del main.
+ *            char** argv; argv del main.
+ * @return  : void.
 */
 void show_settings_frame(string glade_file, string frame_id, string title,
      string icon_file, int argc, char** argv)
 {
-    cout << "Frame settings Started" << endl;
-    FrmSettings *frm = 0;
+    FrmSettings *frm;
+    frm = 0;
     auto app = Gtk::Application::create(argc, argv, "org.gtkmm.example");
+    cout << "Frame settings Started" << endl;
 	Glib::RefPtr<Gtk::Builder> builder = 
         Gtk::Builder::create_from_file(glade_file);
 
@@ -64,7 +66,6 @@ void show_settings_frame(string glade_file, string frame_id, string title,
 
 int main(int argc, char** argv) {
 
-    //gtk code
 	show_main_frame("../glade/frmMain.glade", "frmMain", "Image Processing",
                     "../media/image_processing.png", argc, argv);
 
