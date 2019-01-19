@@ -57,7 +57,6 @@ make install
    
    comment inside CMakeLists.txt the row 11:
    add_subdirectory(examples)
-   
 */
    
 
@@ -82,7 +81,6 @@ cmake -DOPENCV_EXTRA_MODULES_PATH=<opencv_contrib>/modules <opencv_source_direct
 make -j4     (depending on number of cores -> nproc)
 
 //--------------------------------------------------------------------------------------
-
 When Image Processing application is compiled, in order to avoid "warning: "_GNU_SOURCE" redefined", delete the instruction "#define _GNU_SOURCE" from pmutex.h
 (inside ptask installation folder). Anyway, it could be also ignored.
 
