@@ -11,51 +11,41 @@ make\
 
 Extern Dependences:
 
-sudo apt-get install git
-
-sudo apt-get install build-essential
-
-sudo apt-get install cmake
-
-sudo apt-get install libsdl2-dev
-
-sudo apt-get install libgtkmm-3.0-dev
-
-sudo apt-get install liballegro4.2-dev
+sudo apt-get install git\
+sudo apt-get install build-essential\
+sudo apt-get install cmake\
+sudo apt-get install libsdl2-dev\
+sudo apt-get install libgtkmm-3.0-dev\
+sudo apt-get install liballegro4.2-dev\
 
 //-------------------------------------------------------------------------------------
 
 Ptask:
 
-git clone https://github.com/glipari/ptask.git
-
-mkdir build
-
-cd build
-
-cmake ..
-
-make
-
-make install
+git clone https://github.com/glipari/ptask.git\
+mkdir build\
+cd build\
+cmake ..\
+make\
+make install\
 
 
 /* 
    _(PTASK ISSUE)_
-   In order to compile and install ptask with allegro and the new glibc library,
-   add "#define ALLEGRO_NO_FIX_ALIASES" on top of those files:
-   examples/pcp.c
-   examples/activation_example/animation.c
-   examples/ball.c
-   examples/advanced_act_test/animation.c
-   examples/system_example/testSystem.c
-   examples/system_example/testProt.c
-   examples/system_example/testPart.c
-   examples/system_example/animation.c
+   In order to compile and install ptask with allegro and the new glibc library,\
+   add "#define ALLEGRO_NO_FIX_ALIASES" on top of those files:\
+   examples/pcp.c\
+   examples/activation_example/animation.c\
+   examples/ball.c\
+   examples/advanced_act_test/animation.c\
+   examples/system_example/testSystem.c\
+   examples/system_example/testProt.c\
+   examples/system_example/testPart.c\
+   examples/system_example/animation.c\
    
-   or
+   or\
    
-   comment inside CMakeLists.txt the row 11:
+   comment inside CMakeLists.txt the row 11:\
    add_subdirectory(examples)
 */
    
@@ -64,24 +54,19 @@ make install
 
 Opencv:
 
-cd ~/<my_working_directory>
-
-git clone https://github.com/opencv/opencv.git
-
-git clone https://github.com/opencv/opencv_contrib.git
-
-cd ~/opencv
-
-mkdir build
-
-cd build
-
-cmake -DOPENCV_EXTRA_MODULES_PATH=<opencv_contrib>/modules <opencv_source_directory>
-
-make -j4     (depending on number of cores -> nproc)
+cd ~/<my_working_directory>\
+git clone https://github.com/opencv/opencv.git\
+git clone https://github.com/opencv/opencv_contrib.git\
+cd ~/opencv\
+mkdir build\
+cd build\
+cmake -DOPENCV_EXTRA_MODULES_PATH=<opencv_contrib>/modules <opencv_source_directory>\
+make -j4     (depending on number of cores -> nproc)\
 
 //--------------------------------------------------------------------------------------
 
-When Image Processing application is compiled, in order to avoid "warning: "_GNU_SOURCE" redefined", delete the instruction "#define _GNU_SOURCE" from pmutex.h
-(inside ptask installation folder). Anyway, it could be also ignored.
+When Image Processing application is compiled, in order to avoid "warning:\
+"_GNU_SOURCE" redefined", delete the instruction "#define _GNU_SOURCE" from pmutex.h
+(inside ptask installation folder).\
+Anyway, it could be also ignored.
 
