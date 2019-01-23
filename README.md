@@ -41,7 +41,7 @@ make install\
    examples/system_example/testSystem.c\
    examples/system_example/testProt.c\
    examples/system_example/testPart.c\
-   examples/system_example/animation.c\
+   examples/system_example/animation.c
    
    or
    
@@ -61,7 +61,7 @@ cd ~/opencv\
 mkdir build\
 cd build\
 cmake -DOPENCV_EXTRA_MODULES_PATH=<opencv_contrib>/modules <opencv_source_directory>\
-make -j4     (depending on number of cores -> nproc)\
+make -j4     (depending on number of cores -> nproc)
 
 //--------------------------------------------------------------------------------------
 
