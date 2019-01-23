@@ -22,7 +22,7 @@ sudo apt-get install liballegro4.2-dev
 
 Ptask:
 
-git clone https://github.com/glipari/ptask.git\
+git clone https://github.com/glipari/ptask.git  \
 mkdir build\
 cd build\
 cmake ..\
@@ -54,13 +54,13 @@ make install\
 
 Opencv:
 
-cd ~/<my_working_directory>\
-git clone https://github.com/opencv/opencv.git\
-git clone https://github.com/opencv/opencv_contrib.git\
-cd ~/opencv\
-mkdir build\
-cd build\
-cmake -DOPENCV_EXTRA_MODULES_PATH=<opencv_contrib>/modules <opencv_source_directory>\
+cd ~/<my_working_directory>   \
+git clone https://github.com/opencv/opencv.git  \
+git clone https://github.com/opencv/opencv_contrib.git   \
+cd ~/opencv \
+mkdir build \
+cd build \
+cmake -DOPENCV_EXTRA_MODULES_PATH=<opencv_contrib>/modules <opencv_source_directory>   \
 make -j4     (depending on number of cores -> nproc)
 
 //--------------------------------------------------------------------------------------
