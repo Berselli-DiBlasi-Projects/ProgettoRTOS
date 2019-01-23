@@ -16,7 +16,7 @@ sudo apt-get install build-essential\
 sudo apt-get install cmake\
 sudo apt-get install libsdl2-dev\
 sudo apt-get install libgtkmm-3.0-dev\
-sudo apt-get install liballegro4.2-dev\
+sudo apt-get install liballegro4.2-dev
 
 //-------------------------------------------------------------------------------------
 
