@@ -43,7 +43,7 @@ make install\
    examples/system_example/testPart.c\
    examples/system_example/animation.c\
    
-   or\
+   or
    
    comment inside CMakeLists.txt the row 11:\
    add_subdirectory(examples)
