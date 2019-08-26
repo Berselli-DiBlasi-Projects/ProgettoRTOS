@@ -9,7 +9,7 @@ make\
 ./application
 
 
-Extern Dependences:
+External Dependencies:
 
 sudo apt-get install git\
 sudo apt-get install build-essential\
